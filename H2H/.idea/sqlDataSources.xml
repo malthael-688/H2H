@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="999a343c-708f-4476-9fb7-4b06a03a1e90" />
+          <option name="name" value="h2h" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/../../../../H2H/H2H/数据库文件/h2h.sql" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
