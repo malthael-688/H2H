@@ -95,7 +95,7 @@
 			  			   <div class="col-md-3 col-md-offset-1">
 							   
 	<div class="list-group">
-  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/test.jsp'">个 人 信 息</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage'">个 人 信 息</button>
   <button type="button" class="list-group-item">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >

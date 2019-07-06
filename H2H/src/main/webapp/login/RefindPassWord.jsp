@@ -211,7 +211,7 @@
 					var st=document.getElementById("email").value;
 					xhttp.open("post","/login/getMailCode?account="+st,false);
 					xhttp.send();
-					alert(xhttp.responseText);
+					
 				}
 		  </script>
 		  	<script>

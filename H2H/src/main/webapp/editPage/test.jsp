@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
 <!doctype html>
 <html lang="en">
@@ -57,8 +57,13 @@
 </div>
     </form>
 	<ul class="nav navbar-nav">
+<li>
+	<a href="../home.jsp">
+	<span class="glyphicon glyphicon-home" style="color: rgb(0, 152, 193);"></span>首页
+    </a>
+</li>
 	<li>
-	<a href="#">
+	<a href="../message1.jsp">
 	<span class="glyphicon glyphicon-bell" style="color: rgb(0, 152, 193);"></span>消息
 	<span> </span>
     <span class="badge">3</span>

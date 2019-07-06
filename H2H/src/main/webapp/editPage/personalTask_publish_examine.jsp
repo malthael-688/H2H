@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="true" %>
+         pageEncoding="UTF-8" isELIgnored="false" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -86,7 +86,7 @@
 	  	    <div class="col-md-8 col-md-offset-1">
   <div class="col-md-3 col-md-offset-1" style = "top:-10px;">
  	<div class="list-group">
-  <button type="button" class="list-group-item" onclick="javascript:window.location.href='test.jsp'">个 人 信 息</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage'">个 人 信 息</button>
   <button type="button" class="list-group-item">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >
@@ -145,14 +145,14 @@
 							<li></li><li></li>
 							<li></li><li></li>
 							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>${task.heatValue}/li>
+							<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>${task.heatValue}</li>
 							<li></li><li></li>
 							<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>pingjia</li>
 							<li></li><li></li>
 							<li>[${task.status}]</li>
                         </ul>
                     </div>
-                    <!--
+                    
 					<div>
 					申请人列表：
 						<c:forEach items="${applyList1}" var="applicant" varStatus="st"> 
@@ -163,14 +163,14 @@
 							<li></li><li></li>
 							<li></li><li></li>
 							<li></li><li></li>
-							<li><span>已完成任务数： </span>${applicant.yiwanchengrenwushu}</li>
+							<li><span>已完成任务数： </span>${applicant.finishedTaskNum}</li>
 							<li></li><li></li>
-							<li><span>信誉值： </span>${applicant.xinyuzhi}</li>
+							<li><span>信誉值： </span>${applicant.creditScore}</li>
 							<li></li><li></li>
                         </ul>
 						</c:forEach>		
 					</div>
-					-->
+					
 					
                 </div>
                 <div class="clear"></div>

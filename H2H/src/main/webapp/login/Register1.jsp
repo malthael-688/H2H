@@ -287,7 +287,7 @@ $(function() {
                     var st=document.getElementById("email").value;
                     xhttp.open("post","/login/getRegisterCode?account="+st,false);
                     xhttp.send();	
-                    alert(xhttp.responseText);
+                   
                     
 	      		}
 </script>

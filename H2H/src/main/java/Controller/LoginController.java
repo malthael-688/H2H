@@ -1,6 +1,7 @@
 package Controller;
 
 import Config.SendEmail;
+import Model.Param;
 import Model.User;
 import com.jfinal.core.Controller;
 
@@ -16,6 +17,8 @@ public class LoginController extends Controller {
 	public void loginCheck() {
 		User getUser = getModel(User.class);
 		User one = User.user.findById(getUser.get("num"));
+		//获取积分数值
+		Param param=Param.param.findById(get("1"));
 		if (one == null) {
 			set("error", 1).render("/login/Login.jsp");
 		} else if (one != null) {
@@ -25,7 +28,16 @@ public class LoginController extends Controller {
 				}else if (one.get("userState").equals(2)) {
 					set("error",6).render("/login/Login.jsp");
 				}else if (one.get("userState").equals(0)) {
-					render("/index.jsp");
+					//根据参数数据库，为用户添加积分
+					/**
+					 * 验证日期操作还未完成
+					 */
+					int point=one.getInt("points");
+					one.set("points", point+param.getStr("point"));
+					one.save();
+					//创建session
+					set("point", param.get("point")).setSessionAttr("User", one).render("/home.jsp");
+					
 				}else {
 					set("error", 7).render("/login/Login.jsp");
 				}
@@ -36,7 +48,7 @@ public class LoginController extends Controller {
 	}
 	public void getRegisterCode() {
 		String account = getPara("account");
-		System.out.println(account);
+		//System.out.println(account);
 		if (account != null) {
 			SendEmail util = new SendEmail();
 			try {
@@ -47,14 +59,14 @@ public class LoginController extends Controller {
 				e.printStackTrace();
 			}
 		} else {
-			renderJson("邮箱没有输入！");
+			//renderJson("邮箱没有输入！");
 		}
-		renderJson("发送成功");
+		//renderJson("发送成功");
 	}
 
 	public void getMailCode() {
 		String account = getPara("account");
-		System.out.println(account);
+		//System.out.println(account);
 		if (account != null) {
 			SendEmail util = new SendEmail();
 			try {
@@ -65,9 +77,10 @@ public class LoginController extends Controller {
 				e.printStackTrace();
 			}
 		} else {
-			renderJson("邮箱没有输入！");
+			
+			//renderJson("邮箱没有输入！");
 		}
-		renderJson("发送成功");
+		//renderJson("发送成功");
 	}
 
 	public void registerService() {
