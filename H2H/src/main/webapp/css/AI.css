@@ -1,0 +1,49 @@
+/* CSS Document */
+body {
+	background-color: #36465D;
+}
+
+.hr0 {
+	height: 2px;
+	border: none;
+	color: #FC7314;
+}
+
+.theme {
+	height: 400px;
+	width: 1000px;
+	background-color: #FFFFFF;
+}
+
+.user {
+	height: 400px;
+	width: 1000px;
+	background-color: #FFFFFF;
+}
+
+.account {
+	height: 400px;
+	width: 200px;
+	vertical-align: top;
+	background-color: #FFFFFF;
+	position: relative;
+	top: 32px;
+	left: 25px;
+}
+
+.div_allinline {
+	text-align: center;
+	margin: 0 auto;
+	padding: 0;
+	clear: both;
+}
+
+.subdiv_allinline {
+	vertical-align: top;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	_display: inline;
+	*display: inline;
+	zoom: 1;
+}

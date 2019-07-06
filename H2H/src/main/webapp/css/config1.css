@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+.hr0 {
+	height: 1px;
+	border: none;
+	border-top: 1px dashed #1E90FF;
+}
+
+.hr1 {
+	height: 1px;
+	border: none;
+	border-top: 1px solid #575757;
+}
+
+p.pos_fixed {
+	position: relative;
+	top: 30px;
+	left: 5px;
+}
+
+img.logo_position {
+	position: relative;
+	top: 30px;
+	left: 100px;
+}
+
+div.img_position {
+	position: relative;
+	top: 0px;
+	left: 136px;
+}
+
+input.search_form {
+	width: 300px
+}
+
+div.block {
+	position: relative;
+	top: 100px;
+	left: 118px;
+}

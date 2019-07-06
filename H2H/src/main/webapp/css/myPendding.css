@@ -1,0 +1,107 @@
+.homeCen_left li:nth-child(5) a{
+    background: url("../img/homeIcon5_hover.png") no-repeat 40px center;
+}
+.motai_con{
+    float: left;
+    box-sizing: border-box;
+    width: 510px;
+    height: 530px;
+    margin-top: 30px;
+    margin-left: 45px;
+}
+
+.order-msg{
+    font-size: 14px;
+    line-height: 50px;
+    color: #555353;
+}
+.order-msg span{
+    color: #e94716;
+}
+.order-msg i{
+    font-style: normal;
+}
+.order_tittle{
+    font-size: 16px;
+    line-height: 30px;
+    color: #e94716;
+}
+.star_arg{
+    margin: 10px 0;
+    width: 100%;
+}
+.star_arg p{
+    float: left;
+    font-size: 14px;
+    color: #555353;
+}
+.star_arg p span{
+    color: #e94716;
+}
+.star_star{
+    margin-left: 20px ;
+}
+.arg_con{
+    margin-top: 20px;
+}
+.arg_con span{
+    font-size: 14px;
+    color: #555353;
+}
+.arg_con span i{
+    color: #e94716;
+}
+.arg_con textarea{
+    width: 385px;
+    height: 100px;
+    margin-left: 20px;
+}
+input[type=submit]{
+    width: 145px;
+    height: 44px;
+    background-color: #fd6769;
+    float: left;
+    margin-left: 100px;
+    margin-top: 20px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+}
+.motai_img{
+    width: 55px;
+    height: 55px;
+    float: left;
+    margin-top: 30px;
+    background: url("../img/motai_img.png") no-repeat 0 0;
+}
+.pending_stand{
+    width: 510px;
+    height: 120px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.pending_stand p{
+    font-size: 14px;
+    color: #555353;
+    float: left;
+}
+.pending_stand p span{
+    color: #e94716;
+}
+.pending_stand_con{
+    float: left;
+    margin-left: 20px;
+    width: 395px;
+    height: 100px;
+}
+.pending_stand_con li{
+    box-sizing: border-box;
+    float: left;
+    padding: 0 7px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #333;
+    cursor: pointer;
+}
