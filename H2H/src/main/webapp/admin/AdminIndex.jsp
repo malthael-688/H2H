@@ -30,7 +30,7 @@
 				
 				<div class="dummy-icon foodicon"><img src="" alt="logo"></div>
 				<h2 class="dummy-heading">管理员界面</h2>
-				<a href="../login.html"><img src="../img/back.jpg" style="width:50px;position: relative;bottom:100px;right:100px"></a>
+				<a href="Login.jsp"><img src="../img/back.jpg" style="width:50px;position: relative;bottom:100px;right:100px"></a>
 			</div>
 		</header>
 		

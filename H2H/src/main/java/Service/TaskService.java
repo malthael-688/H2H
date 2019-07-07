@@ -33,7 +33,7 @@ public class TaskService {
 	//@Before(Tx.class)
 	public List<Task> searchByElement( String key ){
 		
-		StringBuilder sb = new StringBuilder("select * from task where taskID=? or publisherNum=?");
+		StringBuilder sb = new StringBuilder("select * from task where taskID=? or publisherNum=? and taskstate!=7");
 		return taskDao.find(sb.toString(), key,key);
 	}
 	

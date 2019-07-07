@@ -1,7 +1,6 @@
 package Config;
 
 import Controller.AdminController;
-import Controller.AdminLoginController;
 import Controller.EditController;
 import Controller.HelloController;
 import Controller.LoginController;
@@ -35,12 +34,11 @@ public class DemoConfig extends JFinalConfig {
     }
 
     public void configRoute(Routes me) {
-
-        me.add("/hello", HelloController.class);
+        //me.add("/hello", HelloController.class);
         me.add("/admin", AdminController.class);
         me.add("/login", LoginController.class);
-       // me.add("/adminLogin",AdminLoginController.class);
         me.add("/editPage", EditController.class);
+        
     }
 
     public void configEngine(Engine me) {}
