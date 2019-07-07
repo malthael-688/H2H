@@ -138,8 +138,8 @@ function Check(){
 
 	<!-- 登录窗口      -->
 	<div class="mydiv">
-		<img src="../images"
-			style="width: 30%; height: 10%; position: relative; left: 200px; top: 5px;" />
+		<img src="../imgs/H2H.png"
+			style="width: 50%; height: 40%; position: relative; left: 200px; top: 10px;" />
 		<div id="topbar"></div>
 		<div id="middlecontainer">
 			<div id="login">
@@ -214,7 +214,6 @@ function Check(){
 	</div>
 	<script type="text/javascript">banner()</script>
 	<script>
-	
 	var error=${error};
 	
 	if(error=='1')
@@ -225,7 +224,6 @@ function Check(){
 		{
 		alert("密码错误！");
 		}
-
 	if(error=='4')
 		{
 		alert("修改密码成功")

@@ -21,15 +21,15 @@
 	<div style="margin-top: 50px">
 	<div>
 		<p>邮箱</p>
-		<form>
-			<input type="text" class="form-control" style="width:200px" placeholder="$${email}">
+		<form action="/admin/changeEmail"  method="post">
+			<input type="text" class="form-control" style="width:200px" placeholder="${email}" name="email" >
 			<input type="submit" class="btn btn-default" value="修改" style="position:relative;bottom:34px;left:210px">
 		</form>
 	</div>
 	<div>
 		<p>名字</p>
-		<form>
-			<input type="text" class="form-control" style="width:200px" placeholder="$${name}">
+		<form action="/admin/changeName"  method="post">
+			<input type="text" class="form-control" style="width:200px" placeholder="${name}" name="name">
 			<input type="submit" class="btn btn-default" value="修改" style="position:relative;bottom:34px;left:210px">
 		</form>
 	</div>

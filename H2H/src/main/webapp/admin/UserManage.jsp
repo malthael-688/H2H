@@ -80,7 +80,7 @@
 					
 				</td>
 				<td>
-				<input type="button"   id="getnum" onClick="msgbox2(1)" value="修改" name="${user.getStr("num")}">
+				<input type="button" id="${user.getStr("num")}" onClick="msgbox2(1,${user.getStr("num")},${user.getStr("points")})" value="修改"  name="${user.getStr("num")}">
 				
 				</td>
 			</tr>
@@ -97,19 +97,17 @@
         <input type="submit" value="确定">
 		</form>
      </div>
+     
 	<div id="inputbox2" class="box" style="z-index: 999;background: #FFFFFF">
         <a class="x" href=""; onclick="msgbox2(0); return false;">关闭</a>
-		
-		<form>
+		<form  action="/admin/changePoint"   method="post">
 		<h2>用户积分：</h2>
-		<input type="text" id="point" value="" name="point">
-		
-		
-		
+		<input type="hidden" id="point1" name="num">
+		<input type="text" id="point2" value="" name="point" >
         <input type="submit" value="确定">
 		</form>
-		
      </div>
+     
 </body>
 
 <script type="text/javascript">
@@ -134,8 +132,11 @@ alert("封禁成功！");
 function msgbox(n){
 	document.getElementById('inputbox').style.display=n?'block':'none';
 }
-function msgbox2(n){
+function msgbox2(n,m,t){
 	document.getElementById('inputbox2').style.display=n?'block':'none';
+	
+	document.getElementById('point1').setAttribute("value",m);
+	document.getElementById('point2').setAttribute("value",t);
 	
 }
 var data=[
