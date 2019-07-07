@@ -5,9 +5,9 @@
    <head>
     <meta charset="utf-8">
     <title>消息</title>
-	<link rel="stylesheet" href="css2/reset.css"/>
-    <link rel="stylesheet" href="css2/public.css"/>
-    <link rel="stylesheet" href="css2/index.css"/>
+	<link rel="stylesheet" href="./backSettings/css2/reset.css"/>
+    <link rel="stylesheet" href="./backSettings/css2/public.css"/>
+    <link rel="stylesheet" href="./backSettings/css2/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -23,7 +23,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="image/user.jpeg" width="25" height="20">
+        <img src="./backSettings/image/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">

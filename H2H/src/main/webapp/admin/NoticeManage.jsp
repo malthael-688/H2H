@@ -7,10 +7,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
-<script src="/js/jquery-1.8.3.min.js"></script>
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/CJL.0.1.min.js"></script>
+<script src="../backSettings/js/jquery-1.8.3.min.js"></script>
+<link rel="stylesheet" href="../backSettings/css/bootstrap.min.css">
+<script src="../backSettings/js/bootstrap.min.js"></script>
+	<script src="../backSettings/js/CJL.0.1.min.js"></script>
 <title>notice manage</title>
 </head>
 <style>
@@ -28,25 +28,18 @@
 <body style="margin-left:100px;margin-top:50px">
 	<h1>公告管理</h1>
 	<div style="z-index: 0">
-	
-	
-	<form class="navbar-form navbar-left" role="search" action="/admin/noticeSearch">
+	<form class="navbar-form navbar-left" role="search" method="post" action="/admin/noticeSearch">
 	<div style="position: absolute;margin-top:20px;">
 	
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" name="search">
+            <input type="text" name = "search" class="form-control" placeholder="Search">
         </div>
-		<button type="submit" class="btn btn-default">搜索</button>
+		<button type="submit"   class="btn btn-default">搜索</button>
 	</div>
 		</form>
-		
-	
 		<div style="position: absolute;margin-left: 300px;margin-top: 30px">
-		
 			<button type="button" class="btn btn-default btn-sm" onClick="msgbox2(1)">
-			
           <span class="glyphicon glyphicon-plus"></span>发布公告
-          
         </button>
 		</div>
 	</div>
@@ -66,14 +59,12 @@
 				<td><a onClick="window.location.href='#'">${notice.getStr("title")}</a></td>
 				<td>${notice.getStr("time")}</td>
 				<td>
-					<input type="button" onClick="msgbox( 1 , ${notice.getStr("noticeID")}  )" value="修改">
+					<input type="button" onClick="msgbox(1)" value="修改">
 				</td>
-				
 				<td>
-					
-						<a href="/admin/deleteNotice?noticeID=${notice.getStr("noticeID")}"><input type="submit" name="delete" value="删除"></a>
-						
-					
+					<form action="" method="post">
+						<input type="submit" name="delete" value="删除">
+					</form>
 				</td>
 			</tr>
 			
@@ -83,41 +74,31 @@
 </div>
 	<div id="inputbox" class="box" style="z-index: 999;background: #FFFFFF">
         <a class="x" href="" onclick="msgbox(0); return false;">关闭</a>
-        
-		<form action="/admin/modifyNotice" method="post">
-		<input  type="hidden" id="noticeID" name="noticeID" >
+		<form>
 		<h2>标题：</h2>
-		<input type="text"  id="title1" name="title">
+		<input type="text" id="title">
 		<h2>内容：</h2>
-		<textarea id="content" style="width:414px" name="content"></textarea>
+		<textarea id="content" style="width:414px"></textarea>
         <input type="submit" value="提交">
-        
 		</form>
      </div>
-     
-     
 	<div id='inputbox2' class="box" style="z-index: 999;background: #FFFFFF">
         <a class='x' href=''; onclick="msgbox2(0); return false;">关闭</a>
-        
-		<form action="/admin/releaseNotice" method="post">
+		<form>
 		<h2>标题：</h2>
-		<input type="text" id="title2" name="title">
+		<input type="text" id="title2">
 		<h2>内容：</h2>
-		<textarea id="content2" style="width:414px" name="content" ></textarea>
+		<textarea id="content2" style="width:414px"></textarea>
         <input type="submit" value="提交">
 		</form>
-		
      </div>
 </body>
 <script type="text/javascript">
-function msgbox(n,m){
+function msgbox(n){
 	document.getElementById('inputbox').style.display=n?'block':'none';
-	document.getElementById('noticeID').setAttribute("value",m);
-	//document.getElementById('title1').setAttribute("value",t);
 }
 function msgbox2(n){
 	document.getElementById('inputbox2').style.display=n?'block':'none';
-}
 }
 </script>
 </html>

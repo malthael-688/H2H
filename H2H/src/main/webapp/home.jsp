@@ -6,21 +6,21 @@
     <meta charset="utf-8">
     <title>首页</title>
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
-		<script src="js2/jquery.min.js"></script>
-		<script src="js2/jquery.poptrox-2.2.js"></script>
-		<script src="js2/skel.min.js"></script>
-		<script src="js2/init.js"></script>
-        <link rel="stylesheet" href="css2/skel-noscript.css" />
-	 	<link rel="stylesheet" href="css2/style-ht.css" />
+		<script src="./backSettings/js2/jquery.min.js"></script>
+		<script src="./backSettings/js2/jquery.poptrox-2.2.js"></script>
+		<script src="./backSettings/js2/skel.min.js"></script>
+		<script src="./backSettings/js2/init.js"></script>
+        <link rel="stylesheet" href="./backSettings/css2/skel-noscript.css" />
+	 	<link rel="stylesheet" href="./backSettings/css2/style-ht.css" />
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="css2/datedropper.css">
-		<link rel="stylesheet" type="text/css" href="css2/timedropper.min.css">
+		<link rel="stylesheet" type="text/css" href="./backSettings/css2/datedropper.css">
+		<link rel="stylesheet" type="text/css" href="./backSettings/css2/timedropper.min.css">
 		
 		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	
-	<link rel="stylesheet" href="css2/reset.css"/>
-    <link rel="stylesheet" href="css2/public.css"/>
-    <link rel="stylesheet" href="css2/index.css"/>
+	<link rel="stylesheet" href="./backSettings/css2/reset.css"/>
+    <link rel="stylesheet" href="./backSettings/css2/public.css"/>
+    <link rel="stylesheet" href="./backSettings/css2/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -36,7 +36,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="img/user.jpeg" width="25" height="20">
+        <img src="./backSettings/img/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
@@ -275,15 +275,15 @@
 		</script>
 		
 		
-<script src="js/classie.js"></script>
-<script src="js/modalEffects.js"></script>	
+<script src="./backSettings/js/classie.js"></script>
+<script src="./backSettings/js/modalEffects.js"></script>	
 	
 
 		
 		
-<script type="text/javascript" src="js2/jquery-1.12.3.min.js"></script>
-<script src="js2/datedropper.min.js"></script>
-<script src="js2/timedropper.min.js"></script>
+<script type="text/javascript" src="./backSettings/js2/jquery-1.12.3.min.js"></script>
+<script src="./backSettings/js2/datedropper.min.js"></script>
+<script src="./backSettings/js2/timedropper.min.js"></script>
 <script>
 $("#pickdate").dateDropper({
 	animate: false,
@@ -302,7 +302,7 @@ $("#picktime").timeDropper({
 </div>
    </body>
 </html>
-<script src="js2/jquery-1.8.3.min.js"></script>
+<script src="./backSettings/js2/jquery-1.8.3.min.js"></script>
 <script>
     $(".indexMain_left_btn li a").click(function(){
         $(".indexMain_left_btn li a").removeClass("on");

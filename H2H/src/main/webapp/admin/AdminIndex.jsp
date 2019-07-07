@@ -12,13 +12,13 @@
 	<meta name="author" content="Codrops" />
 	<link rel="shortcut icon" href="../favicon.ico">
 	<!-- food icons -->
-	<link rel="stylesheet" type="text/css" href="../css/organicfoodicons.css" />
+	<link rel="stylesheet" type="text/css" href="../backSettings/css/organicfoodicons.css" />
 	<!-- demo styles -->
-	<link rel="stylesheet" type="text/css" href="../css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="../backSettings/css/demo.css" />
 	<!-- menu styles -->
-	<link rel="stylesheet" type="text/css" href="../css/component.css" />
-	<script src="../js/modernizr-custom.js"></script>
-	<script src="../js/dummydata.js"></script>
+	<link rel="stylesheet" type="text/css" href="../backSettings/css/component.css" />
+	<script src="../backSettings/js/modernizr-custom.js"></script>
+	<script src="../backSettings/js/dummydata.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
 				
 				<div class="dummy-icon foodicon"><img src="" alt="logo"></div>
 				<h2 class="dummy-heading">管理员界面</h2>
-				<a href="Login.jsp"><img src="../img/back.jpg" style="width:50px;position: relative;bottom:100px;right:100px"></a>
+				<a href="../backSettings/login.html"><img src="../backSettings/img/back.jpg" style="width:50px;position: relative;bottom:100px;right:100px"></a>
 			</div>
 		</header>
 		
@@ -68,9 +68,9 @@
 		</div>
 	</div>
 	<!-- /view -->
-	<script src="../js/classie.js"></script>
+	<script src="../backSettings/js/classie.js"></script>
 	
-	<script src="../js/main.js"></script>
+	<script src="../backSettings/js/main.js"></script>
 	<script>
 	(function() {
 		var menuEl = document.getElementById('ml-menu'),

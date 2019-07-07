@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <!doctype html>
 <html>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<script src="../js/bootstrap.min.js"></script>
+<link href="../backSettings/css/bootstrap.min.css" rel="stylesheet">
+<script src="../backSettings/js/bootstrap.min.js"></script>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
@@ -11,9 +11,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Register</title>
-<link rel="stylesheet" type="text/css" href="../css/buttons.css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/backgroundShow.js"></script>
+<link rel="stylesheet" type="text/css" href="../backSettings/css/buttons.css" />
+<script type="text/javascript" src="../backSettings/js/jquery.js"></script>
+<script type="text/javascript" src="../backSettings/js/backgroundShow.js"></script>
 
 
 <style type="text/css">
@@ -101,7 +101,8 @@
 
 	<!-- 登录窗口      -->
 	<div class="mydiv">
-		<img src="../images"
+		<img src="../backSettings/images"
+		<img src="../backSettings/images"
 			style="width: 30%; height: 10%; position: relative; left: 200px; top: -5px;" />
 		<div id="topbar"></div>
 		<div id="middlecontainer" style="position: relative; top: -20px;">
@@ -190,27 +191,27 @@
 	<div id="banner"
 		style="width: 100%; height: 100%; margin: 0; padding: 0;">
 		<div class="d1"
-			style="background-image: url(../images/help1.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help1.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help2.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help2.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help3.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help3.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help4.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help4.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help5.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help5.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help6.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help6.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 	</div>

@@ -8,14 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-<script src="js/bootstrap.min.js"></script>
+<script src="./backSettings/js/bootstrap.min.js"></script>
     <!-- Bootstrap core CSS -->
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-	  		<link rel="stylesheet" href="css/reset.css"/>
-    <link rel="stylesheet" href="css/public.css"/>
-    <link rel="stylesheet" href="css/index.css"/>
+	  		<link rel="stylesheet" href="./backSettings/css/reset.css"/>
+    <link rel="stylesheet" href="./backSettings/css/public.css"/>
+    <link rel="stylesheet" href="./backSettings/css/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>

@@ -4,12 +4,12 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../style/register-login.css">
+	<link rel="stylesheet" type="text/css" href="../backSettings/style/register-login.css">
 	
 	<title>Find Password</title>
-<link rel="stylesheet" type="text/css" href="../css/buttons.css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/backgroundShow.js"></script>
+<link rel="stylesheet" type="text/css" href="../backSettings/css/buttons.css" />
+<script type="text/javascript" src="../backSettings/js/jquery.js"></script>
+<script type="text/javascript" src="../backSettings/js/backgroundShow.js"></script>
 
 
 <style type="text/css">
@@ -98,7 +98,7 @@
 <div class="cent-box">
 		<!-- 登录窗口      -->
 	<div class="mydiv">
-		<img src="../images"
+		<img src="../backSettings/images"
 			style="width: 30%; height: 10%; position: relative; left: 200px; top: 5px;" />
 		<div id="topbar"></div>
 		<div id="middlecontainer">
@@ -156,11 +156,11 @@
 	<p>Designed By H2H team  2019</p>
 </div>
 
-<script src='../js/particles.js' type="text/javascript"></script>
-<script src='../js/background.js' type="text/javascript"></script>
-<script src='../js/jquery.min.js' type="text/javascript"></script>
-<script src='../js/layer/layer.js' type="text/javascript"></script>
-<script src='js/index.js' type="text/javascript"></script>
+<script src='../backSettings/js/particles.js' type="text/javascript"></script>
+<script src='../backSettings/js/background.js' type="text/javascript"></script>
+<script src='../backSettings/js/jquery.min.js' type="text/javascript"></script>
+<script src='../backSettings/js/layer/layer.js' type="text/javascript"></script>
+<script src=../backSettings/js/index.js' type="text/javascript"></script>
 <script>
 	$('.imgcode').hover(function(){
 		layer.tips("看不清？点击更换", '.verify', {

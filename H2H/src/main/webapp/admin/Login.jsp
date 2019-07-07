@@ -6,9 +6,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
-<link rel="stylesheet" type="text/css" href="../css/buttons.css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/backgroundShow.js"></script>
+<link rel="stylesheet" type="text/css" href="../backSettings/css/buttons.css" />
+<script type="text/javascript" src="../backSettings/js/jquery.js"></script>
+<script type="text/javascript" src="../backSettings/js/backgroundShow.js"></script>
 <script>
 	      		function login(){
 	      			
@@ -138,8 +138,8 @@ function Check(){
 
 	<!-- 登录窗口      -->
 	<div class="mydiv">
-		<img src="../imgs/H2H.png"
-			style="width: 50%; height: 40%; position: relative; left: 200px; top: 10px;" />
+		<img src="../backSettings/images"
+			style="width: 30%; height: 10%; position: relative; left: 200px; top: 5px;" />
 		<div id="topbar"></div>
 		<div id="middlecontainer">
 			<div id="login">
@@ -188,32 +188,33 @@ function Check(){
 	<div id="banner"
 		style="width: 100%; height: 100%; margin: 0; padding: 0;">
 		<div class="d1"
-			style="background-image: url(../images/help1.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help1.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help2.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help2.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help3.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help3.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help4.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help4.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help5.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help5.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 		<div class="d1"
-			style="background-image: url(../images/help6.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+			style="background-image: url(../backSettings/images/help6.jpg); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 			<div class="bg"></div>
 		</div>
 	</div>
 	<script type="text/javascript">banner()</script>
 	<script>
+	
 	var error=${error};
 	
 	if(error=='1')
@@ -224,6 +225,7 @@ function Check(){
 		{
 		alert("密码错误！");
 		}
+
 	if(error=='4')
 		{
 		alert("修改密码成功")
