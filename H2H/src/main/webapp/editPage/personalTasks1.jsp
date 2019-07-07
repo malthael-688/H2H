@@ -1,12 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-		<link rel="stylesheet" href="css/reset.css"/>
-    <link rel="stylesheet" href="css/public.css"/>
-    <link rel="stylesheet" href="css/index.css"/>
+		<link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../css/public.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -25,7 +26,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="image/user.jpeg" width="25" height="20">
+        <img src="../image/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
@@ -91,9 +92,9 @@
     我 接 受 的 任 务 <b class="caret"></b>
   </button>
   <ul class="dropdown-menu ">
-    <li><a href="#">已 完 成 任 务</a></li>
-    <li><a href="#">申 请 中 任 务</a></li>
-    <li><a href="#">进 行 中 任 务</a></li>
+      <li><a href="/editPage/recieve_finished_page">已 完 成 任 务</a></li>
+      <li><a href="/editPage/recieve_applying_page">申 请 中 任 务</a></li>
+      <li><a href="/editPage/recieve_nowDoing_page">进 行 中 任 务</a></li>
     <li role="separator" class="divider"></li>
     <li><a href="#">Separated link</a></li>
   </ul>
@@ -103,9 +104,10 @@
     我 发 布 的 任 务 <b class="caret"></b>
   </button>
   <ul class="dropdown-menu ">
-    <li><a href="#">审 查 中 任 务</a></li>
-    <li><a href="#">进 行 中 任 务</a></li>
-    <li><a href="#">未 被 接 收 任 务</a></li>
+      <li><a href="/editPage/publish_examine_page">审 查 中 任 务</a></li>
+      <li><a href="/editPage/publish_nowDoing_page">进 行 中 任 务</a></li>
+      <li><a href="/editPage/publish_unaccept_page">未 被 接 收 任 务</a></li>
+      <li><a href="/editPage/publish_finished_page">已 完 成 任 务</a></li>
     <li><a href="#"></a></li>
     <li role="separator" class="divider"></li>
     <li><a href="#">Separated link</a></li>
@@ -124,72 +126,44 @@
            
 		<div class="indexMain_left_con">
             <!--无主题图循环结束-->
-			 <div class="indexCon_msg">
-                
-                <div class="indexCon_msg_detail">
-                    <a href="">
-                        <div class="indexCon_msg_detail_tittle">
-                            <span>跑腿</span>
-                            <p>帮忙取个快递 不大 保管到开学找你拿orz</p>
+            <c:forEach items="${tasks}" var="task" varStatus="st">
+                <div class="indexCon_msg">
+
+                    <div class="indexCon_msg_detail">
+                        <a href="">
+                            <div class="indexCon_msg_detail_tittle">
+                                <span>${task.title}</span>
+                                <p>${task.description}</p>
+                            </div>
+                        </a>
+                        <div>
+                            <ul class="list-inline">
+                                <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>${task.publisherNum}</li>
+                                <li></li>
+                                <li><span class="glyphicon glyphicon-play" style="color: rgb(0, 152, 193);"></span>${task.startTime}</li>
+                                <li></li>
+                                <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>${task.deadLine}</li>
+                                <li></li>
+                                <li></li><li></li>
+                                <li></li><li></li>
+                                <li></li><li></li>
+                                <li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>${task.heatValue}</li>
+                                <li></li><li></li>
+                                <li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>pingjia</li>
+                                <li></li><li></li>
+                                <li>[${task.status}]</li>
+                            </ul>
                         </div>
-                    </a>
-                    <div>
-                        <ul class="list-inline">
-                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>花开花落</li>
-							<li></li>
-                            <li><span class="glyphicon glyphicon-play" style="color: rgb(0, 152, 193);"></span>2019-07-02 18:23</li>
-							<li></li>
-                            <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>2019-07-02 20:45</li>
-							<li></li>
-							<li></li><li></li>
-							<li></li><li></li>
-							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>28</li>
-							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>28</li>
-							<li></li><li></li>
-							<li>[已接受]</li>
-                        </ul>
                     </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
-            </div>
-			 <div class="indexCon_msg">
-                
-                <div class="indexCon_msg_detail">
-                    <a href="">
-                        <div class="indexCon_msg_detail_tittle">
-                            <span>跑腿</span>
-                            <p>帮忙取个快递 不大 保管到开学找你拿orz</p>
-                        </div>
-                    </a>
-                    <div>
-                        <ul class="list-inline">
-                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>花开花落</li>
-							<li></li>
-                            <li><span class="glyphicon glyphicon-play" style="color: rgb(0, 152, 193);"></span>2019-07-02 18:23</li>
-							<li></li>
-                            <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>2019-07-02 20:45</li>
-							<li></li>
-							<li></li><li></li>
-							<li></li><li></li>
-							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>28</li>
-							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>28</li>
-							<li></li><li></li>
-							<li>[已接受]</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
+            </c:forEach>
 			 
         </div>
     </div>
     <div class="clear"></div>
 </div>
-			</div?> <!-- panel -->
+			 <!-- panel -->
 	  </div>
 	  </div>
 
