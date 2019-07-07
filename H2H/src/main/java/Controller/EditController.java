@@ -103,4 +103,11 @@ public class EditController extends Controller {
         setAttr("tasks",tasks);
         renderJsp("personalTask_publish_unaccept.jsp");
     }
+
+    public void personalTasks_page() {
+        long thisNum=thisOne.get("num");
+        List<Task> tasks=Task.task.find("SELECT * FROM task WHERE publisherNum='"+thisNum+"' OR receiverNum='"+thisNum+"'");
+        setAttr("tasks",tasks);
+        renderJsp("personalTasks1.jsp");
+    }
 }
