@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>聊天</title>
-<link rel="stylesheet" href="css2/reset.css"/>
-    <link rel="stylesheet" href="css2/public.css"/>
-    <link rel="stylesheet" href="css2/index.css"/>
+<link rel="stylesheet" href="./backSettings/css2/reset.css"/>
+    <link rel="stylesheet" href="./backSettings/css2/public.css"/>
+    <link rel="stylesheet" href="./backSettings/css2/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css2/style.css">
+    <link rel="stylesheet" href="./backSettings/css2/style.css">
 
 </head>
 
@@ -27,7 +27,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="image/user.jpeg" width="25" height="20">
+        <img src="./backSettings/image/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
@@ -63,7 +63,7 @@
     </a>
 	</li>
 	<li>
-	<a href="message1.jsp">
+	<a href="./backSettings/message1.jsp">
 	<span class="glyphicon glyphicon-share-alt" style="color: rgb(0, 152, 193);"></span>返回
     </a>
 	</li>
@@ -177,7 +177,7 @@
   </div>
 </div>
 
-<script src="js/script.js"></script>
+<script src="./backSettings/js/script.js"></script>
 
 </body>
 </html>

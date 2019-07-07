@@ -7,12 +7,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
-<script src="/js/jquery-1.8.3.min.js"></script>
-<link href="/filter/Fliter.css" rel="stylesheet" />
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/filter/Filter.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/CJL.0.1.min.js"></script>
+<script src="../backSettings/js/jquery-1.8.3.min.js"></script>
+<link href="../backSettings/filter/Fliter.css" rel="stylesheet" />
+<link rel="stylesheet" href="../backSettings/css/bootstrap.min.css">
+<script src="../backSettings/filter/Filter.js"></script>
+<script src="../backSettings/js/bootstrap.min.js"></script>
+	<script src="../backSettings/js/CJL.0.1.min.js"></script>
 <title>无标题文档</title>
 </head>
 <style>

@@ -10,19 +10,19 @@
 		<meta name="keywords" content="" />
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js2/jquery.min.js"></script>
-		<script src="js2/jquery.poptrox-2.2.js"></script>
-		<script src="js2/skel.min.js"></script>
-		<script src="js2/init.js"></script>
+		<script src="./backSettings/js2/jquery.min.js"></script>
+		<script src="./backSettings/js2/jquery.poptrox-2.2.js"></script>
+		<script src="./backSettings/js2/skel.min.js"></script>
+		<script src="./backSettings/js2/init.js"></script>
 
-			<link rel="stylesheet" href="css2/skel-noscript.css" />
-			<link rel="stylesheet" href="css2/style-ht.css" />
+			<link rel="stylesheet" href="./backSettings/css2/skel-noscript.css" />
+			<link rel="stylesheet" href="./backSettings/css2/style-ht.css" />
 
 		
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 
-		<link rel="stylesheet" type="text/css" href="css2/datedropper.css">
-		<link rel="stylesheet" type="text/css" href="css2/timedropper.min.css">
+		<link rel="stylesheet" type="text/css" href="./backSettings/css2/datedropper.css">
+		<link rel="stylesheet" type="text/css" href="./backSettings/css2/timedropper.min.css">
 		
 		</head>
 	<body>
@@ -105,15 +105,15 @@
 		</script>
 		
 		
-<script src="js/classie.js"></script>
-<script src="js/modalEffects.js"></script>	
+<script src="./backSettings/css2js/classie.js"></script>
+<script src="./backSettings/css2js/modalEffects.js"></script>	
 	
 
 		
 		
 <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
-<script src="js/datedropper.min.js"></script>
-<script src="js/timedropper.min.js"></script>
+<script src="./backSettings/css2js/datedropper.min.js"></script>
+<script src="./backSettings/css2js/timedropper.min.js"></script>
 <script>
 $("#pickdate").dateDropper({
 	animate: false,

@@ -7,12 +7,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
-<script src="/js/jquery-1.8.3.min.js"></script>
-<link href="/filter/Fliter.css" rel="stylesheet" />
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/filter/Filter.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/CJL.0.1.min.js"></script>
+<script src="../backSettings/js/jquery-1.8.3.min.js"></script>
+<link href="../backSettings/filter/Fliter.css" rel="stylesheet" />
+<link rel="stylesheet" href="../backSettings/css/bootstrap.min.css">
+<script src="../backSettings/filter/Filter.js"></script>
+<script src="../backSettings/js/bootstrap.min.js"></script>
+<script src="../backSettings/js/CJL.0.1.min.js"></script>
 <title>task manage</title>
 </head>
 
@@ -39,7 +39,6 @@
 				<th>任务</th>
 				<th>发布人</th>
 				<th>通过</th>
-				<th>不通过</th>
 				<th>删除</th>
 			</tr>
 		</thead>
@@ -56,11 +55,6 @@
 				</td>
 				<td>
 					
-						<a href="/admin/checkTask_no?taskid=${task.getStr("taskID")}" ><input type="submit"    name="pass" value="不通过" > </a>
-					
-				</td>
-				<td>
-					
 						<a href="/admin/taskDelete?taskid=${task.getStr("taskID")}" ><input type="submit" name="delete" value="删除"></a>
 					
 				</td>
@@ -71,16 +65,6 @@
 </table>
 </div>  	
 </body>
-<script>
-var judge=${judge};
-if(judge == 1){
-	alert("该任务已被审核！");
-}
-
-</script>
-
-
-
 	<script type="text/javascript">
 var data=[
     {

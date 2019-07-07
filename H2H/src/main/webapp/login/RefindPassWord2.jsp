@@ -4,12 +4,12 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../style/register-login.css">
+	<link rel="stylesheet" type="text/css" href="../backSettings/style/register-login.css">
 	
 	<title>Findpassword</title>
-<link rel="stylesheet" type="text/css" href="../css/buttons.css" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/backgroundShow.js"></script>
+<link rel="stylesheet" type="text/css" href="../backSettings/css/buttons.css" />
+<script type="text/javascript" src="../backSettings/js/jquery.js"></script>
+<script type="text/javascript" src="../backSettings/js/backgroundShow.js"></script>
 <script>
 	      		function login(){
 	      			var account=document.getElementById("useraccount").value;
@@ -120,7 +120,7 @@
 <div id="box"></div>
 <!-- 登录窗口      -->
 	<div class="mydiv">
-		<img src="../images"
+		<img src="../backSettings/images"
 			style="width: 30%; height: 10%; position: relative; left: 200px; top: 5px;" />
 		<div id="topbar"></div>
 		<div id="middlecontainer">
@@ -191,11 +191,11 @@
               }
           }
  </script>
-<script src='../js/particles.js' type="text/javascript"></script>
-<script src='../js/background.js' type="text/javascript"></script>
-<script src='../js/jquery.min.js' type="text/javascript"></script>
-<script src='../js/layer/layer.js' type="text/javascript"></script>
-<script src='js/index.js' type="text/javascript"></script>
+<script src='../backSettings/js/particles.js' type="text/javascript"></script>
+<script src='../backSettings/js/background.js' type="text/javascript"></script>
+<script src='../backSettings/js/jquery.min.js' type="text/javascript"></script>
+<script src='../backSettings/js/layer/layer.js' type="text/javascript"></script>
+<script src='../backSettings/js/index.js' type="text/javascript"></script>
 
 </body>
 </html>

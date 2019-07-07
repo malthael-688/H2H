@@ -7,12 +7,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
-<script src="/js/jquery-1.8.3.min.js"></script>
-<link href="/filter/Fliter.css" rel="stylesheet" />
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<script src="/filter/Filter.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/CJL.0.1.min.js"></script>
+<script src="../backSettings/js/jquery-1.8.3.min.js"></script>
+<link href="../backSettings/filter/Fliter.css" rel="stylesheet" />
+<link rel="stylesheet" href="../backSettings/css/bootstrap.min.css">
+<script src="../backSettings/filter/Filter.js"></script>
+<script src="../backSettings/js/bootstrap.min.js"></script>
+	<script src="../backSettings/js/CJL.0.1.min.js"></script>
 <title>User manage</title>
 </head>
 <style>
@@ -80,7 +80,7 @@
 					
 				</td>
 				<td>
-				<input type="button" id="${user.getStr("num")}" onClick="msgbox2(1,${user.getStr("num")},${user.getStr("points")})" value="修改"  name="${user.getStr("num")}">
+				<input type="button"   id="getnum" onClick="msgbox2(1)" value="修改" name="${user.getStr("num")}">
 				
 				</td>
 			</tr>
@@ -97,17 +97,19 @@
         <input type="submit" value="确定">
 		</form>
      </div>
-     
 	<div id="inputbox2" class="box" style="z-index: 999;background: #FFFFFF">
         <a class="x" href=""; onclick="msgbox2(0); return false;">关闭</a>
-		<form  action="/admin/changePoint"   method="post">
+		
+		<form>
 		<h2>用户积分：</h2>
-		<input type="hidden" id="point1" name="num">
-		<input type="text" id="point2" value="" name="point" >
+		<input type="text" id="point" value="" name="point">
+		
+		
+		
         <input type="submit" value="确定">
 		</form>
+		
      </div>
-     
 </body>
 
 <script type="text/javascript">
@@ -132,11 +134,8 @@ alert("封禁成功！");
 function msgbox(n){
 	document.getElementById('inputbox').style.display=n?'block':'none';
 }
-function msgbox2(n,m,t){
+function msgbox2(n){
 	document.getElementById('inputbox2').style.display=n?'block':'none';
-	
-	document.getElementById('point1').setAttribute("value",m);
-	document.getElementById('point2').setAttribute("value",t);
 	
 }
 var data=[

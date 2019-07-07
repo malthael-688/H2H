@@ -13,9 +13,9 @@
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-	  		<link rel="stylesheet" href="../css/reset.css"/>
-    <link rel="stylesheet" href="../css/public.css"/>
-    <link rel="stylesheet" href="../css/index.css"/>
+	  		<link rel="stylesheet" href="../backSettings/css/reset.css"/>
+    <link rel="stylesheet" href="../backSettings/css/public.css"/>
+    <link rel="stylesheet" href="../backSettings/css/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -34,7 +34,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="image/user.jpeg" width="25" height="20">
+        <img src="../backSettings/image/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
