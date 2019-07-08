@@ -7,14 +7,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-<script src="../js/bootstrap.min.js"></script>
+<script src="../backSettings/js/bootstrap.min.js"></script>
     <!-- Bootstrap core CSS -->
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-	  		<link rel="stylesheet" href="../css/reset.css"/>
-    <link rel="stylesheet" href="../css/public.css"/>
-    <link rel="stylesheet" href="../css/index.css"/>
+	  		<link rel="stylesheet" href="../backSettings/css/reset.css"/>
+    <link rel="stylesheet" href="../backSettings/css/public.css"/>
+    <link rel="stylesheet" href="../backSettings/css/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,7 +33,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="image/user.jpeg" width="25" height="20">
+        <img src="../backSettings/image/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
@@ -95,8 +95,8 @@
 			  			   <div class="col-md-3 col-md-offset-1">
 							   
 	<div class="list-group">
-  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/test.jsp'">个 人 信 息</button>
-  <button type="button" class="list-group-item">任 务 管 理</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage'">个 人 信 息</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/personalTasks_page'">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >
   <button type="button" class="btn btn-default btn-group-justified dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

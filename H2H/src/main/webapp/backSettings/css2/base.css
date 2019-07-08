@@ -1,0 +1,142 @@
+.homeCen_left li:nth-child(2) a{
+    background: url("../img/homeIcon2_hover.png") no-repeat 40px center;
+}
+.baseHead{
+    width: 100%;
+    height: 60px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    border: 1px solid #d7d7d7;
+}
+.baseHead ul{
+    margin-left: 36px;
+}
+.baseHead li{
+    width: 100px;
+    height: 60px;
+    float: left;
+}
+.baseHead li a{
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+.baseHead li a.on{
+    border-bottom: 2px solid #e43e20;
+}
+.baseCon{
+    width: 630px;
+    height: 500px;
+    margin-left: 60px;
+    margin-top: 30px;
+}
+.baseCon_son{
+    width: 300px;
+    height: 36px;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.baseCon_son_left{
+    box-sizing: border-box;
+    width: 120px;
+    height: 100%;
+    float: left;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 5px 0 0 5px;
+    background-color: #f8f8f8;
+    border-right: 1px solid #e8e8e8;
+}
+.baseCon_son_right{
+    width: 180px;
+    height: 100%;
+    float: right;
+}
+.baseCon_son_right input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-indent: 10px;
+    font-size: 14px;
+    border-radius: 0 5px 5px 0;
+}
+.chooseSex{
+    width: 300px;
+    height: 55px;
+    box-sizing: border-box;
+    padding-left: 70px;
+    font-size: 14px;
+}
+.chooseSex p{
+    float: left;
+    margin-right: 40px;
+}
+.chooseSex p label{
+    margin-left: 10px;
+}
+.upload_sure{
+    width: 160px;
+    height: 40px;
+    border: none;
+    background-color: #e43e20;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 10px;
+}
+.upImg{
+    width: 380px;
+    height: 380px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+}
+.Imgbtn{
+    display: block;
+    width: 160px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #e43e20;
+    position: relative;
+    top: 33px;
+    left: 110px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}
+.uploadPic{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 160px;
+    height: 40px;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+}
+.upImg p{
+    text-align: center;
+    color: #999;
+    margin-top: 50px;
+    margin-bottom: 45px;
+}
+.mypic{
+    width: 168px;
+    height: 168px;
+    margin: 0 auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.mypic img{
+    width: 168px;
+    height: 168px;
+    border-radius: 5px;
+}

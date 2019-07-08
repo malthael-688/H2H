@@ -29,10 +29,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="src/main/webapp/utf8-jsp/jsp/lib/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/utf8-jsp/jsp/lib/commons-fileupload-1.3.1.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/utf8-jsp/jsp/lib/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/utf8-jsp/jsp/lib/json.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/utf8-jsp/jsp/lib/ueditor-1.1.2.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/backSettings/utf8-jsp/jsp/lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/backSettings/utf8-jsp/jsp/lib/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/backSettings/utf8-jsp/jsp/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/backSettings/utf8-jsp/jsp/lib/json.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/backSettings/utf8-jsp/jsp/lib/ueditor-1.1.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

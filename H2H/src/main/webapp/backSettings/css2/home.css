@@ -1,0 +1,64 @@
+.homeCen_left li:nth-child(1) a{
+    background: url("../img/homeIcon1_hover.png") no-repeat 40px center;
+}
+.home_self{
+    width: 168px;
+    height: 168px;
+    margin: 0 auto;
+    background-color: #999;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 177px;
+}
+.home_self img{
+    width: 168px;
+    height: 168px;
+    border-radius: 5px;
+}
+.home_name{
+    width: 100%;
+    height: 30px;
+    color: #333;
+    margin-top: 10px;
+    position: relative;
+}
+.home_name p{
+    box-sizing: border-box;
+    padding: 0 30px;
+    line-height: 30px;
+    font-size: 24px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.home_name p.male{
+    background:url("../img/male.png") no-repeat right center ;
+}
+.home_name p.female{
+    background:url("../img/female.png") no-repeat right center ;
+}
+.home_msg{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    position: relative;
+}
+.home_msg ul{
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.home_msg li{
+    float: left;
+    margin-right: 30px;
+    font-size: 14px;
+    color: #333;
+    text-indent: 25px;
+    line-height: 30px;
+}
+.home_msg li:first-of-type{
+    background: url("../img/home_clock.png") no-repeat 0 center
+}
+.home_msg li:last-of-type{
+    background: url("../img/home_address.png") no-repeat 0 center;
+}

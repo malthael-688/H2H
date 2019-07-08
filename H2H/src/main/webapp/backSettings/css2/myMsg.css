@@ -1,0 +1,103 @@
+.homeCen_left li:nth-child(4) a{
+    background: url("../img/homeIcon4_hover.png") no-repeat 40px center;
+}
+.baseHead{
+    width: 100%;
+    height: 60px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    border: 1px solid #d7d7d7;
+}
+.baseHead p{
+    font-size: 14px;
+    color: #333;
+    text-indent: 60px;
+    line-height: 60px;
+}
+.myWrite_con{
+    width: 860px;
+    height: 420px;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 60px;
+}
+.myMsgCon{
+    box-sizing: border-box;
+    width: 100%;
+    height: 36px;
+    border-bottom: 1px solid #e8e8e8;
+    padding-left: 24px;
+    padding-right: 32px;
+}
+.myMsgCon:hover{
+    background-color: #f8f8f8;
+}
+.myMsgCon:first-of-type{
+    border-radius: 5px 5px 0 0;
+}
+.myMsgCon_pic{
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    background-color: #999;
+    float: left;
+}
+.myMsgCon_pic img{
+    width: 20px;
+    height: 20px;
+}
+.myMsgCon_detail{
+    width: 600px;
+    height: 100%;
+    line-height: 36px;
+    float: left;
+    margin-left: 15px;
+    overflow: hidden;
+}
+.myMsgCon_detail a{
+    color: #666;
+}
+.myMsgCon_time{
+    float: right;
+    line-height: 36px;
+    color: #666;
+}
+.indexFooter{
+    width: 100%;
+    height: 40px;
+    position: relative;
+    margin-top: 14px;
+}
+.indexFooter_con{
+    position: absolute;
+    height: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px #999;
+    border-radius: 10px;
+}
+.indexFooter_con a{
+    display: block;
+    width: 40px;
+    height: 40px;
+    float: left;
+    background-color: #fff;
+    border-right: 1px dashed #cecece;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    line-height: 45px;
+}
+.indexFooter_con a:first-of-type{
+    border-radius: 10px 0 0 10px;
+}
+.indexFooter_con a:last-of-type{
+    border-radius: 0 10px 10px 0;
+    border-right: none;
+}
+.indexFooter_con a.on {
+    background-color: #e43e20;
+    border-right: none;
+    color: #fff;
+}

@@ -1,13 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="true" %>
+         pageEncoding="UTF-8" isELIgnored="false" %>
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-		<link rel="stylesheet" href="../css/reset.css"/>
-    <link rel="stylesheet" href="../css/public.css"/>
-    <link rel="stylesheet" href="../css/index.css"/>
+		<link rel="stylesheet" href="../backSettings/css/reset.css"/>
+    <link rel="stylesheet" href="../backSettings/css/public.css"/>
+    <link rel="stylesheet" href="../backSettings/css/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,7 +26,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="image/user.jpeg" width="25" height="20">
+        <img src="../backSettings/image/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
@@ -86,8 +86,8 @@
 	  	    <div class="col-md-8 col-md-offset-1">
   <div class="col-md-3 col-md-offset-1" style = "top:-10px;">
  	<div class="list-group">
-  <button type="button" class="list-group-item" onclick="javascript:window.location.href='test.jsp'">个 人 信 息</button>
-  <button type="button" class="list-group-item">任 务 管 理</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage'">个 人 信 息</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/personalTasks_page'">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >
   <button type="button" class="btn btn-default btn-group-justified dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -145,14 +145,14 @@
 							<li></li><li></li>
 							<li></li><li></li>
 							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>${task.heatValue}/li>
+							<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>${task.heatValue}</li>
 							<li></li><li></li>
 							<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>pingjia</li>
 							<li></li><li></li>
 							<li>[${task.status}]</li>
                         </ul>
                     </div>
-                    <!--
+                    
 					<div>
 					申请人列表：
 						<c:forEach items="${applyList1}" var="applicant" varStatus="st"> 
@@ -163,14 +163,14 @@
 							<li></li><li></li>
 							<li></li><li></li>
 							<li></li><li></li>
-							<li><span>已完成任务数： </span>${applicant.yiwanchengrenwushu}</li>
+							<li><span>已完成任务数： </span>${applicant.finishedTaskNum}</li>
 							<li></li><li></li>
-							<li><span>信誉值： </span>${applicant.xinyuzhi}</li>
+							<li><span>信誉值： </span>${applicant.creditScore}</li>
 							<li></li><li></li>
                         </ul>
 						</c:forEach>		
 					</div>
-					-->
+					
 					
                 </div>
                 <div class="clear"></div>

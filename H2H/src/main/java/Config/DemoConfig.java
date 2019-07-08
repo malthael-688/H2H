@@ -1,6 +1,6 @@
 package Config;
 
-import Controller.AdminLoginController;
+import Controller.AdminController;
 import Controller.EditController;
 import Controller.HelloController;
 import Controller.LoginController;
@@ -34,11 +34,11 @@ public class DemoConfig extends JFinalConfig {
     }
 
     public void configRoute(Routes me) {
-
-        me.add("/hello", HelloController.class);
+        //me.add("/hello", HelloController.class);
+        me.add("/admin", AdminController.class);
         me.add("/login", LoginController.class);
-        me.add("/adminLogin",AdminLoginController.class);
         me.add("/editPage", EditController.class);
+        
     }
 
     public void configEngine(Engine me) {}
@@ -55,6 +55,7 @@ public class DemoConfig extends JFinalConfig {
         arp.addMapping("task","taskID",Task.class);
         arp.addMapping("tasktype",TaskType.class);
         arp.addMapping("user","num",User.class);
+        arp.addMapping("param","id",Param.class);
     }
     public void configInterceptor(Interceptors me) {}
     public void configHandler(Handlers me) {}
