@@ -20,7 +20,6 @@
 	<h1>任务管理</h1>
 	
 	<form class="navbar-form navbar-left" role="search" action = "/admin/taskSearch"  method="post">
-	<div id="demo4" style="height:50px"></div>
 	<div style="position: relative;top:20px">
 	
         <div class="form-group">
@@ -31,7 +30,7 @@
 	</div>
 		</form>
 	
-<div class="table-responsive" style="position: relative;right:480px;top:160px">
+<div class="table-responsive" style="position: absolute;margin-top:8%">
 	<table class="table">
 		<thead>
 			<tr>
@@ -81,34 +80,6 @@ if(judge == 1){
 
 
 
-	<script type="text/javascript">
-var data=[
-    {
-        "id": 1,
-        "text": "已审核"
-    },
-    {
-        "id": 2,
-        "text": "未审核"
-    },
-    {
-        "id": 3,
-        "text": "已提交"
-    },
-    {
-        "id": 4,
-        "text": "已完成"
-    }]
-  $('#demo4').comboboxfilter({
-        url: '',
-		scope: 'FilterQuery3',
-		multiple: true,
-		data:data,
-		onChange:function(newValue){
-		$('#demo_value').val(newValue);
-		}
-    });
-</script>
 </html>
 
 

@@ -33,7 +33,6 @@
 	
 	
 	<form class="navbar-form navbar-left" role="search" action= "/admin/userSearch"  method = "post">
-	<div id="demo4" style="height:50px;"></div>
 	<div style="position: absolute;margin-top:20px;">
 	
         <div class="form-group">
@@ -46,7 +45,7 @@
 		
 		
 	</div>
-<div class="table-responsive" style="position: absolute;margin-right: 350px;margin-top: 180px; z-index: 0">
+<div class="table-responsive" style="position: absolute;margin-top:8%;z-index: 0">
 	<table class="table">
 		<thead>
 			<tr>
@@ -139,31 +138,5 @@ function msgbox2(n,m,t){
 	document.getElementById('point2').setAttribute("value",t);
 	
 }
-var data=[
-    {
-        "id": 1,
-        "text": "大一"
-    },
-    {
-        "id": 2,
-        "text": "大二"
-    },
-    {
-        "id": 3,
-        "text": "大三"
-    },
-    {
-        "id": 4,
-        "text": "大四"
-    }]
-  $('#demo4').comboboxfilter({
-        url: '',
-		scope: 'FilterQuery3',
-		multiple: true,
-		data:data,
-		onChange:function(newValue){
-		$('#demo_value').val(newValue);
-		}
-    });
 </script>
 </html>
