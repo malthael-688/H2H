@@ -18,7 +18,7 @@ public class LoginController extends Controller {
 		User getUser = getModel(User.class);
 		User one = User.user.findById(getUser.get("num"));
 		//获取积分数值
-		Param param=Param.param.findById(get("1"));
+		Param param=Param.param.findById("1");
 		if (one == null) {
 			set("error", 1).render("/login/Login.jsp");
 		} else if (one != null) {
@@ -32,11 +32,16 @@ public class LoginController extends Controller {
 					/**
 					 * 验证日期操作还未完成
 					 */
+					System.out.println("jingru  -----------------");
+					System.out.println(one.toString());
 					int point=one.getInt("points");
-					one.set("points", point+param.getStr("point"));
-					one.save();
+					System.out.println(point);
+					System.out.println(param.getInt("point"));
+					
+					one.set("points", point+param.getInt("point"));
+					one.update();
 					//创建session
-					set("point", param.get("point")).setSessionAttr("User", one).render("/home.jsp");
+					set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
 					
 				}else {
 					set("error", 7).render("/login/Login.jsp");
@@ -92,6 +97,8 @@ public class LoginController extends Controller {
 		if (mailbox.equals(randomCode)) {
 			if (getSql == null) {
 				getUser.set("userState", 0);
+				getUser.set("points", 100);
+				getUser.set("creditScore", 85);
 				getUser.save();
 				set("error", 3).render("/login/Login.jsp");
 			} else {

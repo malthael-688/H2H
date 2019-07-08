@@ -114,7 +114,7 @@
 						</div>
 						<div id="container2-2" style="position: relative; top: 10px;">
 							<input id="useraccount" name="useraccount" maxlength="20"
-								type="text" class="myinput" required>
+								type="text" class="myinput" required onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
 						</div>
 																		<div id="container2-3" >
 							<p class="myp" style="position: relative; top: 40px;">电 子 邮 箱:</p>

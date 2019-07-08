@@ -156,7 +156,7 @@ function Check(){
 						</div>
 						<div id="container2-2">
 							<input name="admin.adminNum" maxlength="14" type="text" class="myinput"
-								id="user.num" required="required">
+								id="user.num" required="required" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
 						</div>
 						<div id="container2-3">
 							<p class="myp" style="position: relative; top: 20px;">密 码:</p>
