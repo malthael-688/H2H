@@ -90,7 +90,7 @@ public class AdminController extends Controller {
     
     //针对admin 对 用户 (User) 处理的部分
     //其中包含了方法
-    //显示用户    封禁用户   用户删除    修改用户积分    用户搜索
+    //显示用户    封禁用户   用户删除    修改用户积分    用户搜索  展示用户
     public void userManage(){
     	List<User> users = UserService.me.find("select * from user ");	
     	set("users", users);
@@ -176,6 +176,13 @@ public class AdminController extends Controller {
     	render("UserManage.jsp");
     }
     
+    public void showUser(){
+    	String num = getPara("num");
+    	User user = User.user.findById(num);
+    	set("user",user);
+    	render("userDetail.jsp");
+    }
+    
     
     
     //针对admin 对 公告 (Notice)处理的部分
@@ -223,7 +230,7 @@ public class AdminController extends Controller {
     	noticeManage();
     }
     
-    
+
     
 
     //针对admin 对 系统参数 (Param) 处理的部分

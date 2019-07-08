@@ -64,7 +64,7 @@
 		<tbody>
 			<c:forEach items="${users}" var="user" varStatus="st">
 			<tr>
-				<td><a onClick="window.location.href='#'">${user.getStr("num")}</a></td>
+				<td><a href="/admin/showUser?num=${user.getStr("num")}">${user.getStr("num")}</a></td>
 				<td><a >${user.getStr("name")}</a></td>
 				<td><a >${user.getStr("phone")}</a></td>
 				<td><a >${user.getStr("email")}</a></td>
