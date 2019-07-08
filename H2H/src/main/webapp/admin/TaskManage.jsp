@@ -39,6 +39,7 @@
 				<th>任务</th>
 				<th>发布人</th>
 				<th>通过</th>
+				<th>不通过</th>
 				<th>删除</th>
 			</tr>
 		</thead>
@@ -55,6 +56,11 @@
 				</td>
 				<td>
 					
+						<a href="/admin/checkTask_no?taskid=${task.getStr("taskID")}" ><input type="submit"    name="pass" value="不通过" > </a>
+					
+				</td>
+				<td>
+					
 						<a href="/admin/taskDelete?taskid=${task.getStr("taskID")}" ><input type="submit" name="delete" value="删除"></a>
 					
 				</td>
@@ -65,6 +71,16 @@
 </table>
 </div>  	
 </body>
+<script>
+var judge=${judge};
+if(judge == 1){
+	alert("该任务已被审核！");
+}
+
+</script>
+
+
+
 	<script type="text/javascript">
 var data=[
     {
