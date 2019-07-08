@@ -101,7 +101,7 @@
 
 	<!-- 登录窗口      -->
 	<div class="mydiv">
-		<img src="../backSettings/images"
+		<img src="../backSettings/images">
 		<img src="../backSettings/images"
 			style="width: 30%; height: 10%; position: relative; left: 200px; top: -5px;" />
 		<div id="topbar"></div>
