@@ -400,7 +400,7 @@ public class AdminController extends Controller {
 			one.set("adminNum", account);
 			one.set("password", userpassword);
 			one.update();
-			set("error", 4).render("/adminLogin");
+			set("error", 4).render("/admin");
 		} else {
 			render("RefindPassWord2.jsp");
 		}
