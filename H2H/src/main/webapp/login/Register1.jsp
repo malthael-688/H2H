@@ -101,7 +101,7 @@
 
 	<!-- 登录窗口      -->
 	<div class="mydiv">
-		<img src="../backSettings/images"
+		<img src="../backSettings/images">
 		<img src="../backSettings/images"
 			style="width: 30%; height: 10%; position: relative; left: 200px; top: -5px;" />
 		<div id="topbar"></div>
@@ -119,7 +119,7 @@
 						</div>
 						<div id="container2-2">
 							<input name="user.num" maxlength="14" type="text" class="myinput"
-								required="required">
+								required="required" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
 						</div>
 						<div id="container2-1">
 							<p class="myp" style="position: relative; top: 10px;">昵 称:</p>

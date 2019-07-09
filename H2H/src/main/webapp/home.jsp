@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
@@ -71,6 +72,7 @@
     <span class="badge">3</span>
     </a>
 	</li>
+<!--  
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
         任务类型 <span class="caret"></span>
@@ -84,6 +86,7 @@
 		<li><a href="#">二手物品</a></li>
       </ul>
     </li>
+-->
 	
 	</ul>
 	<form class="navbar-form navbar-right" role="search">
@@ -101,58 +104,53 @@
     <div class="indexMain_left">
         <div class="indexMain_left_btn">
             <ul>
-                <li><a href="javascript:">跑腿</a></li>
+            	<c:forEach items="${taskTypes}" var="taskType" varStatus="ty">
+                <li><a href="javascript:">${taskType.getStr("type") }</a></li>
 				<li></li>
-				<li><a href="javascript:">跑腿</a></li>
-				<li></li>
-				<li><a href="javascript:">跑腿</a></li>
-				<li></li>
-				<li><a href="javascript:">跑腿</a></li>
-				<li></li> 
+				</c:forEach>
             </ul>
         </div>
+        <c:forEach items="${tasks}" var="task" varStatus="tk">
 		<div class="indexMain_left_con">
             <!--有主题图循环结束-->
             <!--无主题图循环开始-->
             <div class="indexCon_msg">
                 
-                <div class="indexCon_msg_detail">
-                    <a data-toggle="collapse" data-parent="#accordion" 
-							href="#collapseTwo" href="">
-                        <div class="indexCon_msg_detail_tittle">
-                            <span>跑腿</span>
-                            <p>帮忙取个快递 不大 保管到开学找你拿orz</p>
-                        </div>
-                    </a>
-					<div id="collapseTwo" class="panel-collapse collapse">
-					<div class="panel-body">
-				Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
-				cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
-				vice lomo.
-					</div>
-					</div>
-                    <div>
-                        <ul class="list-inline">
-                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>花开花落</li>
-							<li></li>
-                            <li><span class="glyphicon glyphicon-play" style="color: rgb(0, 152, 193);"></span>2019-07-02 18:23</li>
-							<li></li>
-                            <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>2019-07-02 20:45</li>
-							<li></li>
-							<li></li><li></li>
-							<li><a href="taskInformation.jsp"><span class="glyphicon glyphicon-check" style="color: rgb(0, 152, 193);"></span>查看</a></li>
-							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>28</li>
-							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>28</li>
-							<li></li>
-							<li><span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118);"></span>287</li>
-                        </ul>
-                    </div>
-                </div>
+	                <div class="indexCon_msg_detail">
+	                    <a data-toggle="collapse" data-parent="#accordion" 
+								href="#${task.taskID }" href="">
+	                        <div class="indexCon_msg_detail_tittle">
+	                            <span>${task.getStr("type") }</span>
+	                            <p>${task.getStr("title") }</p>
+	                        </div>
+	                    </a>
+						<div id="${task.taskID }" class="panel-collapse collapse">
+						<div class="panel-body">${task.getStr("description") }</div>
+						</div>
+	                    <div>
+	                        <ul class="list-inline">
+	                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>${task.getStr("publisherNum") }</li>
+								<li></li>
+	                            <li><span class="glyphicon glyphicon-play" style="color: rgb(0, 152, 193);"></span>${task.getStr("startTime") }</li>
+								<li></li>
+	                            <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>${task.getStr("deadLine") }</li>
+								<li></li>
+								<li></li><li></li>
+								<li><a href="taskInformation.jsp"><span class="glyphicon glyphicon-check" style="color: rgb(0, 152, 193);"></span>查看</a></li>
+								<li></li><li></li>
+								<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>28</li>
+								<li></li><li></li>
+								<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>28</li>
+								<li></li>
+								<li><span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118);"></span>${task.getStr("rewardPoints") }</li>
+	                        </ul>
+	                    </div>
+	                </div>
                 <div class="clear"></div>
             </div>
         </div>
+        </c:forEach>
+        <!-- 
         <div class="indexFooter">
             <div class="indexFooter_con">
                 <a href="javascript:"><</a>
@@ -162,6 +160,7 @@
                 <a href="javascript:">></a>
             </div>
         </div>
+         -->
     </div>
     <div class="indexMain_right">
         <div class="indexMain_rightCon">
@@ -177,30 +176,26 @@
 					<h2 align="center">任务发布</h2>
 					<p align="center">请填写要分布任务的细节。</p>
 				</header>
-				<form method="post" action="#" id="publish">
+				<form method="post" action="/home/publishTask" id="publish">
 					<div class="row half">
-						<div class="6u"><input type="text" class="text" id="title" name="title" placeholder="标题" /></div>
-						<div class="6u"><input type="text" class="text" id="rewardPoints" name="rewardPoints" placeholder="悬赏积分" /></div>
+						<div class="6u"><input type="text" class="text" id="task.title" name="task.title" placeholder="标题" /></div>
+						<div class="6u"><input type="text" class="text" id="task.rewardPoints" name="task.rewardPoints" placeholder="悬赏积分" /></div>
 					</div>
 					<div class="row half">
 						<div class="6u">
-							<select name="type" id="type">
+							<select name="type" id="task.type">
 									<option selected="selected1">选择类型</option>
-									<option>找人</option>
-									<option>找东西</option>
-									<option>考试</option>
-									<option>问路</option>
-									<option>生活</option>
-									<option>脱单</option>
-									<option>其他</option>
+					            	<c:forEach items="${taskTypes}" var="taskType" varStatus="ty">
+									<option>${taskType.getStr("type") }</option>
+									</c:forEach>
 							</select>
 						</div>
 						<div class="6u" style="width:160px;float:left;display:inline">
 							<label type="text" class="text">截止时间</label>
 						</div><div style="width:168px;float:left;display:inline">	
-							<input type="text" class="input" id="pickdate" name="time1" placeholder="年月日"/>
+							<input type="text" class="input" id="task.startTime" name="task.startTime" placeholder="年月日"/>
 						</div><div style="width:140px;float:left;display:inline">
-							<input type="text" class="time" id="picktime" name="time2" placeholder="时间" />
+							<input type="text" class="time" id="task.deadLine" name="task.deadLine" placeholder="时间" />
 						
 						</div>
 						
@@ -208,16 +203,16 @@
 					</div>
 				  	<div class="row half">
 						<div class="12u">
-							<textarea name="description" id="description" placeholder="任务描述"></textarea>
+							<textarea name="task.description" id="task.description" placeholder="任务描述"></textarea>
 						</div>
 					</div>
 					<div class="row">
 						<div class="12u">
 							<ul class="actions">
 								<li>
-									<ul class="actions">
-										<li><a href="#" class="button form" onClick="publishTask()">发布</a></li>
-									</ul>									
+															<button style="padding: 0.7em 2em;"
+							class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l"
+							type="submit" ">提交</button>									
 								</li>
 							</ul>
 						</div>
@@ -229,21 +224,54 @@
 </div>
             <div class="pwfb">
                 <div class="pwfbHead">
-                    公告发布
+                近期公告
                 </div>
-                <div class="pwfbCon"></div>
-                <div class="pwfbFooter"></div>
+				<div class="indexPublic_con">
+				<div class="pwfbCon">
+                    <ul>
+                    	<c:forEach items="${notices}" var="notice" varStatus="nt">
+                        <li><a href="javascript:;" data-toggle="modal" data-target="#${notice.content}"><h5>${notice.getStr("title") }</h5> <span class="glyphicon glyphicon-time" style="color: rgb(0, 152, 193);"></span>${notice.getStr("time") }</li>
+						
+						<div class="modal fade" id="${notice.content}" tabindex="-1" role="dialog" aria-labelledby="${notice.co}" aria-hidden="true">
+						<div class="modal-dialog" style="width:800px;height:800px;">
+						<div class="modal-content">
+						<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal2" aria-hidden="true">
+						&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+						${notice.getStr("title") }
+						</h4>
+						</div>
+						<div class="modal-body">
+						${notice.getStr("content") }
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal2">关闭
+						</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+					</c:forEach>
+                    </ul> 
+				</div>
+                </div>
+                <div class="pwfbCon">
+				</div>
+               
             </div>
+            
             <div class="indexPublic">
-                <div class="indexPublic_head">
+                <div class="pwfbHead">
                     任务热度榜
                 </div>
                 <div class="indexPublic_con">
+                	<c:forEach items="${tasks}" var="task" varStatus="tk">
                     <ul class="weekHot">
-                        <li><a href="">找一个这学期工科数学分析这门课程的学生</a><span>29</span></li>
-                        <li><a href="">帮忙取个快递 不大 保管到开学找你拿orz </a><span>29</span></li>
-                        <li><a href="">急 老校区求购一个小行李箱 酬劳私聊 </a><span>29</span></li>
+                        <li><a href="">${task.title }</a><span>29</span></li>
                     </ul>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -266,7 +294,7 @@
 		var time=document.getElementById("picktime").value;
 	
 		if(title=="" || rewardPoints==""||type==""||date==""||time==""){
-			alert("请正确输入任务信息")；
+			alert("请正确输入任务信息");
 		}
 		else{
 			document.getElementById("publish").submit();

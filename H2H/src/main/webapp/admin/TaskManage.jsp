@@ -20,7 +20,6 @@
 	<h1>任务管理</h1>
 	
 	<form class="navbar-form navbar-left" role="search" action = "/admin/taskSearch"  method="post">
-	<div id="demo4" style="height:50px"></div>
 	<div style="position: relative;top:20px">
 	
         <div class="form-group">
@@ -31,7 +30,7 @@
 	</div>
 		</form>
 	
-<div class="table-responsive" style="position: relative;right:480px;top:160px">
+<div class="table-responsive" style="position: absolute;margin-top:8%">
 	<table class="table">
 		<thead>
 			<tr>
@@ -39,6 +38,7 @@
 				<th>任务</th>
 				<th>发布人</th>
 				<th>通过</th>
+				<th>不通过</th>
 				<th>删除</th>
 			</tr>
 		</thead>
@@ -55,6 +55,11 @@
 				</td>
 				<td>
 					
+						<a href="/admin/checkTask_no?taskid=${task.getStr("taskID")}" ><input type="submit"    name="pass" value="不通过" > </a>
+					
+				</td>
+				<td>
+					
 						<a href="/admin/taskDelete?taskid=${task.getStr("taskID")}" ><input type="submit" name="delete" value="删除"></a>
 					
 				</td>
@@ -65,34 +70,16 @@
 </table>
 </div>  	
 </body>
-	<script type="text/javascript">
-var data=[
-    {
-        "id": 1,
-        "text": "已审核"
-    },
-    {
-        "id": 2,
-        "text": "未审核"
-    },
-    {
-        "id": 3,
-        "text": "已提交"
-    },
-    {
-        "id": 4,
-        "text": "已完成"
-    }]
-  $('#demo4').comboboxfilter({
-        url: '',
-		scope: 'FilterQuery3',
-		multiple: true,
-		data:data,
-		onChange:function(newValue){
-		$('#demo_value').val(newValue);
-		}
-    });
+<script>
+var judge=${judge};
+if(judge == 1){
+	alert("该任务已被审核！");
+}
+
 </script>
+
+
+
 </html>
 
 

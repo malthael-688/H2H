@@ -28,9 +28,9 @@
 		<header class="bp-header cf">
 			<div class="dummy-logo">
 				
-				<div class="dummy-icon foodicon"><img src="" alt="logo"></div>
+				<div style="width: 200px;height:100px"><img src="../backSettings/imgs/H2H.png" alt="logo" style="width: 400px;height:300px;position:relative;top:-65%;right:10%"></div>
 				<h2 class="dummy-heading">管理员界面</h2>
-				<a href="../backSettings/login.html"><img src="../backSettings/img/back.jpg" style="width:50px;position: relative;bottom:100px;right:100px"></a>
+				<a href="Login.jsp"><img src="../backSettings/img/back.png" style="width:50px;position: relative;bottom:100px;right:100px"></a>
 			</div>
 		</header>
 		

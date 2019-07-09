@@ -144,7 +144,7 @@
 						<div id="container2-4">
 							<input id="userpassword" name="userpassword" maxlength="14"
 								type="password" class="myinput"
-								style="position: relative; top: 32px;" required onkeyup="validate()">
+								style="position: relative; top: 32px;" required onkeyup="validate()" >
 						</div>
 						<div id="container2-3">
 							<p class="myp" style="position: relative; top: 50px;">重 复 密 码:</p>

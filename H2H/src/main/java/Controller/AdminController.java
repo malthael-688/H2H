@@ -79,18 +79,16 @@ public class AdminController extends Controller {
     public void taskDelete(){
     	String id = getPara("taskid");
     	Task task = TaskService.me.findById(id);
-    	if(task.getStr("taskState").equals("0")){
-    		task.set("taskState", 7);
-    		task.update();
-    		 taskManage();
-    	}
+    	task.set("taskState", 7);
+		task.update();
+		taskManage();
     }
  
     
     
     //针对admin 对 用户 (User) 处理的部分
     //其中包含了方法
-    //显示用户    封禁用户   用户删除    修改用户积分    用户搜索
+    //显示用户    封禁用户   用户删除    修改用户积分    用户搜索  展示用户
     public void userManage(){
     	List<User> users = UserService.me.find("select * from user ");	
     	set("users", users);
@@ -102,6 +100,14 @@ public class AdminController extends Controller {
     public void banUser(){
     	String usernum = getPara("num");
     	User user = UserService.me.findById(usernum);
+    	if(user.getStr("userState")==null){
+    		user.set("userState", 1);
+        	user.update();
+        	List<User> users = UserService.me.find("select * from user ");	
+        	set("users", users);	
+        	set("state",0);
+        	render("UserManage.jsp");
+    	}
     	if(user.getStr("userState").equals("0"))
     	{	
     	user.set("userState", 1);
@@ -120,7 +126,7 @@ public class AdminController extends Controller {
         	set("users", users);
         	set("state",2);
         	render("UserManage.jsp");
-    	}	
+    	}
     }
     
     public void deleteUser(){
@@ -176,6 +182,13 @@ public class AdminController extends Controller {
     	render("UserManage.jsp");
     }
     
+    public void showUser(){
+    	String num = getPara("num");
+    	User user = User.user.findById(num);
+    	set("user",user);
+    	render("userDetail.jsp");
+    }
+    
     
     
     //针对admin 对 公告 (Notice)处理的部分
@@ -184,6 +197,7 @@ public class AdminController extends Controller {
     public void noticeManage(){
     	List<Notice> notices = Notice.notice.find("select * from notice ");	
     	set("notices", notices);	
+    	set("state",0);
     	render("NoticeManage.jsp");
     }
     
@@ -192,6 +206,7 @@ public class AdminController extends Controller {
     	StringBuilder sb = new StringBuilder("select * from notice where noticeID=? or title=?");
     	List <Notice> notices = Notice.notice.find(sb.toString(), search, search);
     	set("notices", notices);	
+    	set("state",0);
     	render("NoticeManage.jsp");			
     }
     
@@ -203,12 +218,20 @@ public class AdminController extends Controller {
     }
     
     public void releaseNotice(){
+    	System.out.println("........................");
     	String title = getPara("title");
+    	if(title.equals("") || title==null){
+    		List<Notice> notices = Notice.notice.find("select * from notice ");	
+        	set("notices", notices);
+        	set("state",1);
+        	System.out.println(".........................");
+        	render("NoticeManage.jsp");
+    		return;
+    	}
     	String content = getPara("content");
     	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
     	String time = 	df.format(new Date());
     	new Notice().set("title",title).set("content", content).set("time", time).save();
-    
     	noticeManage();
     }
     
@@ -216,6 +239,14 @@ public class AdminController extends Controller {
     	String noticeID = getPara("noticeID");
     	String title = getPara("title");
     	String content = getPara("content");
+    	if(title.equals("") || title==null){
+    		List<Notice> notices = Notice.notice.find("select * from notice ");	
+        	set("notices", notices);
+        	set("state",1);
+        	System.out.println(".........................");
+        	render("NoticeManage.jsp");
+    		return;
+    	}
     	Notice notice = Notice.notice.findById(noticeID);
     	notice.set("title", title);
     	notice.set("content", content);
@@ -223,7 +254,7 @@ public class AdminController extends Controller {
     	noticeManage();
     }
     
-    
+
     
 
     //针对admin 对 系统参数 (Param) 处理的部分
@@ -306,6 +337,14 @@ public class AdminController extends Controller {
     	String  oldPassword= getPara("oldPassword");
     	String  newPassword= getPara("newPassword");
     	Admin admin = Admin.admin.findById(adminNum);
+    	if(admin==null){
+    		Admin admin1 = getSessionAttr("admin");
+        	String adminNum1 = admin1.getStr("adminNum");
+        	set("adminNum",adminNum1);
+        	set("error",1);
+        	render("ChangePassword.jsp");
+    		return;
+    	}
     	System.out.println(adminNum);
     	System.out.println(admin.toString());
     	
@@ -400,7 +439,7 @@ public class AdminController extends Controller {
 			one.set("adminNum", account);
 			one.set("password", userpassword);
 			one.update();
-			set("error", 4).render("/adminLogin");
+			set("error", 4).render("/admin");
 		} else {
 			render("RefindPassWord2.jsp");
 		}

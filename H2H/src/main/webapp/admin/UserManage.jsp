@@ -33,7 +33,6 @@
 	
 	
 	<form class="navbar-form navbar-left" role="search" action= "/admin/userSearch"  method = "post">
-	<div id="demo4" style="height:50px;"></div>
 	<div style="position: absolute;margin-top:20px;">
 	
         <div class="form-group">
@@ -46,7 +45,7 @@
 		
 		
 	</div>
-<div class="table-responsive" style="position: absolute;margin-right: 350px;margin-top: 180px; z-index: 0">
+<div class="table-responsive" style="position: absolute;margin-top:8%;z-index: 0">
 	<table class="table">
 		<thead>
 			<tr>
@@ -64,7 +63,7 @@
 		<tbody>
 			<c:forEach items="${users}" var="user" varStatus="st">
 			<tr>
-				<td><a onClick="window.location.href='#'">${user.getStr("num")}</a></td>
+				<td><a href="/admin/showUser?num=${user.getStr("num")}">${user.getStr("num")}</a></td>
 				<td><a >${user.getStr("name")}</a></td>
 				<td><a >${user.getStr("phone")}</a></td>
 				<td><a >${user.getStr("email")}</a></td>
@@ -80,7 +79,7 @@
 					
 				</td>
 				<td>
-				<input type="button"   id="getnum" onClick="msgbox2(1)" value="修改" name="${user.getStr("num")}">
+				<input type="button" id="${user.getStr("num")}" onClick="msgbox2(1,${user.getStr("num")},${user.getStr("points")})" value="修改"  name="${user.getStr("num")}">
 				
 				</td>
 			</tr>
@@ -97,19 +96,17 @@
         <input type="submit" value="确定">
 		</form>
      </div>
+     
 	<div id="inputbox2" class="box" style="z-index: 999;background: #FFFFFF">
         <a class="x" href=""; onclick="msgbox2(0); return false;">关闭</a>
-		
-		<form>
+		<form  action="/admin/changePoint"   method="post">
 		<h2>用户积分：</h2>
-		<input type="text" id="point" value="" name="point">
-		
-		
-		
+		<input type="hidden" id="point1" name="num">
+		<input type="text" id="point2" value="" name="point" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="9"/>
         <input type="submit" value="确定">
 		</form>
-		
      </div>
+     
 </body>
 
 <script type="text/javascript">
@@ -134,35 +131,18 @@ alert("封禁成功！");
 function msgbox(n){
 	document.getElementById('inputbox').style.display=n?'block':'none';
 }
-function msgbox2(n){
+function msgbox2(n,m,t){
 	document.getElementById('inputbox2').style.display=n?'block':'none';
 	
+	document.getElementById('point1').setAttribute("value",m);
+	if(t==null){
+		document.getElementById('point2').setAttribute("value",'0');
+	}
+	else{
+		document.getElementById('point2').setAttribute("value",t);
+	}
+	
+	
 }
-var data=[
-    {
-        "id": 1,
-        "text": "大一"
-    },
-    {
-        "id": 2,
-        "text": "大二"
-    },
-    {
-        "id": 3,
-        "text": "大三"
-    },
-    {
-        "id": 4,
-        "text": "大四"
-    }]
-  $('#demo4').comboboxfilter({
-        url: '',
-		scope: 'FilterQuery3',
-		multiple: true,
-		data:data,
-		onChange:function(newValue){
-		$('#demo_value').val(newValue);
-		}
-    });
 </script>
 </html>
