@@ -21,8 +21,15 @@ public class EditController extends Controller {
     public void index() {
     	thisOne= getSessionAttr("User");
         setAttr("user",thisOne);
+        renderJsp("test.jsp");
+    }
+    
+    public void test_page() {
+    	thisOne= getSessionAttr("User");
+        setAttr("user",thisOne);
         renderJsp("edit_Personal_Information.jsp");
     }
+    
 
     public void changeName() {
         String newName=getPara("name");
@@ -108,6 +115,7 @@ public class EditController extends Controller {
         }
         setAttr("applyList1",users);
         setAttr("tasks",tasks);
+        
         renderJsp("personalTask_publish_unaccept.jsp");
     }
 
@@ -119,10 +127,7 @@ public class EditController extends Controller {
         renderJsp("personalTasks1.jsp");
     }
 
-    public void test_page() {
-        setAttr("user",thisOne);
-        renderJsp("test.jsp");
-    }
+
 
     public void  taskInfo_publish_examine () {
         String oneId=getPara("taskId");
@@ -192,9 +197,13 @@ public class EditController extends Controller {
         String oneId=getPara("taskId");
         long id =Long.parseLong(oneId);
         Task tasks=Task.task.findById(id);
+        String receivenum = tasks.getStr("receiverNum");
+        User user = User.user.findById(receivenum);
+        String receivename = user.getStr("name");
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+id+"'");
         setAttr("comments",comments);
         setAttr("task",tasks);
+        setAttr("receivername",receivename);
         renderJsp("taskInfo_publish_nowDoing.jsp");
     }
 
@@ -370,6 +379,11 @@ public class EditController extends Controller {
     	task.set("taskState", "3");
     	task.update();
     	index();
+    }
+    
+    public void LogOut(){
+    	removeSessionAttr("User");
+    	render("../login/Login.jsp");
     }
     
 }

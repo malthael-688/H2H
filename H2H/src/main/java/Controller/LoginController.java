@@ -55,7 +55,9 @@ public class LoginController extends Controller {
 							one.update();
 							
 							//创建session
-							setSessionAttr("User", one).forwardAction("/home/index");
+							
+							setSessionAttr("User", one).setCookie("User", "h2h", 1800);
+							forwardAction("/home/index");
 						}
 					}else{                 //当时间存在且不为空时
 						one.set("lastLoginDate",dFormat.format(new Date()) );

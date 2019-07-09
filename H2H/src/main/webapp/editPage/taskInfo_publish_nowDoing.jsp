@@ -136,22 +136,22 @@
 		
 		<div class="indexMain_left_con" style="height: 140px;">
         	<p class="myp1">任务描述</p>
-        	<p class="myp2">${tasl.description}</p>
+        	<p class="myp2">${task.description}</p>
     	</div>
 		<div class="indexMain_left_con" style="height: 150px;">
         	<p class="myp1">任务信息</p>
 			<div>
         		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; left: 30px; top: 50px;"></span>
-				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">发布人</span></a>
+				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">接受人:${receivername}</span></a>
 			</div>
 			<div>
-				<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative; left: 200px; top: 18px;"></span>
-				<label class="mylabel" style="position: relative; left: 210px; top: 14px;">悬赏: ${task.rewardPoints}</label>
-				<span class="glyphicon glyphicon-cog" style="color:gray; font-size: 25px; position: relative; left: 290px; top: 18px;"></span>
-				<label class="mylabel" style="position: relative; left: 300px; top: 14px;">类型: ${task.type}</label>
+				<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative; left: 280px; top: 18px;"></span>
+				<label class="mylabel" style="position: relative; left: 290px; top: 14px;">悬赏: ${task.rewardPoints}</label>
+				<span class="glyphicon glyphicon-cog" style="color:gray; font-size: 25px; position: relative; left: 415px; top: 18px;"></span>
+				<label class="mylabel" style="position: relative; left: 420px; top: 14px;">类型: ${task.type}</label>
 				<br>
 
-				<span class="glyphicon glyphicon-time" style="color:black; font-size: 25px; position: relative;left: 40px; top: 46px;x; top: 18px;"></span>
+				<span class="glyphicon glyphicon-time" style="color:black; font-size: 25px; position: relative;left: 30px; top: 46px;x; top: 18px;"></span>
 				<label class="mylabel" style="position: relative; left: 40px; top: 46px;; top: 14px;">发布时间: ${task.startTime}</label>
 				<span  class="glyphicon glyphicon-time"style="color:black; font-size: 25px; position: relative;  left: 210px; top: 46px;top: 18px;"></span>
 				<label class="mylabel" style="position: relative;  left: 210px;top: 46px; x; top: 14px;">截止时间: ${task.deadLine}</label>

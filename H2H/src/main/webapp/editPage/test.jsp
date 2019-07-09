@@ -27,7 +27,7 @@
 <nav class="navbar navbar-default " role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">HELP TO HELP</a>
+        <a class="navbar-brand" href="../home/index">HELP TO HELP</a>
     </div>
 	
 	<div class="navbar-form navbar-right">
@@ -38,7 +38,7 @@
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="#">
+            <a role="menuitem" tabindex="-1" href="../home/index">
 			<span class="glyphicon glyphicon-user">
 			我的主页
 			</span>
@@ -47,7 +47,7 @@
         
         <li role="presentation" class="divider"></li>
         <li role="presentation">
-		 <a role="menuitem" tabindex="-1" href="#">
+		 <a role="menuitem" tabindex="-1" href="/editPage/LogOut">
             <span class="glyphicon glyphicon-off">
 			退出
 			</span>
@@ -57,13 +57,9 @@
 </div>
     </form>
 	<ul class="nav navbar-nav">
-<li>
-	<a href="../home.jsp">
-	<span class="glyphicon glyphicon-home" style="color: rgb(0, 152, 193);"></span>首页
-    </a>
-</li>
+
 	<li>
-	<a href="../message1.jsp">
+	<a href="../home/showMessage">
 	<span class="glyphicon glyphicon-bell" style="color: rgb(0, 152, 193);"></span>消息
 	<span> </span>
     <span class="badge">3</span>
@@ -100,7 +96,7 @@
   <div class="col-md-12 ">
 			  			   <div class="col-md-3 col-md-offset-1">
 	<div class="list-group">
-        <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/test_page'">个 人 信 息</button>
+        <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage'">个 人 信 息</button>
         <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/personalTasks_page'">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >
@@ -170,7 +166,7 @@
 			<hr style = "position:relative; top: -80px;">
 			</div>
 			<div class = "col-md-6 col-md-offset-3" style = "font-size:15px; color:#8B8989; position:relative; top: -50px;">
-			  <button type="button"  class="btn btn-group-justified btn-warning" onclick="javascript:window.location.href='/editPage'">修 改 个 人 信 息</button>
+			  <button type="button"  class="btn btn-group-justified btn-warning" onclick="javascript:window.location.href='/editPage/test_page'">修 改 个 人 信 息</button>
 			</div>
         </div> 
 	  <div class="row mb-2 col-md-offset-1">

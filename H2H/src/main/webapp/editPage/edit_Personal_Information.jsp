@@ -25,7 +25,7 @@
 <nav class="navbar navbar-default " role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">HELP TO HELP</a>
+        <a class="navbar-brand" href="../home/index">HELP TO HELP</a>
     </div>
 	
 	<div class="navbar-form navbar-right">
@@ -36,7 +36,7 @@
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="#">
+            <a role="menuitem" tabindex="-1" href="../home/index">
 			<span class="glyphicon glyphicon-user">
 			我的主页
 			</span>
@@ -45,7 +45,7 @@
         
         <li role="presentation" class="divider"></li>
         <li role="presentation">
-		 <a role="menuitem" tabindex="-1" href="#">
+		 <a role="menuitem" tabindex="-1" href="/editPage/LogOut">
             <span class="glyphicon glyphicon-off">
 			退出
 			</span>
@@ -56,7 +56,7 @@
     </form>
 	<ul class="nav navbar-nav">
 	<li>
-	<a href="#">
+	<a href="../home/showMessage">
 	<span class="glyphicon glyphicon-bell" style="color: rgb(0, 152, 193);"></span>消息
 	<span> </span>
     <span class="badge">3</span>
@@ -94,7 +94,7 @@
 			  			   <div class="col-md-3 col-md-offset-1">
 							   
 	<div class="list-group">
-  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/test_page'">个 人 信 息</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage'">个 人 信 息</button>
   <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/personalTasks_page'">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >
@@ -133,7 +133,7 @@
         <div class="col-md-12 ">
 						        
 			        <div class="col-md-10 col-md-offset-1" >
-						<form>
+						
   <div class="form-group">
    <h style = "font-size:16px; position:relative; top: -5px;">账 号：</h>
 						<br>
@@ -192,14 +192,11 @@
 						<hr>
 
 							</div>	
-							<div class = "col-md-3 col-md-offset-1" style = "font-size:15px; color:#8B8989; position:relative; top: 11px;">
-			  <button type="button"  class="btn btn-group-justified btn-success" onclick="javascript:window.location.href='/editPage/test_page'">返 回</button>
+							<div class = "col-md-3 col-md-offset-1" style = "font-size:15px; color:#8B8989; position:relative;left: 130px    ; top: 11px;">
+			  <button type="button"  class="btn btn-group-justified btn-success" onclick="javascript:window.location.href='/editPage'">返 回</button>
 			</div>
 							
-										<div class = "col-md-6 col-md-offset-1" style = "font-size:15px; color:#8B8989; position:relative; top: 10px;">
-			  <button type="button"  class="btn btn-group-justified btn-warning">确 认 修 改</button>
-			</div>
-</form>
+										
 
 	
         </div> 

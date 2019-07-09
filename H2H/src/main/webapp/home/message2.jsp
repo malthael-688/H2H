@@ -21,7 +21,7 @@
 <nav class="navbar navbar-default " role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">HELP TO HELP</a>
+        <a class="navbar-brand" href="../home/index">HELP TO HELP</a>
     </div>
 	
 	<div class="navbar-form navbar-right">
@@ -32,7 +32,7 @@
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="./editPage/test.jsp">
+            <a role="menuitem" tabindex="-1" href="../editPage/index">
 			<span class="glyphicon glyphicon-user">
 			我的主页
 			</span>
@@ -41,7 +41,7 @@
         
         <li role="presentation" class="divider"></li>
         <li role="presentation">
-		 <a role="menuitem" tabindex="-1" href="login/Login.jsp">
+		 <a role="menuitem" tabindex="-1" href="/editPage/LogOut">
             <span class="glyphicon glyphicon-off">
 			退出
 			</span>
@@ -52,19 +52,13 @@
     </form>
 	<ul class="nav navbar-nav">
 	<li>
-	<a href="home.jsp">
+	<a href="../home/index">
 	<span class="glyphicon glyphicon-home" style="color: rgb(0, 152, 193);"></span>首页
     </a>
 	</li>
+
 	<li>
-	<a href="message1.jsp">
-	<span class="glyphicon glyphicon-bell" style="color: rgb(0, 152, 193);"></span>消息
-	<span> </span>
-    <span class="badge">3</span>
-    </a>
-	</li>
-	<li>
-	<a href="./backSettings/message1.jsp">
+	<a href="/home/showMessage">
 	<span class="glyphicon glyphicon-share-alt" style="color: rgb(0, 152, 193);"></span>返回
     </a>
 	</li>
