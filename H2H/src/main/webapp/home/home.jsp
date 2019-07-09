@@ -41,7 +41,7 @@
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
-            <a role="menuitem" tabindex="-1" href="./editPage/test.jsp">
+            <a role="menuitem" tabindex="-1" href="/editPage">
 			<span class="glyphicon glyphicon-user">
 			我的主页
 			</span>

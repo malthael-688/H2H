@@ -86,7 +86,7 @@
 	  	    <div class="col-md-8 col-md-offset-1">
   <div class="col-md-3 col-md-offset-1" style = "top:-10px;">
  	<div class="list-group">
-  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage'">个 人 信 息</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/test_page'">个 人 信 息</button>
   <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/personalTasks_page'">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >
@@ -128,7 +128,7 @@
 			<div class="indexCon_msg">
                 
                 <div class="indexCon_msg_detail">
-                    <a href="">
+                    <a href="/editPage/taskInfo_publish_examine?taskId=${task.taskID}">
                         <div class="indexCon_msg_detail_tittle">
                             <span>${task.title}</span>
                             <p>${task.description}</p>
@@ -147,29 +147,13 @@
 							<li></li><li></li>
 							<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>${task.heatValue}</li>
 							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>pingjia</li>
+							<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>评价</li>
 							<li></li><li></li>
-							<li>[${task.status}]</li>
+							<li>[${task.taskState}]</li>
                         </ul>
                     </div>
                     
-					<div>
-					申请人列表：
-						<c:forEach items="${applyList1}" var="applicant" varStatus="st"> 
-							<ul class="list-inline">
-                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span><a>${applicant.name}:</a></li>
-							<li></li>
-							<li></li>
-							<li></li><li></li>
-							<li></li><li></li>
-							<li></li><li></li>
-							<li><span>已完成任务数： </span>${applicant.finishedTaskNum}</li>
-							<li></li><li></li>
-							<li><span>信誉值： </span>${applicant.creditScore}</li>
-							<li></li><li></li>
-                        </ul>
-						</c:forEach>		
-					</div>
+
 					
 					
                 </div>

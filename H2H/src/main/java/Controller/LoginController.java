@@ -38,7 +38,7 @@ public class LoginController extends Controller {
 					//当时间不存在
 					//System.out.println(one.get("lastLoginDate"));
 					String last=one.get("lastLoginDate");
-					if (last!=null||!last.equals("")) {
+					if (last!=null) {
 						long now=new Date().getTime();
 						long sqldate=dFormat.parse((String) one.get("lastLoginDate")).getTime();
 						long between=(now-sqldate)/(60*60*24*1000);
@@ -49,12 +49,13 @@ public class LoginController extends Controller {
 							one.set("points", point+param.getInt("point"));
 							one.update();
 							//创建session
-							set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
+							set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home/index");
 						}else {
 							one.set("lastLoginDate",dFormat.format(new Date()) );
 							one.update();
+							
 							//创建session
-							setSessionAttr("User", one).render("/admin");
+							setSessionAttr("User", one).forwardAction("/home/index");
 						}
 					}else{                 //当时间存在且不为空时
 						one.set("lastLoginDate",dFormat.format(new Date()) );

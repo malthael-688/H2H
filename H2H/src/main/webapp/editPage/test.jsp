@@ -100,17 +100,17 @@
   <div class="col-md-12 ">
 			  			   <div class="col-md-3 col-md-offset-1">
 	<div class="list-group">
-  <button type="button" class="list-group-item" onclick="javascript:window.location.href='test.jsp'">个 人 信 息</button>
-  <button type="button" class="list-group-item">任 务 管 理</button>
+        <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/test_page'">个 人 信 息</button>
+        <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/personalTasks_page'">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >
   <button type="button" class="btn btn-default btn-group-justified dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     我 接 受 的 任 务 <span class="caret "></span>
   </button>
   <ul class="dropdown-menu ">
-    <li><a href="./personalTask_recieve_finished.jsp">已 完 成 任 务</a></li>
-    <li><a href="./personalTask_recieve_applying.jsp">申 请 中 任 务</a></li>
-    <li><a href="./personalTask_recieve_nowdoing.jsp">进 行 中 任 务</a></li>
+      <li><a href="/editPage/recieve_finished_page">已 完 成 任 务</a></li>
+      <li><a href="/editPage/recieve_applying_page">申 请 中 任 务</a></li>
+      <li><a href="/editPage/recieve_nowDoing_page">进 行 中 任 务</a></li>
   </ul>
 </div>
 <div class="btn-group" >
@@ -118,10 +118,10 @@
     我 发 布 的 任 务 <span class="caret "></span>
   </button>
   <ul class="dropdown-menu ">
-    <li><a href="./personalTask_publish_examine.jsp">审 查 中 任 务</a></li>
-    <li><a href="./personalTask_publish_finished.jsp">进 行 中 任 务</a></li>
-    <li><a href="./personalTask_publish_unaccept.jsp">未 被 接 收 任 务</a></li>
-    <li><a href="./personalTask_publish_finished.jsp">已 完 成 任 务</a></li>
+      <li><a href="/editPage/publish_examine_page">审 查 中 任 务</a></li>
+      <li><a href="/editPage/publish_nowDoing_page">进 行 中 任 务</a></li>
+      <li><a href="/editPage/publish_unaccept_page">未 被 接 收 任 务</a></li>
+      <li><a href="/editPage/publish_finished_page">已 完 成 任 务</a></li>
     <li><a href="#"></a></li>
   </ul>
 </div>								
@@ -142,35 +142,35 @@
 			        <div class="col-md-10 col-md-offset-1" >
 			<h style = "font-size:16px;">账 号：</h>
 						<br>
-				<h style = "font-size:15px; color:#8B8989; position:relative; top: 5px;">${zhanghao}</h>
+				<h style = "font-size:15px; color:#8B8989; position:relative; top: 5px;">${user.num}</h>
 			<hr style = "position:relative; top: -5px;">
 			<h style = "font-size:16px; position:relative; top: -15px;">昵 称：</h>
 									<br>
-				<h style = "font-size:15px; color:#8B8989; position:relative; top: -10px;">${nicheng}</h>
+				<h style = "font-size:15px; color:#8B8989; position:relative; top: -10px;">${user.name}</h>
 			<hr style = "position:relative; top: -20px;">
 			<h style = "font-size:16px; position:relative; top: -35px;">邮 箱：</h>
 									<br>
-				<h style = "font-size:15px; color:#8B8989; position:relative; top: -30px;">${youxiang}</h>
+				<h style = "font-size:15px; color:#8B8989; position:relative; top: -30px;">${user.email}</h>
 			<hr style = "position:relative; top: -40px;">
 			<h style = "font-size:16px; position:relative; top: -50px;">联 系 方 式：</h>
 									<br>
-				<h style = "font-size:15px; color:#8B8989; position:relative; top: -45px;">${phone}</h>
+				<h style = "font-size:15px; color:#8B8989; position:relative; top: -45px;">${user.phone}</h>
 			<hr style = "position:relative; top: -55px;">
 			<h style = "font-size:16px; position:relative; top: -65px;">积 分：</h>
 									<br>
-				<h style = "font-size:15px; color:#8B8989; position:relative; top: -60px;">${jifen}</h>
+				<h style = "font-size:15px; color:#8B8989; position:relative; top: -60px;">${user.points}</h>
 			<hr style = "position:relative; top: -70px;">
 			<h style = "font-size:16px; position:relative; top: -80px;">信 誉 值：</h>
 									<br>
-				<h style = "font-size:15px; color:#8B8989; position:relative; top: -75px;">${xinyuzhi}</h>
+				<h style = "font-size:15px; color:#8B8989; position:relative; top: -75px;">${user.creditScore}</h>
 			<hr style = "position:relative; top: -80px;">
 				<h style = "font-size:16px; position:relative; top: -90px;">已 完 成 任 务：</h>
 									<br>
-				<h style = "font-size:15px; color:#8B8989; position:relative; top: -85px;">${yiwanchengrenwu}</h>
+				<h style = "font-size:15px; color:#8B8989; position:relative; top: -85px;">${user.finishedTaskNum}</h>
 			<hr style = "position:relative; top: -80px;">
 			</div>
 			<div class = "col-md-6 col-md-offset-3" style = "font-size:15px; color:#8B8989; position:relative; top: -50px;">
-			  <button type="button"  class="btn btn-group-justified btn-warning" onclick="javascript:window.location.href='edit_Personal_Information.jsp'">修 改 个 人 信 息</button>
+			  <button type="button"  class="btn btn-group-justified btn-warning" onclick="javascript:window.location.href='/editPage'">修 改 个 人 信 息</button>
 			</div>
         </div> 
 	  <div class="row mb-2 col-md-offset-1">

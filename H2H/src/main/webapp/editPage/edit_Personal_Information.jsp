@@ -22,7 +22,6 @@
   </head>
 
   <body>
-
 <nav class="navbar navbar-default " role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
@@ -95,7 +94,7 @@
 			  			   <div class="col-md-3 col-md-offset-1">
 							   
 	<div class="list-group">
-  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage'">个 人 信 息</button>
+  <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/test_page'">个 人 信 息</button>
   <button type="button" class="list-group-item" onclick="javascript:window.location.href='/editPage/personalTasks_page'">任 务 管 理</button>
 <!-- Single button -->
 <div class="btn-group" >
@@ -121,53 +120,7 @@
   </ul>
 </div>								
 </div>
-			</div>				   
-<script>
-    var xhttp;
-    if (window.XMLHttpRequest) {
-        xhttp = new XMLHttpRequest();
-    } else {
-        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    function cg_name(obj){
-        var newName=prompt("请输入新的昵称");
-        var o=obj.previousSibling;
-        if (newName!=""){
-            xhttp.open("post","/editPage/changeName?name="+newName,false);
-            xhttp.send();
-            o.innerHTML=newName;
-        }
-    }
-    function cg_mail(obj){
-        var newMail=prompt("请输入新的邮箱");
-        var o=obj.previousSibling;
-        if (newMail!=""){
-            xhttp.open("post","/editPage/changeMail?mail="+newMail,false);
-            xhttp.send();
-            o.innerHTML=newMail;
-        }
-    }
-    function cg_phone(obj){
-        var newPhone=prompt("请输入新的电话号码");
-        var o=obj.previousSibling;
-        if (newPhone!=""){
-            xhttp.open("post","/editPage/changePhone?phone="+newPhone,false);
-            xhttp.send();
-            o.innerHTML=newPhone;
-        }
-    }
-	function cg2(obj){
-        var o=obj.previousSibling;
-        var password=prompt("请输入新的密码");
-        var password2=prompt("请再次输入密码");
-        if (password!=null&&password==password2) {
-            xhttp.open("post","/editPage/changePassword?password="+password,false);
-            xhttp.send();
-            o.innerHTML=password;
-        }
-    }
-	
-</script>
+			</div>
 			  			   <div class="col-md-7 ">
 							   <div class="panel panel-default" class="col-md-2">
 				
@@ -240,7 +193,7 @@
 
 							</div>	
 							<div class = "col-md-3 col-md-offset-1" style = "font-size:15px; color:#8B8989; position:relative; top: 11px;">
-			  <button type="button"  class="btn btn-group-justified btn-success" onclick="javascript:window.location.href='test.jsp'">返 回</button>
+			  <button type="button"  class="btn btn-group-justified btn-success" onclick="javascript:window.location.href='/editPage/test_page'">返 回</button>
 			</div>
 							
 										<div class = "col-md-6 col-md-offset-1" style = "font-size:15px; color:#8B8989; position:relative; top: 10px;">
@@ -282,3 +235,127 @@
 
   </body>
 </html>
+<script>
+    var xhttp;
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else {
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    function isCharacter(temp)
+    {
+        var re=new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5]+$");
+        if (re.test(temp)) return true ;
+        return false ;
+    }
+    function isEmail(temp)
+    {
+        var re=new RegExp("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$");
+        if (re.test(temp)) return true ;
+        return false ;
+    }
+    function isPhone(temp)
+    {
+        var re=new RegExp("^1\\d{10}$");
+        if (re.test(temp)) return true ;
+        return false ;
+    }
+    function isKey(temp)
+    {
+        var re=new RegExp("^[a-zA-Z0-9]+$");
+        if (re.test(temp)) return true ;
+        return false ;
+    }
+    function cg_name(obj){
+        var newName=prompt("请输入新的昵称");
+        var o=obj.previousSibling;
+        if (newName!=null) {
+            if (isCharacter(newName)){
+                xhttp.open("post","/editPage/changeName?name="+newName,false);
+                xhttp.send();
+                o.innerHTML=newName;
+            }
+            else {
+                alert("请输入正确的昵称");
+                o.innerHTML=${user.name};
+            }
+        }else {
+            o.innerHTML=${user.name};
+        }
+    }
+
+    function cg_mail(obj){
+        var newMail=prompt("请输入新的邮箱");
+        var o=obj.previousSibling;
+        if (newMail!=null) {
+            if (isEmail(newMail)){
+                xhttp.open("post","/editPage/changeMail?mail="+newMail,false);
+                xhttp.send();
+                o.innerHTML=newMail;
+            }
+            else {
+                alert("请输入正确的邮箱");
+                //o.innerHTML=${user.email};
+            }
+        } else {
+            //o.innerHTML=${user.email};
+        }
+
+    }
+
+    function cg_phone(obj){
+        var newPhone=prompt("请输入新的电话号码");
+        var o=obj.previousSibling;
+        if (newPhone!=null) {
+            if (isPhone(newPhone)){
+                xhttp.open("post","/editPage/changePhone?phone="+newPhone,false);
+                xhttp.send();
+                o.innerHTML=newPhone;
+            }
+            else {
+                alert("请输入正确的电话号码");
+                o.innerHTML=${user.phone};
+            }
+        } else {
+            o.innerHTML=${user.phone};
+        }
+    }
+    function cg2(obj){
+        var o=obj.previousSibling;
+        var password=prompt("请输入新的密码");
+        if (password!=null) {
+            if (isKey(password)) {
+                var password2=prompt("请再次输入密码");
+                if (password!=null) {
+                    if (isKey(password)) {
+                        if (password==password2) {
+                            xhttp.open("post", "/editPage/changePassword?password=" + password, false);
+                            xhttp.send();
+                            o.innerHTML = password;
+                        }
+                        else {
+                            alert("两次密码不匹配");
+                            o.innertHTML=${user.password};
+                        }
+                    }
+                    else {
+                        alert("请输入正确的格式");
+                        o.innertHTML=${user.password};
+                    }
+                }
+                else {
+                    o.innertHTML=${user.password};
+                }
+            }
+            else {
+                alert("请输入正确格式的密码");
+                o.innertHTML=${user.password};
+            }
+        }
+        else {
+            o.innerHTML=${user.password};
+        }
+    }
+
+</script>
