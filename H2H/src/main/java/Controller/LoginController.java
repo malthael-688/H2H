@@ -41,7 +41,7 @@ public class LoginController extends Controller {
 					one.set("points", point+param.getInt("point"));
 					one.update();
 					//创建session
-					set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
+					set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home/index");
 					
 				}else {
 					set("error", 7).render("/login/Login.jsp");

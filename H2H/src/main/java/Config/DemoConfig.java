@@ -4,6 +4,7 @@ import Controller.AdminController;
 import Controller.EditController;
 import Controller.HomePageController;
 import Controller.LoginController;
+import Controller.MessageController;
 import Model.*;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
@@ -39,7 +40,9 @@ public class DemoConfig extends JFinalConfig {
         me.add("/login", LoginController.class);
         me.add("/editPage", EditController.class);
         me.add("/home",HomePageController.class);
-        
+     
+       
+
     }
 
     public void configEngine(Engine me ) {}

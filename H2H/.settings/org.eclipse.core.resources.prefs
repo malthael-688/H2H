@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/hello/index.jsp=UTF-8
-encoding//src/main/webapp/home.jsp=UTF-8
-encoding//src/main/webapp/message1.jsp=UTF-8
+encoding//src/main/webapp/home/home.jsp=UTF-8
+encoding//src/main/webapp/home/message1.jsp=UTF-8
 encoding//src/main/webapp/message2.jsp=UTF-8
 encoding//src/main/webapp/new\ 1.jsp=UTF-8
 encoding//src/main/webapp/otherPeople.jsp=UTF-8

@@ -7,21 +7,21 @@
     <meta charset="utf-8">
     <title>首页</title>
 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
-		<script src="./backSettings/js2/jquery.min.js"></script>
-		<script src="./backSettings/js2/jquery.poptrox-2.2.js"></script>
-		<script src="./backSettings/js2/skel.min.js"></script>
-		<script src="./backSettings/js2/init.js"></script>
-        <link rel="stylesheet" href="./backSettings/css2/skel-noscript.css" />
-	 	<link rel="stylesheet" href="./backSettings/css2/style-ht.css" />
+		<script src="../backSettings/js2/jquery.min.js"></script>
+		<script src="../backSettings/js2/jquery.poptrox-2.2.js"></script>
+		<script src="../backSettings/js2/skel.min.js"></script>
+		<script src="../backSettings/js2/init.js"></script>
+        <link rel="stylesheet" href="../backSettings/css2/skel-noscript.css" />
+	 	<link rel="stylesheet" href="../backSettings/css2/style-ht.css" />
         <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="./backSettings/css2/datedropper.css">
-		<link rel="stylesheet" type="text/css" href="./backSettings/css2/timedropper.min.css">
+		<link rel="stylesheet" type="text/css" href="../backSettings/css2/datedropper.css">
+		<link rel="stylesheet" type="text/css" href="../backSettings/css2/timedropper.min.css">
 		
 		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	
-	<link rel="stylesheet" href="./backSettings/css2/reset.css"/>
-    <link rel="stylesheet" href="./backSettings/css2/public.css"/>
-    <link rel="stylesheet" href="./backSettings/css2/index.css"/>
+	<link rel="stylesheet" href="../backSettings/css2/reset.css"/>
+    <link rel="stylesheet" href="../backSettings/css2/public.css"/>
+    <link rel="stylesheet" href="../backSettings/css2/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -37,7 +37,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="./backSettings/img/user.jpeg" width="25" height="20">
+        <img src="../backSettings/img/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
@@ -66,7 +66,7 @@
     </a>
 	</li>
 	<li>
-	<a href="message1.jsp">
+	<a href="/home/showMessage">
 	<span class="glyphicon glyphicon-bell" style="color: rgb(0, 152, 193);"></span>消息
 	<span> </span>
     <span class="badge">3</span>
@@ -129,18 +129,16 @@
 						</div>
 	                    <div>
 	                        <ul class="list-inline">
-	                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>${task.getStr("publisherNum") }</li>
+	                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>${publisherName[tk.count-1] }</li>
 								<li></li>
 	                            <li><span class="glyphicon glyphicon-play" style="color: rgb(0, 152, 193);"></span>${task.getStr("startTime") }</li>
 								<li></li>
 	                            <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>${task.getStr("deadLine") }</li>
 								<li></li>
 								<li></li><li></li>
-								<li><a href="taskInformation.jsp"><span class="glyphicon glyphicon-check" style="color: rgb(0, 152, 193);"></span>查看</a></li>
+								<li><a href="/home/showTaskDetail"><span class="glyphicon glyphicon-check" style="color: rgb(0, 152, 193);"></span>查看</a></li>
 								<li></li><li></li>
-								<li><span class="glyphicon glyphicon-thumbs-up" style="color: rgb(0, 152, 193);"></span>28</li>
-								<li></li><li></li>
-								<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>28</li>
+								<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>${task.getStr("heatValue") }</li>
 								<li></li>
 								<li><span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118);"></span>${task.getStr("rewardPoints") }</li>
 	                        </ul>
@@ -184,10 +182,10 @@
 					<div class="row half">
 						<div class="6u">
 							<select name="type" id="task.type">
-									<option selected="selected1">选择类型</option>
-					            	<c:forEach items="${taskTypes}" var="taskType" varStatus="ty">
-									<option>${taskType.getStr("type") }</option>
-									</c:forEach>
+								<option selected="selected1">选择类型</option>
+								<c:forEach items="${taskTypes}" var="taskType" varStatus="ty">
+								<option value="${taskType.getStr("type") }" selected="selected">${taskType.getStr("type") }</option>
+								</c:forEach>
 							</select>
 						</div>
 						<div class="6u" style="width:160px;float:left;display:inline">
@@ -253,6 +251,7 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
+</a>
 					</c:forEach>
                     </ul> 
 				</div>
@@ -267,9 +266,9 @@
                     任务热度榜
                 </div>
                 <div class="indexPublic_con">
-                	<c:forEach items="${tasks}" var="task" varStatus="tk">
+                	<c:forEach items="${tasks}" var="hotTask" varStatus="ht">
                     <ul class="weekHot">
-                        <li><a href="">${task.title }</a><span>29</span></li>
+                        <li><a href="">${hotTask.title}</a><span>${hotTask.heatValue }</span></li>
                     </ul>
                     </c:forEach>
                 </div>
@@ -284,6 +283,7 @@
     <p>Copyrigh &copy; 2019 PaiWang 校园帮帮忙项目组版权所有 陕ICP备16032224号-2</p>
 </footer>
 
+<!-- 
 	<script>
 		function publishTask(){
 
@@ -301,24 +301,25 @@
 		}
 		}
 		</script>
+-->
 		
 		
-<script src="./backSettings/js/classie.js"></script>
-<script src="./backSettings/js/modalEffects.js"></script>	
+<script src="../backSettings/js/classie.js"></script>
+<script src="../backSettings/js/modalEffects.js"></script>	
 	
 
 		
 		
-<script type="text/javascript" src="./backSettings/js2/jquery-1.12.3.min.js"></script>
-<script src="./backSettings/js2/datedropper.min.js"></script>
-<script src="./backSettings/js2/timedropper.min.js"></script>
+<script type="text/javascript" src="../backSettings/js2/jquery-1.12.3.min.js"></script>
+<script src="../backSettings/js2/datedropper.min.js"></script>
+<script src="../backSettings/js2/timedropper.min.js"></script>
 <script>
-$("#pickdate").dateDropper({
+$("#task\\.startTime").dateDropper({
 	animate: false,
 	format: 'Y-m-d',
 	maxYear: '2020'
 });
-$("#picktime").timeDropper({
+$("#task\\.deadLine").timeDropper({
 	meridians: false,
 	format: 'HH:mm',
 });
@@ -330,7 +331,7 @@ $("#picktime").timeDropper({
 </div>
    </body>
 </html>
-<script src="./backSettings/js2/jquery-1.8.3.min.js"></script>
+<script src="../backSettings/js2/jquery-1.8.3.min.js"></script>
 <script>
     $(".indexMain_left_btn li a").click(function(){
         $(".indexMain_left_btn li a").removeClass("on");
