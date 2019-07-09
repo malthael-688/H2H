@@ -156,7 +156,7 @@ function Check(){
 						</div>
 						<div id="container2-2">
 							<input name="admin.adminNum" maxlength="14" type="text" class="myinput"
-								id="user.num" required="required" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
+								id="user.num" required="required" onkeyup="checkChar()">
 						</div>
 						<div id="container2-3">
 							<p class="myp" style="position: relative; top: 20px;">密 码:</p>
@@ -166,13 +166,15 @@ function Check(){
 								class="myinput" style="position: relative; top: 20px;"
 								id="user.password" required="required">
 						</div>
-
+ <div id="container2-5" >
+						<p class="myp" style="position: relative; top:-90px; right:50px;" id="account_wrong"></p>
+						</div>
 					</div>
 					<div id="container3"
 						style="position: relative; left: 52px; top: 40px;">
 						<button style="padding: 0.7em 2em;"
 							class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l"
-							type="submit" ">登 录</button>
+							type="submit" id="btn">登 录</button>
 		
 						</a> <a href="/admin/refindPassWord"
 							style="position: relative; right: 110; top: 15px; height: 10px; font-weight: bold; font-size: 12px;"
@@ -231,6 +233,22 @@ function Check(){
 		alert("修改密码成功")
 		}
 	
+	</script>
+	<script type="text/javascript">
+	function checkChar()
+	{
+		var num=document.getElementById("user.num").value;
+		var sReg=/[^\d]/g;
+		if(sReg.test(num))
+			{
+			document.getElementById("account_wrong").innerHTML="<font color='red' font size=2px >账号只能为数字</font>";
+	          document.getElementById("btn").disabled = true;
+			}else
+				{
+				document.getElementById("account_wrong").innerHTML="<font color='green' font size=2px >账号格式正确</font>";
+		          document.getElementById("btn").disabled = false;
+				}
+	}
 	</script>
 </body>
 </html>

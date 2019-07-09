@@ -54,7 +54,7 @@ public class LoginController extends Controller {
 							one.set("lastLoginDate",dFormat.format(new Date()) );
 							one.update();
 							//创建session
-							setSessionAttr("User", one).render("../home.jsp");
+							setSessionAttr("User", one).render("/admin");
 						}
 					}else{                 //当时间存在且不为空时
 						one.set("lastLoginDate",dFormat.format(new Date()) );

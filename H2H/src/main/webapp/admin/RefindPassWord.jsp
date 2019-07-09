@@ -114,7 +114,10 @@
 						</div>
 						<div id="container2-2" style="position: relative; top: 10px;">
 							<input id="useraccount" name="useraccount" maxlength="20"
-								type="text" class="myinput" required onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
+								type="text" class="myinput" required onkeyup="checkChar()">
+						</div>
+												 <div id="container2-5" >
+						<p class="myp" style="position: relative; top:15px; right:50px;" id="account_wrong"></p>
 						</div>
 																		<div id="container2-3" >
 							<p class="myp" style="position: relative; top: 40px;">电 子 邮 箱:</p>
@@ -124,7 +127,7 @@
 												<div id="container2-4">
 							<input id="email" name="email" maxlength="20"
 								type="text" class="myinput"
-								style="position: relative; top: 52px;" required>
+								style="position: relative; top: 52px;" required onkeyup="checkEmail()">
 					<p></p>
 							<p class="myp" style="position: relative; top: 77px;">验 证 码:</p>
 							<input id="mailbox" name="mailbox" maxlength="14"
@@ -132,6 +135,12 @@
 								style="position: relative; top: 89px;" required>
 						</div>
 
+
+                        <div id="container2-5" >
+						<p class="myp" style="position: relative; top:20px; right:50px;" id="email_wrong"></p>
+						</div>  
+						
+						
 				</div>
 				<div id="container3"
 					style="position: relative; left: 52px; top: 90px;">
@@ -141,7 +150,7 @@
 				</div>
 							<a
 						style="color : #2F4F4F; position: relative; right: 40px; top: 77px; font-weight: bold; font-size: 12px;"
-						onclick="forgetpd()" ><button type="button" id="btn" style="padding:0.1em 0.1em; top:-160px;right:-170px;" class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l"
+						onclick="forgetpd()"  onmouseover="empty()" ><button type="button" id="btn" style="padding:0.1em 0.1em; top:-160px;right:-170px;" class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l"
 						>发送邮件</button></a>
 				</form>
 
@@ -251,5 +260,48 @@ if(error=='8')
 alert("验证码错误!");
 }
 </script>
+<script>
+function empty()
+{
+	var email=document.getElementById("email").value;
+	if(email==""||email==null)
+		{
+		 document.getElementById("email_wrong").innerHTML="<font color='red' font size=2px >email不能为空</font>";
+		 document.getElementById("btn").disabled = true;
+		}
+	}
+</script>
+<script>
+function checkEmail()
+{
+	var email=document.getElementById("email").value;
+	var sReg=/[_a-zA-Z\d\-\.]+@[_a-zA-Z\d\-]+(\.[_a-zA-Z\d\-]+)+$/;
+	if(!sReg.test(email)||email==null||email=="")
+		{
+		  document.getElementById("email_wrong").innerHTML="<font color='red' font size=2px >错误的email格式</font>";
+          document.getElementById("btn").disabled = true;
+		}else
+			{
+			 document.getElementById("email_wrong").innerHTML="<font color='green' font size=2px >正确的email格式</font>";
+			document.getElementById("btn").disabled = false;
+			}
+}
+</script>
+<script type="text/javascript">
+	function checkChar()
+	{
+		var num=document.getElementById("useraccount").value;
+		var sReg=/[^\d]/g;
+		if(sReg.test(num))
+			{
+			document.getElementById("account_wrong").innerHTML="<font color='red' font size=2px >账号只能为数字</font>";
+	          document.getElementById("button").disabled = true;
+			}else
+				{
+				document.getElementById("account_wrong").innerHTML="<font color='green' font size=2px >账号格式正确</font>";
+		          document.getElementById("button").disabled = false;
+				}
+	}
+	</script>
 </body>
 </html>
