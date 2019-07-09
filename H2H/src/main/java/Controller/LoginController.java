@@ -4,8 +4,10 @@ import Config.SendEmail;
 import Model.Param;
 import Model.User;
 import com.jfinal.core.Controller;
-
 import java.security.GeneralSecurityException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LoginController extends Controller {
 	private static String randomCode;
@@ -14,11 +16,11 @@ public class LoginController extends Controller {
 		render("Login.jsp");
 	}
 
-	public void loginCheck() {
+	public void loginCheck() throws ParseException {
 		User getUser = getModel(User.class);
 		User one = User.user.findById(getUser.get("num"));
 		//获取积分数值
-		Param param=Param.param.findById(get("1"));
+		Param param=Param.param.findById("1");
 		if (one == null) {
 			set("error", 1).render("/login/Login.jsp");
 		} else if (one != null) {
@@ -30,14 +32,44 @@ public class LoginController extends Controller {
 				}else if (one.get("userState").equals(0)) {
 					//根据参数数据库，为用户添加积分
 					/**
-					 * 验证日期操作还未完成
+					 * 验证日期操作
 					 */
-					int point=one.getInt("points");
-					one.set("points", point+param.getStr("point"));
-					one.save();
-					//创建session
-					set("point", param.get("point")).setSessionAttr("User", one).render("/home.jsp");
-					
+					SimpleDateFormat dFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					//当时间不存在
+					System.out.println("数据:");
+					//System.out.println(one.get("lastLoginDate"));
+					String last=one.get("lastLoginDate");
+					System.out.println(last);
+					if (last!=null||!last.equals("")) {
+						long now=new Date().getTime();
+						long sqldate=dFormat.parse((String) one.get("lastLoginDate")).getTime();
+						long between=(now-sqldate)/(60*60*24*1000);
+						System.out.println(between);
+						//判断是否超过一天
+						if (between>=1) {
+							one.set("lastLoginDate",dFormat.format(new Date()) );
+							int point=one.getInt("points");
+							one.set("points", point+param.getInt("point"));
+							System.out.println(point);
+							one.update();
+							//创建session
+							set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
+						}else {
+							one.set("lastLoginDate",dFormat.format(new Date()) );
+							System.out.println("没加");
+							one.update();
+							//创建session
+							setSessionAttr("User", one).render("../home.jsp");
+						}
+					}else{                 //当时间存在且不为空时
+						one.set("lastLoginDate",dFormat.format(new Date()) );
+						int point=one.getInt("points");
+						one.set("points", point+param.getInt("point"));
+						one.update();
+						//创建session
+						System.out.println("时间不存在！");
+						set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
+					}	
 				}else {
 					set("error", 7).render("/login/Login.jsp");
 				}
@@ -92,6 +124,8 @@ public class LoginController extends Controller {
 		if (mailbox.equals(randomCode)) {
 			if (getSql == null) {
 				getUser.set("userState", 0);
+				getUser.set("points", 100);
+				getUser.set("creditScore", 85);
 				getUser.save();
 				set("error", 3).render("/login/Login.jsp");
 			} else {
