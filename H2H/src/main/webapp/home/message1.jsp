@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
@@ -5,14 +6,14 @@
    <head>
     <meta charset="utf-8">
     <title>消息</title>
-	<link rel="stylesheet" href="./backSettings/css2/reset.css"/>
-    <link rel="stylesheet" href="./backSettings/css2/public.css"/>
-    <link rel="stylesheet" href="./backSettings/css2/index.css"/>
+	<link rel="stylesheet" href="../backSettings/css2/reset.css"/>
+    <link rel="stylesheet" href="../backSettings/css2/public.css"/>
+    <link rel="stylesheet" href="../backSettings/css2/index.css"/>
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
    </head>
-   <body>
+   <body>        
 <nav class="navbar navbar-default " role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
@@ -23,7 +24,7 @@
 	 <form class="navbar-form navbar-right" role="search">
 	 <div class="dropdown">
     <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-        <img src="./backSettings/image/user.jpeg" width="25" height="20">
+        <img src="../backSettings/image/user.jpeg" width="25" height="20">
     </button>
     <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation">
@@ -77,48 +78,49 @@
     </div>
 </nav>
 
- <div class="indexMain">
     <div class="indexMain">
-        <div class="indexMain_left_btn">
-            <ul>
-                <li><a href="javascript:">已读消息</a></li>
-				<li></li>
-				<li><a href="javascript:">未读消息</a></li>
-            </ul>
-        </div>
+      
 		<div class="indexMain_left_con">
             <div class="indexCon_msg">
                 
+                <c:forEach items="${map}" var="map" varStatus="loop">
+                
+                
                 <div class="indexCon_msg_detail">
                     <a data-toggle="collapse" data-parent="#accordion" 
-							href="#collapseTwo" href="">
+							href="#${map.key}" href="">
+							
                         <div class="indexCon_msg_detail_tittle">
                             <span>点击查看详细</span>
-                            <p>帮忙取个快递 不大 保管到开学找你拿orz</p>
+                           <c:if test="${map.value!=0}" >
+    							<p style="color:red;">新消息!!!</p>
+									</c:if>
                         </div>
                     </a>
-					<div id="collapseTwo" class="panel-collapse collapse">
+                    
+					<div id="${map.key}" class="panel-collapse collapse">
 					<div class="panel-body">
-				Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
-				cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
-				vice lomo.
+						您有${map.value}条未读消息!
 					</div>
 					</div>
+					
                     <div>
                         <ul class="list-inline">
-                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>花开花落</li>
+                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span> ${map1[loop.count-1].name}</li>
 							<li></li>
-                            <li><span class="glyphicon glyphicon-time" style="color: rgb(0, 152, 193);"></span>2019-07-02 18:23</li>
+                            <li><span class="glyphicon glyphicon-time" style="color: rgb(0, 152, 193);"></span>${map1[loop.count-1].time}</li>
 							<li></li>
-							<li><span class="glyphicon glyphicon-pencil" style="color: rgb(0, 152, 193);"></span><a href="message2.jsp">回复</a></li>
+							<li><span class="glyphicon glyphicon-pencil" style="color: rgb(0, 152, 193);"></span><a href="/home/initMessage?senderNum=${map1[loop.count-1].num}">查看</a></li>
 							<li></li><li></li>
-							<li><span class="glyphicon glyphicon-trash" style="color: rgb(0, 152, 193);"></span>删除</li>
-							
                     </div>
                 </div>
                 <div class="clear"></div>
+                </c:forEach>
+                
             </div>
         </div>
+        
+        
         <div class="indexFooter">
             <div class="indexFooter_con">
                 <a href="javascript:"><</a>
