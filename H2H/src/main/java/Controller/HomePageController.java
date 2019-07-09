@@ -22,10 +22,6 @@ import Service.MessageService;
 import Service.TaskService;
 
 public class HomePageController extends Controller{
-	
-	
-	private static int senderNum ;
-	private static int receiverNum ;
 	private static final TaskType taskTypeDao = new TaskType().dao();
 	private static final Task taskDao = new Task().dao();
 	private static final Notice noticeDao = new Notice().dao();
@@ -169,8 +165,8 @@ public class HomePageController extends Controller{
 		String receiverNum1 = userreceiver.getStr("num");
 		String receivername = userreceiver.getStr("name");
 		
-		senderNum = Integer.valueOf(senderNum1);
-		receiverNum = Integer.valueOf(receiverNum1);
+		int senderNum = Integer.valueOf(senderNum1);
+		int receiverNum = Integer.valueOf(receiverNum1);
 		
 		System.out.println("hhhhhhhhhhhhhhhhhh"+senderNum);
 		System.out.println("aaaaaaaaaaaaaaaaaa"+receiverNum);
@@ -201,11 +197,8 @@ public class HomePageController extends Controller{
 	}
 
 	public void getMessage() {
-	
-		
-		
-		
-		
+		String senderNum = getPara("senderNum");
+		String receiverNum = getPara("receiverNum");
 		List<Message> list = MessageService.me.find("select * from message where senderNum = " + senderNum
 				+ " and receiverNum = " + receiverNum + " and showState = 0");
 		for (Message temp : list) {
@@ -220,12 +213,14 @@ public class HomePageController extends Controller{
 	}
 
 	public void sendMessage() {
+		String senderNum = getPara("senderNum");
+		String receiverNum = getPara("receiverNum");
 		String msg = getPara("msg");
 		System.out.println(msg);
 		// msg插入数据库操作
 		Message message = new Message();
-		message.set("senderNum", receiverNum);
-		message.set("receiverNum", senderNum);
+		message.set("senderNum", Integer.parseInt(receiverNum));
+		message.set("receiverNum", Integer.parseInt(senderNum));
 		message.set("content", msg);
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

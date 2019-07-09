@@ -61,11 +61,12 @@ public class EditController extends Controller {
 
     public void recieve_applying_page() {
         long thisNum=thisOne.get("num");
-        List<Task> tasks=Task.task.find("SELECT * FROM task WHERE taskState='2'");
+        List<Task> tasks=Task.task.find("SELECT task.* FROM task , apply WHERE task.taskState='2' and task.taskID=apply.taskID  and  apply.applicantNum='"+thisNum+"' ");
         setAttr("tasks",tasks);
         renderJsp("personalTask_recieve_applying.jsp");
     }
 
+    
     public void recieve_nowDoing_page() {
         long thisNum=thisOne.get("num");
         List<Task> tasks=Task.task.find("SELECT * FROM task WHERE taskState='3' AND receiverNum='"+thisNum+"'");
@@ -96,7 +97,7 @@ public class EditController extends Controller {
 
     public void publish_unaccept_page() {
         long thisNum=thisOne.get("num");
-        List<Task> tasks=Task.task.find("SELECT * FROM task WHERE taskState='1' AND publisherNum='"+thisNum+"'");
+        List<Task> tasks=Task.task.find("SELECT * FROM task WHERE taskState='2' AND publisherNum='"+thisNum+"'");
         List<Apply> applys= Apply.apply.findAll();
         List<User> users=new ArrayList<User>();
         for (Apply t:applys) {
@@ -110,6 +111,7 @@ public class EditController extends Controller {
         renderJsp("personalTask_publish_unaccept.jsp");
     }
 
+    
     public void personalTasks_page() {
         long thisNum=thisOne.get("num");
         List<Task> tasks=Task.task.find("SELECT * FROM task WHERE publisherNum='"+thisNum+"' OR receiverNum='"+thisNum+"'");
@@ -355,4 +357,19 @@ public class EditController extends Controller {
         thisTask.update();
         index();
     }
+    
+    public void selectReceiver(){
+    	String num = getPara("num");
+    	String taskID   = getPara("taskID");
+    	List<Apply> applys = Apply.apply.find("SELECT * FROM apply WHERE taskID='"+taskID+"'");
+        for (Apply t:applys) {
+        	t.delete();
+        }
+    	Task task = Task.task.findById(taskID);
+    	task.set("receiverNum", num);
+    	task.set("taskState", "3");
+    	task.update();
+    	index();
+    }
+    
 }

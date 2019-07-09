@@ -136,7 +136,8 @@
     </main>
   </div>
 </div>
-
+<input type="hidden" id="senderNo" value="${senderNum}">
+<input type="hidden" id="receiverNo" value="${receiverNum}">
 <script src="../backSettings/js/script.js"></script>
 <script>
 window.onload = setScroll;
@@ -149,7 +150,10 @@ function setScroll(){
 function getMessage() {
    var xmlhttp;
 	var url = "/home/getMessage";
-
+	var sender = document.getElementById("senderNo").value;
+	var receiver = document.getElementById("receiverNo").value;
+	url = url + "?senderNum=" + sender + "&receiverNum=" + receiver;
+	
 	if (window.XMLHttpRequest) {
 		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
 		xmlhttp = new XMLHttpRequest();
@@ -176,9 +180,12 @@ function getMessage() {
 
 function sendMessage(msgID){
 	var xmlhttp;
-	var url = "/home/sendMessage?msg=";
+	var url = "/home/sendMessage";
+	var sender = document.getElementById("senderNo").value;
+	var receiver = document.getElementById("receiverNo").value;
 	var msg = document.getElementById(msgID).value;
-	url = url + msg;
+	url = url + "?senderNum=" + sender + "&receiverNum=" + receiver + "&msg=" + msg;
+	
 	if (window.XMLHttpRequest) {
 		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
 		xmlhttp = new XMLHttpRequest();

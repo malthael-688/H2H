@@ -190,6 +190,7 @@
 							<li><p style = "font-size: 17px; "> <span>已完成任务数： </span>${applicant.finishedTaskNum}</p></li>
 							<li></li><li></li>
 							<li><p style = "font-size: 17px; "> <span>信誉值： </span>${applicant.creditScore}</p></li>
+							<li><a   href="/editPage/selectReceiver?taskID=${task.taskID}&num=${applicant.num}"   class="btn btn-primary"  style="width: 100%;"><em>确定接受</em></a> </li>
 							<li></li><li></li>
                         </ul>
 						</c:forEach>		
