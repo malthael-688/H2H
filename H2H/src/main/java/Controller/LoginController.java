@@ -4,8 +4,10 @@ import Config.SendEmail;
 import Model.Param;
 import Model.User;
 import com.jfinal.core.Controller;
-
 import java.security.GeneralSecurityException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LoginController extends Controller {
 	private static String randomCode;
@@ -14,7 +16,7 @@ public class LoginController extends Controller {
 		render("Login.jsp");
 	}
 
-	public void loginCheck() {
+	public void loginCheck() throws ParseException {
 		User getUser = getModel(User.class);
 		User one = User.user.findById(getUser.get("num"));
 		//获取积分数值
@@ -30,19 +32,38 @@ public class LoginController extends Controller {
 				}else if (one.get("userState").equals(0)) {
 					//根据参数数据库，为用户添加积分
 					/**
-					 * 验证日期操作还未完成
+					 * 验证日期操作
 					 */
-					System.out.println("jingru  -----------------");
-					System.out.println(one.toString());
-					int point=one.getInt("points");
-					System.out.println(point);
-					System.out.println(param.getInt("point"));
-					
-					one.set("points", point+param.getInt("point"));
-					one.update();
-					//创建session
-					set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
-					
+					SimpleDateFormat dFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					//当时间不存在
+					//System.out.println(one.get("lastLoginDate"));
+					String last=one.get("lastLoginDate");
+					if (last!=null||!last.equals("")) {
+						long now=new Date().getTime();
+						long sqldate=dFormat.parse((String) one.get("lastLoginDate")).getTime();
+						long between=(now-sqldate)/(60*60*24*1000);
+						//判断是否超过一天
+						if (between>=1) {
+							one.set("lastLoginDate",dFormat.format(new Date()) );
+							int point=one.getInt("points");
+							one.set("points", point+param.getInt("point"));
+							one.update();
+							//创建session
+							set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
+						}else {
+							one.set("lastLoginDate",dFormat.format(new Date()) );
+							one.update();
+							//创建session
+							setSessionAttr("User", one).render("../home.jsp");
+						}
+					}else{                 //当时间存在且不为空时
+						one.set("lastLoginDate",dFormat.format(new Date()) );
+						int point=one.getInt("points");
+						one.set("points", point+param.getInt("point"));
+						one.update();
+						//创建session
+						set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
+					}	
 				}else {
 					set("error", 7).render("/login/Login.jsp");
 				}
