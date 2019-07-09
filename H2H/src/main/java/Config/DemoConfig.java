@@ -2,7 +2,7 @@ package Config;
 
 import Controller.AdminController;
 import Controller.EditController;
-import Controller.HelloController;
+import Controller.HomePageController;
 import Controller.LoginController;
 import Model.*;
 import com.jfinal.config.*;
@@ -38,10 +38,11 @@ public class DemoConfig extends JFinalConfig {
         me.add("/admin", AdminController.class);
         me.add("/login", LoginController.class);
         me.add("/editPage", EditController.class);
+        me.add("/home",HomePageController.class);
         
     }
 
-    public void configEngine(Engine me) {}
+    public void configEngine(Engine me ) {}
     public void configPlugin(Plugins me) {
         DruidPlugin dp = new DruidPlugin(p.get("jdbcUrl"), p.get("user"), p.get("password").trim());
         me.add(dp);
