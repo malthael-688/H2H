@@ -104,8 +104,10 @@
     <div class="indexMain_left">
         <div class="indexMain_left_btn">
             <ul>
+            	<li><a href="/home">全部类别</a></li>
+				<li></li>
             	<c:forEach items="${taskTypes}" var="taskType" varStatus="ty">
-                <li><a href="javascript:">${taskType.getStr("type") }</a></li>
+                <li><a href="/home?filterType=${taskType.getStr("type")}">${taskType.getStr("type") }</a></li>
 				<li></li>
 				</c:forEach>
             </ul>
@@ -136,7 +138,7 @@
 	                            <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>${task.getStr("deadLine") }</li>
 								<li></li>
 								<li></li><li></li>
-								<li><a href="/home/showTaskDetail"><span class="glyphicon glyphicon-check" style="color: rgb(0, 152, 193);"></span>查看</a></li>
+								<li><a href="/home/showTaskDetail?taskID=${task.getStr("taskID")}"><span class="glyphicon glyphicon-check" style="color: rgb(0, 152, 193);">查看</span></a></li>
 								<li></li><li></li>
 								<li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>${task.getStr("heatValue") }</li>
 								<li></li>
@@ -266,9 +268,9 @@
                     任务热度榜
                 </div>
                 <div class="indexPublic_con">
-                	<c:forEach items="${tasks}" var="hotTask" varStatus="ht">
+                	<c:forEach items="${hotTasks}" var="hotTask" varStatus="ht">
                     <ul class="weekHot">
-                        <li><a href="">${hotTask.title}</a><span>${hotTask.heatValue }</span></li>
+                        <li><a href="/home/showTaskDetail?taskID=${hotTask.title}">${hotTask.title}</a><span>${hotTask.heatValue }</span></li>
                     </ul>
                     </c:forEach>
                 </div>

@@ -13,6 +13,8 @@ import com.jfinal.core.Controller;
 
 import Controller.MessageController.Num_name;
 import Controller.MessageController.SortClass;
+import Model.Apply;
+import Model.Comment;
 import Model.Message;
 import Model.Notice;
 import Model.Task;
@@ -30,29 +32,28 @@ public class HomePageController extends Controller{
 	private static final Task taskDao = new Task().dao();
 	private static final Notice noticeDao = new Notice().dao();
 	private static final User userDao = new User().dao();
-	private static List<String> publisherName = new ArrayList();
+	private static final Apply applyDao = new Apply().dao();
 	
-	public class hotTask implements Comparable<hotTask>{
-		public String num;
-		public String title;
-		public int heatValue;
-		
-		hotTask(String num, String title, int heatValue){
-			this.num = num;
-			this.title = title;
-			this.heatValue = heatValue;
-		}
-
-		public int compareTo(hotTask o) {
-			return o.heatValue - this.heatValue;
+	private static List<String> publisherName = new ArrayList();
+	public class TaskSortClass implements Comparator {
+		public int compare(Object o1, Object o2) {
+			Task t1 = (Task) o1;
+			Task t2 = (Task) o2; 
+			return Integer.parseInt(t1.getStr("heatValue")) - Integer.parseInt(t2.getStr("heatValue"));
 		}
 	}
-	private static List<hotTask> hotTasks = new ArrayList();
 	
 	public void index(){
-		List<Task> tl = taskDao.findAll();
+		List<Task> tl;
+		String tt = getPara("filterType");
+		System.out.println(tt);
+		if(tt==null){
+			tl = taskDao.find("select * from task where taskState=?", "2");
+		} else {
+			tl = taskDao.find("select * from task where taskState=? and type=?", "2", tt);
+		}
+		set("tasks", tl);
 		set("taskTypes", taskTypeDao.findAll());
-		set("tasks", TaskService.me.find("select * from task where taskState=0 "));
 		set("notices", noticeDao.findAll());
 		
 		publisherName.clear();
@@ -63,14 +64,14 @@ public class HomePageController extends Controller{
 		}
 		set("publisherName", publisherName);
 		
-		hotTasks.clear();
-		for(int i = 0; i < tl.size(); i++){
-			hotTasks.add(new hotTask(
-					tl.get(i).getStr("taskID"), 
-					tl.get(i).getStr("title"), 
-					Integer.parseInt(tl.get(i).getStr("heatValue"))));
+		List<Task>hotTasks = new ArrayList<Task>();
+		int tlSize = tl.size();
+		if(tlSize > 5) tlSize = 5;
+		for(int i = 0; i < tlSize; i++){
+			hotTasks.add(tl.get(i));
 		}
-		Collections.sort(hotTasks);
+		TaskSortClass tSort = new TaskSortClass();
+		Collections.sort(hotTasks, tSort);
 		set("hotTasks", hotTasks);
 		
 		render("home.jsp");
@@ -80,8 +81,6 @@ public class HomePageController extends Controller{
 		Task newTask = getModel(Task.class);
 		User curUser = getSessionAttr("User");
 		newTask.set("publisherNum", curUser.getStr("num"));
-		System.out.println(curUser.getStr("num"));
-//		newTask.set("publisherNum", "123");
 		newTask.set("taskState", 0);
 		newTask.set("heatValue", 0);
 		
@@ -99,12 +98,75 @@ public class HomePageController extends Controller{
 	}
 	
 	public void showTaskDetail(){
-		String taskNum = getPara("taskNum");
-		StringBuilder sb = new StringBuilder("select * from task where num=?");
-		List<Task> tasks = taskDao.find(sb.toString(), taskNum);
+		String taskID = getPara("taskID");
+		StringBuilder sb = new StringBuilder("select * from task where taskID=?");
+		List<Task> tasks = taskDao.find(sb.toString(), taskID);
 		set("task", tasks.get(0));
-		render("taskInfo_can_accept.html");
+		
+        List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+taskID+"'");
+        set("comments",comments);
+		
+		User curUser = getSessionAttr("User");
+		sb = new StringBuilder("select * from apply where taskID=? and applicantNum=?");
+		List<Apply> aps = applyDao.find(sb.toString(), taskID, curUser.getStr("num"));
+		if(aps.isEmpty()){
+			render("taskInfo_can_accept.jsp");
+		} else {
+			render("taskInfo_recieve_applying.jsp");
+		}
 	}
+	
+	public void acceptTask(){
+		String taskID = getPara("taskID");
+		User curUser = getSessionAttr("User");
+		Apply newApply = new Apply();
+		newApply.set("taskID", taskID);
+		newApply.set("applicantNum", curUser.getStr("num"));
+		newApply.save();
+		
+		StringBuilder sb = new StringBuilder("select * from task where taskID=?");
+		List<Task> tasks = taskDao.find(sb.toString(), taskID);
+		set("task", tasks.get(0));
+        List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+taskID+"'");
+        set("comments",comments);
+		render("taskInfo_recieve_applying.jsp");
+	}
+	
+	public void cancelApply(){
+		String taskID = getPara("taskID");
+		User curUser = getSessionAttr("User");
+		StringBuilder sb = new StringBuilder("select * from apply where taskID=? and applicantNum=?");
+		System.out.println(taskID);
+		System.out.println(curUser.get("num"));
+		List<Apply> aps = applyDao.find(sb.toString(), taskID, curUser.getStr("num"));
+		aps.get(0).delete();
+		
+		sb = new StringBuilder("select * from task where taskID=?");
+		List<Task> tasks = taskDao.find(sb.toString(), taskID);
+		set("task", tasks.get(0));
+        List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+taskID+"'");
+        set("comments",comments);
+		render("taskInfo_can_accept.jsp");
+	}
+	
+    public void commit() {
+        Comment comment=getModel(Comment.class);
+        String oneId=getPara("taskId");
+        long id =Long.parseLong(oneId);
+        User curUser = getSessionAttr("User");
+        comment.set("commentatorNum",curUser.get("num"));
+        comment.set("taskID",id);
+        java.util.Date d = new java.util.Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String time = sdf.format(d);
+        comment.set("time",time);
+        comment.save();
+        Task tasks=Task.task.findById(id);
+        List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+id+"'");
+        setAttr("comments",comments);
+        setAttr("task",tasks);
+        render("taskInfo_recieve_applying.jsp");
+    }
 	
 	//message部分
 	//加入了 跳转message部分
