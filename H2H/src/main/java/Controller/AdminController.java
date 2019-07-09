@@ -17,6 +17,7 @@ import com.jfinal.plugin.activerecord.SqlPara;
 
 import Config.SendEmail;
 import Model.Admin;
+import Model.Comment;
 import Model.Notice;
 import Model.Param;
 import Model.Task;
@@ -32,6 +33,12 @@ public class AdminController extends Controller {
 	//进入管理员模块第一步
     public void index(){
     	render("Login.jsp");
+    }
+    
+    public void LogOut(){
+    	removeSessionAttr("admin");
+    	render("Login.jsp");
+    	
     }
     
     //针对admin 对任务 (Task) 处理的部分
@@ -82,6 +89,25 @@ public class AdminController extends Controller {
     	task.set("taskState", 7);
 		task.update();
 		taskManage();
+    }
+    
+    public void showTask(){
+    	String taskID = getPara("taskID");
+    	Task task = Task.task.findById(taskID);
+    	if(task.getStr("taskState").equals("0")){
+    		
+    		set("task",task);
+    		render("taskInfoAdminWeiShenHe.jsp");
+    	}
+    	else{
+    		
+    		StringBuilder sb = new StringBuilder("select * from comment where taskID=? ");
+    		List<Comment> comments = Comment.comment.find(sb.toString(),taskID);
+    		set("comments",comments);
+    		set("task",task);
+    		
+    		render("taskInfoAdminYiFaBu.jsp");
+    	}
     }
  
     

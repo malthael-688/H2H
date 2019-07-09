@@ -46,7 +46,7 @@
 			<c:forEach items="${tasks}" var="task" varStatus="st">
 			<tr>
 				<td>${task.getStr("taskID")}</td>
-				<td><a onClick="window.location.href='#'">${task.getStr("title")}</a></td>
+				<td><a onClick="href='/admin/showTask?taskID=${task.getStr("taskID")}'">${task.getStr("title")}</a></td>
 				<td>${task.getStr("publisherNum")}</td>
 				<td>
 					
