@@ -21,7 +21,7 @@
 		<form action="/admin/modifyPassword" method="post">
 	<div>
 		<p>管理员账户</p>
-		<input type="text" class="form-control" style="width:200px" placeholder="${adminNum}" value="${adminNum}" name="adminNum">
+		<input type="text" class="form-control" style="width:200px" placeholder="${adminNum}" value="${adminNum}" name="adminNum" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="16">
 	</div>
 	<div>
 		<p>旧密码</p>

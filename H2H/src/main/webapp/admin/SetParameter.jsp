@@ -35,7 +35,7 @@
 	
         <div class="form-group">
 			<p>每日签到积分</p>
-            <input type="text" class="form-control" placeholder="${point}"  name = "param">
+            <input type="text" class="form-control" placeholder="${point}"  name = "param" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="9">
         </div>
 		<input type="submit" class="btn btn-default" value="修改" style="position:relative;top:15px">
 	</div>

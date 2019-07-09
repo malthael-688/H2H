@@ -102,7 +102,7 @@
 		<form  action="/admin/changePoint"   method="post">
 		<h2>用户积分：</h2>
 		<input type="hidden" id="point1" name="num">
-		<input type="text" id="point2" value="" name="point" >
+		<input type="text" id="point2" value="" name="point" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="9"/>
         <input type="submit" value="确定">
 		</form>
      </div>
@@ -135,7 +135,13 @@ function msgbox2(n,m,t){
 	document.getElementById('inputbox2').style.display=n?'block':'none';
 	
 	document.getElementById('point1').setAttribute("value",m);
-	document.getElementById('point2').setAttribute("value",t);
+	if(t==null){
+		document.getElementById('point2').setAttribute("value",'0');
+	}
+	else{
+		document.getElementById('point2').setAttribute("value",t);
+	}
+	
 	
 }
 </script>

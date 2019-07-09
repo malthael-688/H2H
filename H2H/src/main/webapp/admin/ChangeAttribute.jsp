@@ -22,7 +22,7 @@
 	<div>
 		<p>邮箱</p>
 		<form action="/admin/changeEmail"  method="post">
-			<input type="text" class="form-control" style="width:200px" placeholder="${email}" name="email" >
+			<input type="email" class="form-control" style="width:200px" placeholder="${email}" name="email" >
 			<input type="submit" class="btn btn-default" value="修改" style="position:relative;bottom:34px;left:210px">
 		</form>
 	</div>

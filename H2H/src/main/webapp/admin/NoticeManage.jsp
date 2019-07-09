@@ -66,7 +66,7 @@
 				<td><a onClick="window.location.href='#'">${notice.getStr("title")}</a></td>
 				<td>${notice.getStr("time")}</td>
 				<td>
-					<input type="button" onClick="msgbox( 1 , ${notice.getStr("noticeID")}  )" value="修改">
+					<input type="button" onClick="msgbox( 1 , ${notice.getStr("noticeID")} ,'${notice.getStr("title") }' )" value="修改">
 				</td>
 				
 				<td>
@@ -99,7 +99,7 @@
 	<div id='inputbox2' class="box" style="z-index: 999;background: #FFFFFF">
         <a class='x' href=''; onclick="msgbox2(0); return false;">关闭</a>
         
-		<form action="/admin/releaseNotice" method="post">
+		<form action="/admin/releaseNotice" method="post" id="form1">
 		<h2>标题：</h2>
 		<input type="text" id="title2" name="title">
 		<h2>内容：</h2>
@@ -110,14 +110,24 @@
      </div>
 </body>
 <script type="text/javascript">
-function msgbox(n,m){
+var error=${state} ;
+if(error=='0')
+{
+}else if(error=='1')
+{
+alert("标题不能为空");
+} ;
+
+function msgbox(n,m,t){
 	document.getElementById('inputbox').style.display=n?'block':'none';
 	document.getElementById('noticeID').setAttribute("value",m);
-	//document.getElementById('title1').setAttribute("value",t);
-}
+	document.getElementById('title1').setAttribute("value",t);
+};
 function msgbox2(n){
 	document.getElementById('inputbox2').style.display=n?'block':'none';
-}
+};
+
+
 
 </script>
 </html>
