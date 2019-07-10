@@ -105,7 +105,7 @@
 		<div class="indexMain_left_btn" style="height: 20%;">
 			<div class = "row">
 			<div class = "col-md-8">
-			<h1 style="position: relative; left: 30px; top:2%;">任务标题：${task.title}</h1>
+			<h3 style="position: relative; left: 30px; top:2%;">任务标题：${task.title}</h3>
 				<br>
 				</div>
 				
@@ -152,26 +152,41 @@
 </div>
 		
 		<div class="indexMain_left_con" style="height: 140px;">
-        	<p class="myp1">任务描述</p>
+        	<p class="myp1" style = "font-size: 20px;">任务描述</p>
         	<p class="myp2">${task.description}</p>
     	</div>
-		<div class="indexMain_left_con" style="height: 150px;">
-        	<p class="myp1">任务信息</p>
+		<div class="indexMain_left_con" style="height: 200px;">
+        	<p class="myp1" style = "font-size: 20px;">任务信息</p>
+			<br>
+			<hr>
 			<div>
-        		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; left: 30px; top: 50px;"></span>
-				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">发布人:${publisherName}</span></a>
-			</div>
-<div>
-				<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative; left: 200px; top: 18px;"></span>
-				<label class="mylabel" style="position: relative; left: 210px; top: 14px;">悬赏: ${task.rewardPoints}</label>
-				<span class="glyphicon glyphicon-cog" style="color:gray; font-size: 25px; position: relative; left: 290px; top: 18px;"></span>
-				<label class="mylabel" style="position: relative; left: 300px; top: 14px;">类型: ${task.type}</label>
-								<br>
-
-				<span class="glyphicon glyphicon-time" style="color:black; font-size: 25px; position: relative;left: 40px; top: 46px;x; top: 18px;"></span>
-				<label class="mylabel" style="position: relative; left: 40px; top: 46px;; top: 14px;">发布时间: ${task.startTime}</label>
-				<span  class="glyphicon glyphicon-time"style="color:black; font-size: 25px; position: relative;  left: 210px; top: 46px;top: 18px;"></span>
-				<label class="mylabel" style="position: relative;  left: 210px;top: 46px; x; top: 14px;">截止时间: ${task.deadLine}</label>
+				<div style="float: left;">
+        		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
+				<a href="#" style="position: relative;"><span class="myspan" style = "font-size: 18px;">${task.publisherNum}</span></a>
+				</div>
+				<div style="float: right;">
+					<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative;f"></span>
+				<label class="mylabel" style=" font-size: 18px;">悬赏: ${task.rewardPoints}</label></div>
+								<div style="float: right;">
+				<span class="glyphicon glyphicon-cog" style="color:gray; font-size: 25px; position: relative; "></span>
+				<label class="mylabel" style="position: relative; font-size: 18px;">类型: ${task.type}</label>
+				</div>
+				<br>
+				<br>
+							
+								<div style="float: left;">
+				<span class="glyphicon glyphicon-time" style="color:black; font-size: 25px; position: relative;"></span>
+				<label class="mylabel" style="position: relative; font-size: 18px;">发布时间: ${task.startTime}</label>
+				</div>
+												<div style="float: right;">
+				<span  class="glyphicon glyphicon-time"style="color:black; font-size: 25px; position: relative; "></span>
+				<label class="mylabel" style="position: relative; font-size: 18px;">截止时间: ${task.deadLine}</label>
+				</div>
+				<br>
+				<br>
+																<div style="float: right;">
+				<label class="mylabel" style="position: relative; font-size: 18px;">任务状态: 未开始</label>
+				</div>
 			</div>
     	</div>
 						<div class="indexMain_left_con" style="height: auto;">
@@ -190,7 +205,7 @@
 							<li><p style = "font-size: 17px; "> <span>已完成任务数： </span>${applicant.finishedTaskNum}</p></li>
 							<li></li><li></li>
 							<li><p style = "font-size: 17px; "> <span>信誉值： </span>${applicant.creditScore}</p></li>
-							<li><a   href="/editPage/selectReceiver?taskID=${task.taskID}&num=${applicant.num}"   class="btn btn-primary"  style="width: 100%;"><em>确定接受</em></a> </li>
+							<li><a   href="/editPage/selectReceiver?taskID=${task.taskID}&num=${applicant.num}"   class="btn btn-success"  style="width: 100%;"><em>指派其为任务完成人</em></a> </li>
 							<li></li><li></li>
                         </ul>
 						</c:forEach>		
@@ -200,7 +215,7 @@
 		
 		
 				<div class="indexMain_left_con" style="height: 350px;">
-        	<p class="myp1">评论</p>
+        	<p class="myp1" style = "font-size:20px;">评论</p>
 					<br>
 			<div style="position: relative; top: 30px; ">
         		<form action="/editPage/publish_unStart_submit?taskId=${task.taskID}" method="post">
