@@ -5,20 +5,14 @@ import Config.SendEmail;
 import Model.Param;
 import Model.User;
 import com.jfinal.core.Controller;
-<<<<<<< HEAD
-=======
 import com.jfinal.template.expr.ast.Map;
 
->>>>>>> Malthael
 import java.security.GeneralSecurityException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-<<<<<<< HEAD
-=======
 import java.util.HashMap;
 import java.util.List;
->>>>>>> Malthael
 
 import javax.mail.Session;
 import javax.servlet.http.Cookie;
@@ -32,14 +26,11 @@ public class LoginController extends Controller {
 		render("Login.jsp");
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * 登录判断
 	 * 判断最后登录日期，根据最后日期为用户添加积分
 	 * @throws ParseException
 	 */
->>>>>>> Malthael
 	public void loginCheck() throws ParseException {
 		User getUser = getModel(User.class);
 		User one = User.user.findById(getUser.get("num"));
@@ -57,51 +48,8 @@ public class LoginController extends Controller {
 					
 					
 					/**
-<<<<<<< HEAD
-					 * 验证日期操作
-					 */
-					SimpleDateFormat dFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-					//当时间不存在
-					//System.out.println(one.get("lastLoginDate"));
-					String last=one.get("lastLoginDate");
-					if (last!=null) {
-						long now=new Date().getTime();
-						long sqldate=dFormat.parse((String) one.get("lastLoginDate")).getTime();
-						long between=(now-sqldate)/(60*60*24*1000);
-						//判断是否超过一天
-						if (between>=1) {
-							one.set("lastLoginDate",dFormat.format(new Date()) );
-							int point=one.getInt("points");
-							one.set("points", point+param.getInt("point"));
-							one.update();
-							//创建session
-							set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home/index");
-						}else {
-							one.set("lastLoginDate",dFormat.format(new Date()) );
-							one.update();
-							
-							//创建session
-							
-							setSessionAttr("User", one).setCookie("User", "h2h", 1800);
-							forwardAction("/home/index");
-=======
 					 * 判断是否为重复登录
 					 */
-<<<<<<< Updated upstream
-					SimpleDateFormat dFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-					//当时间不存在
-					System.out.println("数据:");
-					//System.out.println(one.get("lastLoginDate"));
-					String last=one.get("lastLoginDate");
-					System.out.println(last);
-					if (last!=null||!last.equals("")) {
-						long now=new Date().getTime();
-						long sqldate=dFormat.parse((String) one.get("lastLoginDate")).getTime();
-						long between=(now-sqldate)/(60*60*24*1000);
-						System.out.println(between);
-						//判断是否超过一天
-						if (between>=1) {
-=======
 					boolean hasLogin=SessionListener.checkIfHasLogin(one);
 					System.out.println(hasLogin);
 					HttpSession session = getSession(); 
@@ -144,37 +92,11 @@ public class LoginController extends Controller {
 								SessionListener.addUserSession(session);
 							}
 						}else{                 //当时间为空时
->>>>>>> Stashed changes
 							one.set("lastLoginDate",dFormat.format(new Date()) );
 							int point=one.getInt("points");
 							one.set("points", point+param.getInt("point"));
-							System.out.println(point);
 							one.update();
 							//创建session
-<<<<<<< Updated upstream
-							set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
-						}else {
-							one.set("lastLoginDate",dFormat.format(new Date()) );
-							System.out.println("没加");
-							one.update();
-							//创建session
-							setSessionAttr("User", one).render("../home.jsp");
->>>>>>> Malthael
-						}
-					}else{                 //当时间存在且不为空时
-						one.set("lastLoginDate",dFormat.format(new Date()) );
-						int point=one.getInt("points");
-						one.set("points", point+param.getInt("point"));
-						one.update();
-						//创建session
-<<<<<<< HEAD
-						set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
-					}	
-=======
-						System.out.println("时间不存在！");
-						set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
-					}	
-=======
 							 String sessionId = session.getId();  
 				              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
 				              cookie.setMaxAge(60 * 60);
@@ -190,8 +112,6 @@ public class LoginController extends Controller {
 						set("error", 8).render("/login/Login.jsp");
 					}
 					
->>>>>>> Stashed changes
->>>>>>> Malthael
 				}else {
 					set("error", 7).render("/login/Login.jsp");
 				}
@@ -257,12 +177,9 @@ public class LoginController extends Controller {
 				getUser.set("userState", 0);
 				getUser.set("points", 100);
 				getUser.set("creditScore", 85);
-<<<<<<< HEAD
-=======
 				getUser.set("releasedTaskNum", 0);
 				getUser.set("finishedTaskNum", 0);
 				getUser.set("giveUpTaskNum", 0);
->>>>>>> Malthael
 				getUser.save();
 				set("error", 3).render("/login/Login.jsp");
 			} else {
