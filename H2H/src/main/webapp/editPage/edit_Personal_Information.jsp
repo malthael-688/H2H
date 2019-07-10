@@ -186,7 +186,7 @@
 	  <div class="form-group">
    <h style = "font-size:16px;">密 码：</h>
 		  						<br>
-		  <span id="password1" style = "font-size:16px;position:relative; top: 7px; color:#8B8989;">${user.password}</span><a style="float:right;font-size:16px; " class='btn btn-outline-success btn-offset-1 btn-sm' href="#" onclick="cg2(this)" >修 改</a>
+		  <span id="password1" style = "font-size:16px;position:relative; top: 7px; color:#8B8989;">************</span><a style="float:right;font-size:16px; " class='btn btn-outline-success btn-offset-1 btn-sm' href="#" onclick="cg2(this)" >修 改</a>
 						<br>
 						<br>
 						<hr>

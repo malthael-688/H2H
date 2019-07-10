@@ -18,6 +18,7 @@ import javax.mail.Session;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
+import Service.Md5;
 import Service.SessionListener;
 
 public class LoginController extends Controller {
@@ -32,6 +33,7 @@ public class LoginController extends Controller {
 	 * @throws ParseException
 	 */
 	public void loginCheck() throws ParseException {
+		Md5 md5 = new Md5();
 		User getUser = getModel(User.class);
 		User one = User.user.findById(getUser.get("num"));
 		//获取积分数值
@@ -39,7 +41,7 @@ public class LoginController extends Controller {
 		if (one == null) {
 			set("error", 1).render("/login/Login.jsp");
 		} else if (one != null) {
-			if (getUser.get("password").equals(one.get("password"))) {
+			if (md5.stringMD5(getUser.getStr("password")).equals(one.get("password"))) {
 				if (one.get("userState").equals(1)) {
 					set("error",5).render("/login/Login.jsp");
 				}else if (one.get("userState").equals(2)) {
@@ -167,16 +169,21 @@ public class LoginController extends Controller {
 	}
 
 	public void registerService() {
+		Md5 md5 = new Md5();
+		
 		User getUser = getModel(User.class);
+		String password = getUser.getStr("password");
+		String passwordHash = md5.stringMD5(password);
 		User getSql = User.user.findById(getUser.get("num"));
 		String password2 = getPara("userpassword2");
 		String mailbox = getPara("mailbox");
 		String userNum=String.valueOf(getUser.get("num"));
 		if (mailbox.equals(code.get(userNum))){
 			if (getSql == null) {
+				getUser.set("password", passwordHash);
 				getUser.set("userState", 0);
 				getUser.set("points", 100);
-				getUser.set("creditScore", 85);
+				getUser.set("creditScore", 100);
 				getUser.set("releasedTaskNum", 0);
 				getUser.set("finishedTaskNum", 0);
 				getUser.set("giveUpTaskNum", 0);
@@ -213,6 +220,7 @@ public class LoginController extends Controller {
 	}
 
 	public void setPassWord() {
+		Md5 md5 = new Md5();
 		String account = getPara("account");
 		String userpassword = getPara("userpassword");
 		String userpassword2 = getPara("userpassword2");
@@ -221,8 +229,7 @@ public class LoginController extends Controller {
 		if (userpassword.equals(userpassword2)) {
 			User one = new User();
 			one.set("num", account);
-			one.set("password", userpassword);
-			System.out.println("action 1");
+			one.set("password", md5.stringMD5(userpassword));
 			one.update();
 			System.out.println("finish");
 			set("error", 4).render("/login");

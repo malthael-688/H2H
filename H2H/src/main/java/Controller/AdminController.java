@@ -23,6 +23,7 @@ import Model.Notice;
 import Model.Param;
 import Model.Task;
 import Model.User;
+import Service.Md5;
 import Service.TaskService;
 import Service.UserService;
 
@@ -360,6 +361,7 @@ public class AdminController extends Controller {
     }
     
     public void modifyPassword(){
+    	Md5 md5 = new Md5();
     	String  adminNum = getPara("adminNum");
     	String  oldPassword= getPara("oldPassword");
     	String  newPassword= getPara("newPassword");
@@ -375,8 +377,8 @@ public class AdminController extends Controller {
     	System.out.println(adminNum);
     	System.out.println(admin.toString());
     	
-    	if(admin.getStr("password").equals(oldPassword) && !newPassword.equals("")){
-    		admin.set("password", newPassword);
+    	if(admin.getStr("password").equals(md5.stringMD5(oldPassword)) && !newPassword.equals("")){
+    		admin.set("password", md5.stringMD5(newPassword));
     		admin.update();
     		Admin admin1 = getSessionAttr("admin");
         	String adminNum1 = admin1.getStr("adminNum");
@@ -399,13 +401,15 @@ public class AdminController extends Controller {
     //针对admin登录的情况
     //其中包含了方法
     //登录检测    获取邮箱验证码   找回密码  重置密码  跳转页面
-    public void loginCheck() {
+    @SuppressWarnings("static-access")
+	public void loginCheck() {
+    	Md5 md5 = new Md5();
 		Admin getUser = getModel(Admin.class);
 		Admin one = Admin.admin.findById(getUser.get("adminNum"));
 		if (one == null) {
 			set("error", 1).render("Login.jsp");
 		} else if (one != null) {
-			if (getUser.get("password").equals(one.get("password"))) {
+			if (md5.stringMD5( getUser.getStr("password")).equals(one.get("password"))) {
 				/**
 				 * 登录成功操作。。目前没添加
 				 */
@@ -465,13 +469,15 @@ public class AdminController extends Controller {
 	 * 重置密码
 	 */
 	public void setPassWord() {
+		Md5 md5 = new Md5 ();
 		String account = getPara("account");
 		String userpassword = getPara("userpassword");
 		String userpassword2 = getPara("userpassword2");
 		if (userpassword.equals(userpassword2)) {
 			Admin one = new Admin();
 			one.set("adminNum", account);
-			one.set("password", userpassword);
+			String userpassword1 = md5.stringMD5(userpassword);
+			one.set("password", userpassword1);
 			one.update();
 			set("error", 4).render("/admin");
 		} else {

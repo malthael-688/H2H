@@ -19,6 +19,8 @@ import java.util.List;
 
 import javax.mail.Session;
 import javax.servlet.http.HttpSession;
+
+import Service.Md5;
 import Service.SessionListener;
 
 public class EditController extends Controller {
@@ -61,9 +63,10 @@ public class EditController extends Controller {
     }
 
     public void changePassword() {
+    	Md5 md5 = new Md5();
     	User thisOne= getSessionAttr("User");
         String password=getPara("password");
-        thisOne.set("password",password);
+        thisOne.set("password",md5.stringMD5(password));
         thisOne.update();
         renderJsp("edit_Personal_Information.jsp");
     }
@@ -509,8 +512,7 @@ public class EditController extends Controller {
     	render("otherPeople.jsp");
     }
     
-    
-    
+  
     public void LogOut(){
     	HttpSession se=getSession();
     	String sessionID=se.getId();
