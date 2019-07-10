@@ -30,7 +30,7 @@
 <nav class="navbar navbar-default " role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="test.html">HELP TO HELP</a>
+        <a class="navbar-brand" href="/home">HELP TO HELP</a>
     </div>
 	
 	<div class="navbar-form navbar-right">
@@ -50,7 +50,7 @@
         
         <li role="presentation" class="divider"></li>
         <li role="presentation">
-		 <a role="menuitem" tabindex="-1" href="#">
+		 <a role="menuitem" tabindex="-1" href="/home/LogOut">
             <span class="glyphicon glyphicon-off">
 			退出
 			</span>
@@ -69,7 +69,7 @@
 	<a href="/home/showMessage">
 	<span class="glyphicon glyphicon-bell" style="color: rgb(0, 152, 193);"></span>消息
 	<span> </span>
-    <span class="badge">3</span>
+    <span class="badge">${messageNum}</span>
     </a>
 	</li>
 <!--  
@@ -270,7 +270,7 @@
                 <div class="indexPublic_con">
                 	<c:forEach items="${hotTasks}" var="hotTask" varStatus="ht">
                     <ul class="weekHot">
-                        <li><a href="/home/showTaskDetail?taskID=${hotTask.title}">${hotTask.title}</a><span>${hotTask.heatValue }</span></li>
+                        <li><a href="/home/showTaskDetail?taskID=${hotTask.taskID}">${hotTask.title}</a><span>${hotTask.heatValue }</span></li>
                     </ul>
                     </c:forEach>
                 </div>

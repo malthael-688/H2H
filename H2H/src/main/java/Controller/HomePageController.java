@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.jfinal.core.Controller;
 
 import Controller.MessageController.Num_name;
@@ -21,6 +23,7 @@ import Model.Task;
 import Model.TaskType;
 import Model.User;
 import Service.MessageService;
+import Service.SessionListener;
 import Service.TaskService;
 
 public class HomePageController extends Controller{
@@ -29,6 +32,8 @@ public class HomePageController extends Controller{
 	private static final Notice noticeDao = new Notice().dao();
 	private static final User userDao = new User().dao();
 	private static final Apply applyDao = new Apply().dao();
+	private static final Message messageDao = new Message().dao();
+	private static final Comment commentDao = new Comment().dao();
 	
 	private static List<String> publisherName = new ArrayList();
 	public class TaskSortClass implements Comparator {
@@ -60,6 +65,12 @@ public class HomePageController extends Controller{
 		}
 		set("publisherName", publisherName);
 		
+		for(int i = 0; i < tl.size(); i++){
+			List<Comment> cl = commentDao.find(
+					"select * from comment where taskID=?", tl.get(i).get("taskID"));
+			tl.get(i).set("heatValue", cl.size());
+		}
+		
 		List<Task>hotTasks = new ArrayList<Task>();
 		int tlSize = tl.size();
 		if(tlSize > 5) tlSize = 5;
@@ -69,6 +80,11 @@ public class HomePageController extends Controller{
 		TaskSortClass tSort = new TaskSortClass();
 		Collections.sort(hotTasks, tSort);
 		set("hotTasks", hotTasks);
+		User curUser = getSessionAttr("User");
+		List<Message> ml = messageDao.find(
+				"select * from message where receiverNum=? and messageState=0", 
+				curUser.get("num"));
+		set("messageNum", ml.size());
 		
 		render("home.jsp");
 	}
@@ -407,7 +423,13 @@ public class HomePageController extends Controller{
 	 
 	}
 	
-	
+    public void LogOut(){
+    	HttpSession se=getSession();
+    	String sessionID=se.getId();
+    	SessionListener.removeSession(sessionID);
+    	se.invalidate();
+    	render("/login");
+    }
 	
 	
 	
