@@ -293,8 +293,8 @@ public class EditController extends Controller {
         receiver.set("points", Integer.valueOf(receiver.getStr("points"))+Integer.valueOf(thisTask.getStr("rewardPoints")));
         receiver.update();
         
-        setAttr("task",thisTask);
-        renderJsp("taskInfo_publish_examine.jsp");
+        setAttr("taskId",thisTask.get("taskID"));
+        renderJsp("pingjia.jsp");
     }
 
     public void  taskInfo_publish_unStart () {
@@ -518,8 +518,27 @@ public class EditController extends Controller {
     	se.invalidate();
     	render("/login");
     }
-    
-   
+
+    public void pingjia() {
+        String p=getPara("score");
+        String taskId=getPara("taskId");
+        Task task=Task.task.findById(taskId);
+        User publisher=User.user.findById(task.get("publisherNum"));
+        int pp=Integer.parseInt(p);
+        int score=3;
+        switch (pp) {
+            case 1:score=-2;break;
+            case 2:score=-1;break;
+            case 3:score=0;break;
+            case 4:score=1;break;
+            case 5:score=2;break;
+            default:
+                System.out.println("wrong data");
+        }
+        int creditScore=publisher.get("creditScore");
+        publisher.set("creditScore",creditScore+score);
+        publisher.update();
+    }
     
     
     
