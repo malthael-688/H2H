@@ -178,13 +178,18 @@
 				</header>
 				<form method="post" action="/home/publishTask" id="publish">
 					<div class="row half">
-						<div class="6u"><input type="text" class="text" id="task.title" name="task.title" placeholder="标题" /></div>
-						<div class="6u"><input type="text" class="text" id="task.rewardPoints" name="task.rewardPoints" placeholder="悬赏积分" /></div>
+						<div class="6u"><input type="text" class="text" id="task.title" name="task.title" placeholder="标题"  required/></div>
+						<div class="6u"><input type="text" class="text" id="task.rewardPoints" name="task.rewardPoints" placeholder="悬赏积分" onkeypress="checkPoint()" onkeyup ="value=value.replace(/[^\d]/g,'')" required/></div>
 					</div>
+					
+					
+						<p class="myp" style="position: relative; top:0px; right:-520px;" id="account_wrong"></p>
+						
+						
+						
 					<div class="row half">
 						<div class="6u">
-							<select name="type" id="task.type">
-								<option selected="selected1">选择类型</option>
+							<select name="type" id="task.type" placeholder="任务类型" >
 								<c:forEach items="${taskTypes}" var="taskType" varStatus="ty">
 								<option value="${taskType.getStr("type") }" selected="selected">${taskType.getStr("type") }</option>
 								</c:forEach>
@@ -193,9 +198,9 @@
 						<div class="6u" style="width:160px;float:left;display:inline">
 							<label type="text" class="text">截止时间</label>
 						</div><div style="width:168px;float:left;display:inline">	
-							<input type="text" class="input" id="task.startTime" name="task.startTime" placeholder="年月日"/>
+							<input type="text" class="input" id="task.startTime" name="task.startTime" placeholder="年月日" required/>
 						</div><div style="width:140px;float:left;display:inline">
-							<input type="text" class="time" id="task.deadLine" name="task.deadLine" placeholder="时间" />
+							<input type="text" class="time" id="task.deadLine" name="task.deadLine" placeholder="时间" required />
 						
 						</div>
 						
@@ -203,7 +208,7 @@
 					</div>
 				  	<div class="row half">
 						<div class="12u">
-							<textarea name="task.description" id="task.description" placeholder="任务描述"></textarea>
+							<textarea name="task.description" id="task.description" placeholder="任务描述" required></textarea>
 						</div>
 					</div>
 					<div class="row">
@@ -212,7 +217,7 @@
 								<li>
 															<button style="padding: 0.7em 2em;"
 							class="button button--round-s button--wayra button--border-medium button--text-thick button--size-l"
-							type="submit" ">提交</button>									
+							type="submit" onmouseover="checkYear()" id="btn" >提交</button>									
 								</li>
 							</ul>
 						</div>
@@ -282,7 +287,7 @@
     <div class="clear"></div>
 </div>
 <footer class="publicFooter">
-    <p>Copyrigh &copy; 2019 PaiWang 校园帮帮忙项目组版权所有 陕ICP备16032224号-2</p>
+    <p>Copyright &copy; 2019 PaiWang 校园帮帮忙项目组版权所有 陕ICP备16032224号-2</p>
 </footer>
 
 <!-- 
@@ -319,12 +324,65 @@
 $("#task\\.startTime").dateDropper({
 	animate: false,
 	format: 'Y-m-d',
-	maxYear: '2020'
+	minYear: '2019'
 });
 $("#task\\.deadLine").timeDropper({
 	meridians: false,
 	format: 'HH:mm',
 });
+</script>
+<script>
+function checkTime(){
+	var date = document.getElementById("task.startTime").value;
+	var time = document.getElementById("task.deadLine").value;
+	if(date=null){
+		alert("请输入日期！");
+	}else {
+		var deadTime = new Date(date+" "+time);
+		var now = new Date().Format("yyyy-MM-dd HH:mm");
+		if(deadLine<=now){
+			alert("截止时间不能小于当前时间！");
+		}
+		alert("提交成功过！");
+	}
+	
+}
+
+</script>]]
+
+
+
+<script>
+function checkYear()
+{
+	
+	var time2=document.getElementById("task.startTime").value;
+	var time1=document.getElementById("task.deadLine").value;
+	var time=time2+" "+time1;
+	var date=new Date().Format("yyyy-MM-dd HH:mm");
+	if(time.getTime()>=date.getTime())
+		{
+		alert("大于");
+		}else{
+			alert("小于");
+		}
+	
+}
+</script>
+<script>
+function checkPoint()
+{
+	var point=document.getElementById("task.rewardPoints").value;
+	var code=${User.points};
+	if(point>code)
+		{
+		document.getElementById("account_wrong").innerHTML="<font color='red' font size=2px >积分不足</font>";
+        document.getElementById("btn").disabled = true;
+		}else{
+			document.getElementById("account_wrong").innerHTML="<font color='green' font size=2px >积分充足</font>";
+	        document.getElementById("btn").disabled = true;
+		}
+}
 </script>
 
 <div style="text-align:center;clear:both;margin-top:160px">
