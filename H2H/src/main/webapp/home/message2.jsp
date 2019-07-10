@@ -89,7 +89,7 @@
 				<div>
         		<div class="message">
           			<div class="user-head">
-            			<span class="glyphicon glyphicon-user" style="color: rgb(255, 140, 60);"> ${senderName}</span>
+            			<span class="glyphicon glyphicon-user" style="color: rgb(255, 140, 60);">&nbsp;&nbsp; ${senderName}</span>
           			</div>
           			<div class="content">${msg.content}</div>
         		</div>
@@ -108,7 +108,7 @@
 		  </c:forEach>
 	  </div>
 	  <div class="bottom-bar">
-        <textarea class="msg-input" placeholder="发送信息" id="myMsg"></textarea>
+        <textarea class="msg-input" placeholder="发送信息" id="myMsg" maxlength="60"></textarea>
         <div class="send-button" onclick="sendMessage('myMsg');">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 512.076 512.076" style="enable-background:new 0 0 512.076 512.076;" xml:space="preserve">
@@ -173,11 +173,12 @@ function getMessage() {
 };
 
 function sendMessage(msgID){
+	var msg = document.getElementById(msgID).value;
+	if(msg != ""){
 	var xmlhttp;
 	var url = "/home/sendMessage";
 	var sender = document.getElementById("senderNo").value;
 	var receiver = document.getElementById("receiverNo").value;
-	var msg = document.getElementById(msgID).value;
 	url = url + "?senderNum=" + sender + "&receiverNum=" + receiver + "&msg=" + msg;
 	
 	if (window.XMLHttpRequest) {
@@ -209,6 +210,7 @@ function sendMessage(msgID){
 		setScroll();
 	}
 	xmlhttp.send(null);
+	}
 };
 </script>
 </body>
