@@ -104,15 +104,17 @@
 	<div class = "main">
 		<div class = "col-md-12 ">
 	<div class="indexMain" style = "width:55%;">
-		<div class="indexMain_left_btn" style="height: 20%;">
-			<div class = "col-md-12">
-				<div class = "col-md-10">
-			<h3 style="position: relative; float:left;">任务标题：${task.getStr("title")}</h3>
+				<div class="indexMain_left_btn" style="height: 20%;">
+			<div class = "row">
+			<div class = "col-md-8">
+			<h1 style="position: relative; left: 30px; top:2%;">任务标题：${task.title}</h1>
+				<br>
 				</div>
-								<div class = "col-md-2">
-			<div style="width: 50%; position: relative;float: left; bottom: 50%;">
-				<a class="btn btn-success " data-toggle="modal" data-target="#myModal"><em>接取</em></a>
-				<a href="/home" class="btn btn-primary"><em>返回</em></a>
+				
+			<div class = "col-md-4">
+			<div style="width: 50%; position: relative; left: 40%; bottom: 50%;">
+				<a class="btn btn-success " data-toggle="modal" data-target="#myModal" style="width: 100%;"><em>接受</em></a>
+				<a href="/home" class="btn btn-primary"  style="width: 100%;"><em>返回</em></a>
 			</div>
 			</div>
 			</div>
