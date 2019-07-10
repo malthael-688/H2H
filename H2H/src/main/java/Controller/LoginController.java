@@ -77,7 +77,7 @@ public class LoginController extends Controller {
 					              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
 					              cookie.setMaxAge(60 * 60);
 					              session.setAttribute("User", one);
-								setCookie(cookie).set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home/index");
+								setCookie(cookie).set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home");
 								SessionListener.addUserSession(session);
 							}else {
 								one.set("lastLoginDate",dFormat.format(new Date()) );
@@ -88,7 +88,7 @@ public class LoginController extends Controller {
 					              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
 					              cookie.setMaxAge(60 * 60);
 					              session.setAttribute("User", one);
-								setSessionAttr("User", one).forwardAction("/home/index");
+								setSessionAttr("User", one).forwardAction("/home");
 								SessionListener.addUserSession(session);
 							}
 						}else{                 //当时间为空时
@@ -101,7 +101,7 @@ public class LoginController extends Controller {
 				              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
 				              cookie.setMaxAge(60 * 60);
 				              session.setAttribute("User", one);
-							set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home/index");
+							set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home");
 							SessionListener.addUserSession(session);
 						}	
 						
