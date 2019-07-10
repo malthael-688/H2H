@@ -336,6 +336,11 @@ public class HomePageController extends Controller{
     	render("/login");
     }
 	
-	
+    public void ToOthers(){
+    	String num = getPara("num");
+    	User user = User.user.findById(num);
+    	setAttr("user",user);
+    	render("otherPeople.jsp");
+    }
 	
 }

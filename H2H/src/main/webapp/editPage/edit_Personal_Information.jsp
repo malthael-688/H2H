@@ -62,27 +62,7 @@
 	 <span class="badge">${messageNum}</span>
     </a>
 	</li>
-    <li class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        任务类型 <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-		<li><a href="#">代取快递</a></li>
-        <li><a href="#">代排队伍</a></li>
-		<li class="divider"></li>
-		<li><a href="#">课程辅导</a></li>
-        <li><a href="#">多人拼车</a></li>
-		<li><a href="#">二手物品</a></li>
-      </ul>
-    </li>
-	
 	</ul>
-	<form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">提交</button>
-    </form>
 
 </div>
     </div>
