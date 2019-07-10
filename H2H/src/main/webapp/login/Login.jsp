@@ -249,6 +249,10 @@ function Check(){
 	{
 	alert("cxknmsl,你个傻逼你被cxk打到异次元啦！")
 	}
+	if(error=='8')
+	{
+	alert("不能重复登录！")
+	}
 	
 	</script>
 </body>

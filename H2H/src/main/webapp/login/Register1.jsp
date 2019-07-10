@@ -286,7 +286,8 @@ $(function() {
                         xhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
                     var st=document.getElementById("email").value;
-                    xhttp.open("post","/login/getRegisterCode?account="+st,false);
+                    var num=document.getElementById("user.num").value;
+                    xhttp.open("post","/login/getRegisterCode?account="+st+"&user.num="+num,false);
                     xhttp.send();	
                    
                     

@@ -1,21 +1,36 @@
 package Controller;
 
+import Config.DemoConfig;
 import Config.SendEmail;
 import Model.Param;
 import Model.User;
 import com.jfinal.core.Controller;
+import com.jfinal.template.expr.ast.Map;
+
 import java.security.GeneralSecurityException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.mail.Session;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
+
+import Service.SessionListener;
 
 public class LoginController extends Controller {
-	private static String randomCode;
-
+	public static HashMap<String, String> code=new HashMap<String, String>();
 	public void index() {
 		render("Login.jsp");
 	}
 
+	/**
+	 * 登录判断
+	 * 判断最后登录日期，根据最后日期为用户添加积分
+	 * @throws ParseException
+	 */
 	public void loginCheck() throws ParseException {
 		User getUser = getModel(User.class);
 		User one = User.user.findById(getUser.get("num"));
@@ -30,10 +45,12 @@ public class LoginController extends Controller {
 				}else if (one.get("userState").equals(2)) {
 					set("error",6).render("/login/Login.jsp");
 				}else if (one.get("userState").equals(0)) {
-					//根据参数数据库，为用户添加积分
+					
+					
 					/**
-					 * 验证日期操作
+					 * 判断是否为重复登录
 					 */
+<<<<<<< Updated upstream
 					SimpleDateFormat dFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					//当时间不存在
 					System.out.println("数据:");
@@ -47,12 +64,57 @@ public class LoginController extends Controller {
 						System.out.println(between);
 						//判断是否超过一天
 						if (between>=1) {
+=======
+					boolean hasLogin=SessionListener.checkIfHasLogin(one);
+					System.out.println(hasLogin);
+					HttpSession session = getSession(); 
+					if (!hasLogin) {
+						//根据参数数据库，为用户添加积分
+						/**
+						 * 验证日期操作
+						 */
+						SimpleDateFormat dFormat=new SimpleDateFormat("yyyy-MM-dd");
+						//当时间不存在
+						//System.out.println(one.get("lastLoginDate"));
+						String last=one.get("lastLoginDate");
+						if (last!=null) {
+							long now=new Date().getTime();
+							long sqldate=dFormat.parse((String) one.get("lastLoginDate")).getTime();
+							long between=(now-sqldate)/(60*60*24*1000);
+							//判断是否超过一天
+							if (between>=1) {
+								one.set("lastLoginDate",dFormat.format(new Date()) );
+								int point=one.getInt("points");
+								one.set("points", point+param.getInt("point"));
+								one.update();
+								//创建session
+								 String sessionId = session.getId();  
+					              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
+					              cookie.setMaxAge(60 * 60);
+					              session.setAttribute("User", one);
+								setCookie(cookie).set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home/index");
+								SessionListener.addUserSession(session);
+							}else {
+								one.set("lastLoginDate",dFormat.format(new Date()) );
+								one.update();
+								
+								//创建session
+								 String sessionId = session.getId();  
+					              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
+					              cookie.setMaxAge(60 * 60);
+					              session.setAttribute("User", one);
+								setSessionAttr("User", one).forwardAction("/home/index");
+								SessionListener.addUserSession(session);
+							}
+						}else{                 //当时间为空时
+>>>>>>> Stashed changes
 							one.set("lastLoginDate",dFormat.format(new Date()) );
 							int point=one.getInt("points");
 							one.set("points", point+param.getInt("point"));
 							System.out.println(point);
 							one.update();
 							//创建session
+<<<<<<< Updated upstream
 							set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
 						}else {
 							one.set("lastLoginDate",dFormat.format(new Date()) );
@@ -70,6 +132,23 @@ public class LoginController extends Controller {
 						System.out.println("时间不存在！");
 						set("point", param.get("point")).setSessionAttr("User", one).render("../home.jsp");
 					}	
+=======
+							 String sessionId = session.getId();  
+				              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
+				              cookie.setMaxAge(60 * 60);
+				              session.setAttribute("User", one);
+							set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home/index");
+							SessionListener.addUserSession(session);
+						}	
+						
+						
+						
+						
+					}else {
+						set("error", 8).render("/login/Login.jsp");
+					}
+					
+>>>>>>> Stashed changes
 				}else {
 					set("error", 7).render("/login/Login.jsp");
 				}
@@ -78,32 +157,41 @@ public class LoginController extends Controller {
 			}
 		}
 	}
+	
+	
+	/**
+	 * 获取注册邮箱验证码
+	 */
 	public void getRegisterCode() {
-		String account = getPara("account");
-		//System.out.println(account);
-		if (account != null) {
+		String email = getPara("account");
+		String userNum=getPara("user.num");
+		System.out.println(userNum);
+		if (email != null) {
 			SendEmail util = new SendEmail();
 			try {
-				randomCode = String.valueOf((int) ((Math.random() * 9 + 1) * 1000));
+				String randomCode = String.valueOf((int) ((Math.random() * 9 + 1) * 1000));
+				code.put(userNum,randomCode );
 				System.out.println(randomCode);
-				util.sendRegister(randomCode, account);
+				util.sendRegister(randomCode, email);
 			} catch (GeneralSecurityException e) {
 				e.printStackTrace();
 			}
-		} else {
-			//renderJson("邮箱没有输入！");
 		}
-		//renderJson("发送成功");
 	}
-
+	
+	
+	
+	/**
+	 * 获取邮箱验证码
+	 */
 	public void getMailCode() {
-		String account = getPara("account");
-		//System.out.println(account);
+		String account = getPara("email");
+		String useraccount=getPara("useraccount");
 		if (account != null) {
 			SendEmail util = new SendEmail();
 			try {
-				randomCode = String.valueOf((int) ((Math.random() * 9 + 1) * 1000));
-				System.out.println(randomCode);
+				String randomCode = String.valueOf((int) ((Math.random() * 9 + 1) * 1000));
+				code.put(useraccount, randomCode);
 				util.sendcode(randomCode, account);
 			} catch (GeneralSecurityException e) {
 				e.printStackTrace();
@@ -120,12 +208,15 @@ public class LoginController extends Controller {
 		User getSql = User.user.findById(getUser.get("num"));
 		String password2 = getPara("userpassword2");
 		String mailbox = getPara("mailbox");
-		System.out.println(randomCode);
-		if (mailbox.equals(randomCode)) {
+		String userNum=String.valueOf(getUser.get("num"));
+		if (mailbox.equals(code.get(userNum))){
 			if (getSql == null) {
 				getUser.set("userState", 0);
 				getUser.set("points", 100);
 				getUser.set("creditScore", 85);
+				getUser.set("releasedTaskNum", 0);
+				getUser.set("finishedTaskNum", 0);
+				getUser.set("giveUpTaskNum", 0);
 				getUser.save();
 				set("error", 3).render("/login/Login.jsp");
 			} else {
@@ -138,15 +229,23 @@ public class LoginController extends Controller {
 
 	public void findPassWord() {
 		String account = getPara("useraccount");
+		System.out.println(account);
 		String email = getPara("email");
 		String mailbox = getPara("mailbox");
 		User one = User.user.findById(account);
-		if (one == null) {
+		System.out.println("code======"+code.get(account));
+		if (one==null) {
 			set("error", 7).render("/login/RefindPassWord.jsp");
-		} else if (one != null && !mailbox.equals(randomCode)) {
-			set("error", 8).render("/login/RefindPassWord.jsp");
-		} else if (one != null && one.get("email").equals(email) && mailbox.equals(randomCode)) {
-			redirect("/login/RefindPassWord2.jsp?account=" + account);
+		}else {
+			if (one.get("email").equals(email)) {
+				if (mailbox.equals(code.get(account))) {
+					redirect("/login/RefindPassWord2.jsp?account=" + account);
+				}else{
+					set("error", 8).render("/login/RefindPassWord.jsp");
+				}
+			}else {
+				set("error", 7).render("/login/RefindPassWord.jsp");
+			}		
 		}
 	}
 
@@ -175,6 +274,16 @@ public class LoginController extends Controller {
 
 	public void refindPassWord() {
 		render("/login/RefindPassWord.jsp");
+	}
+	
+	
+	public void logout(){
+		HttpSession session = getSession(); 
+		String sessionID=session.getId();
+		SessionListener.removeSession(sessionID);
+		session.removeAttribute("User");
+		render("/login");
+		
 	}
 
 }

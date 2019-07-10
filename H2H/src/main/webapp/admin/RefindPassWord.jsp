@@ -209,7 +209,8 @@
 						xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 					}
 					var st=document.getElementById("email").value;
-					xhttp.open("post","/admin/getMailCode?account="+st,false);
+					var adminnum=document.getElementById("useraccount").value;
+					xhttp.open("post","/admin/getMailCode?account="+st+"&admin.num="+adminnum,false);
 					xhttp.send();
 					
 				}
@@ -244,7 +245,7 @@ $(function() {
 var error=${error};
 if(error=='7')
 	{
-	alert("用户名不存在!");
+	alert("用户或邮箱错误!");
 	}
 if(error=='8')
 {
