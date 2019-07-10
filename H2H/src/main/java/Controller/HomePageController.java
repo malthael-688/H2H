@@ -45,16 +45,18 @@ public class HomePageController extends Controller{
 	}
 	
 	public void index(){
+		User curUser = getSessionAttr("User");
+		
 		List<Task> tl;
 		String searchKey = getPara("searchKey");
 		System.out.println(searchKey);
 		String tt = getPara("filterType");
 		if(tt==null && searchKey == null){
-			tl = taskDao.find("select * from task where taskState=?", "2");
+			tl = taskDao.find("select * from task where taskState=? and publisherNum != ?", "2", curUser.get("num"));
 		} else if(tt != null){
-			tl = taskDao.find("select * from task where taskState=? and type=?", "2", tt);
+			tl = taskDao.find("select * from task where taskState=? and type=? and publisherNum != ?", "2", tt, curUser.get("num"));
 		} else {
-			tl = taskDao.find("select * from task where title like %?$", searchKey);
+			tl = taskDao.find("select * from task where title like %?$ and publisherNum != ?", searchKey, curUser.get("num"));
 		}
 		set("tasks", tl);
 		set("taskTypes", taskTypeDao.findAll());
@@ -83,7 +85,6 @@ public class HomePageController extends Controller{
 		TaskSortClass tSort = new TaskSortClass();
 		Collections.sort(hotTasks, tSort);
 		set("hotTasks", hotTasks);
-		User curUser = getSessionAttr("User");
 		List<Message> ml = messageDao.find(
 				"select * from message where receiverNum=? and messageState=0", 
 				curUser.get("num"));
