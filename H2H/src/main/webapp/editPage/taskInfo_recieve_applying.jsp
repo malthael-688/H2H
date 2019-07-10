@@ -128,7 +128,7 @@
             <div class="modal-body">是否确认取消申请接受该任务？</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
-                <button type="button" class="btn btn-primary" onclick = "location.href='/editPage/taskDelete?taskId=${task.taskID}'">确认取消接受</button>
+                <button type="button" class="btn btn-primary" onclick = "javascript:window.location.href='/editPage/quitApplying?taskId=${task.taskID}'">确认取消申请</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
@@ -142,7 +142,7 @@
         	<p class="myp1">任务信息</p>
 			<div>
         		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; left: 30px; top: 50px;"></span>
-				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">发布人</span></a>
+				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">发布人:${publisherName }</span></a>
 			</div>
 				<div>
 				<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative; left: 200px; top: 18px;"></span>
