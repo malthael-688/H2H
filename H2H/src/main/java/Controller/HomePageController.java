@@ -35,7 +35,7 @@ public class HomePageController extends Controller{
 		public int compare(Object o1, Object o2) {
 			Task t1 = (Task) o1;
 			Task t2 = (Task) o2; 
-			return Integer.parseInt(t1.getStr("heatValue")) - Integer.parseInt(t2.getStr("heatValue"));
+			return Integer.parseInt(t2.getStr("heatValue")) - Integer.parseInt(t1.getStr("heatValue"));
 		}
 	}
 	
