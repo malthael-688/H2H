@@ -59,7 +59,7 @@
 	<a href="../home/showMessage">
 	<span class="glyphicon glyphicon-bell" style="color: rgb(0, 152, 193);"></span>消息
 	<span> </span>
-    <span class="badge">3</span>
+	 <span class="badge">${messageNum}</span>
     </a>
 	</li>
     <li class="dropdown">
@@ -275,10 +275,10 @@
             }
             else {
                 alert("请输入正确的昵称");
-                o.innerHTML=${user.name};
+                //o.innerHTML=${user.name};
             }
         }else {
-            o.innerHTML=${user.name};
+            //o.innerHTML=${user.name};
         }
     }
 
@@ -312,12 +312,13 @@
             }
             else {
                 alert("请输入正确的电话号码");
-                o.innerHTML=${user.phone};
+                //o.innerHTML=${user.phone};
             }
         } else {
-            o.innerHTML=${user.phone};
+            //o.innerHTML=${user.phone};
         }
     }
+    
     function cg2(obj){
         var o=obj.previousSibling;
         var password=prompt("请输入新的密码");
@@ -329,30 +330,28 @@
                         if (password==password2) {
                             xhttp.open("post", "/editPage/changePassword?password=" + password, false);
                             xhttp.send();
-                            o.innerHTML = password;
+                            //o.innerHTML = password;
                         }
                         else {
                             alert("两次密码不匹配");
-                            o.innertHTML=${user.password};
+                            //o.innertHTML=${user.password};
                         }
                     }
                     else {
                         alert("请输入正确的格式");
-                        o.innertHTML=${user.password};
+                        //o.innertHTML=${user.password};
                     }
                 }
                 else {
-                    o.innertHTML=${user.password};
-                }
-            }
-            else {
-                alert("请输入正确格式的密码");
-                o.innertHTML=${user.password};
+                    //o.innertHTML=${user.password};
             }
         }
         else {
-            o.innerHTML=${user.password};
+        	alert("请输入正确的格式");
+            //o.innerHTML=${user.password};
         }
+     }
     }
+   
 
 </script>

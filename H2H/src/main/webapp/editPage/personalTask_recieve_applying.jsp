@@ -53,7 +53,7 @@
 	<a href="../home/showMessage">
 	<span class="glyphicon glyphicon-bell" style="color: rgb(0, 152, 193);"></span>消息
 	<span> </span>
-    <span class="badge">3</span>
+ <span class="badge">${messageNum}</span>
     </a>
 	</li>
     <li class="dropdown">

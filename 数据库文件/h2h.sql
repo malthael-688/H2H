@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : H2H
+Source Server         : sc2
 Source Server Version : 50615
 Source Host           : localhost:3306
 Source Database       : h2h
@@ -10,19 +10,19 @@ Target Server Type    : MYSQL
 Target Server Version : 50615
 File Encoding         : 65001
 
-Date: 2019-07-10 00:20:36
+Date: 2019-07-10 22:11:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for admin
+-- Table structure for `admin`
 -- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `adminNum` bigint(20) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `password` varchar(18) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`adminNum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -30,10 +30,11 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', '1', '123', '2889876004@qq.com');
+INSERT INTO `admin` VALUES ('1', '李宁生', '202CB962AC59075B964B07152D234B70', '2889876004@qq.com');
+INSERT INTO `admin` VALUES ('2', '陆韬韬', '202CB962AC59075B964B07152D234B70', '798175437@qq.com');
 
 -- ----------------------------
--- Table structure for apply
+-- Table structure for `apply`
 -- ----------------------------
 DROP TABLE IF EXISTS `apply`;
 CREATE TABLE `apply` (
@@ -45,16 +46,14 @@ CREATE TABLE `apply` (
   KEY `A_Task` (`taskID`) USING BTREE,
   CONSTRAINT `A_Task` FOREIGN KEY (`taskID`) REFERENCES `task` (`taskID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `A_User` FOREIGN KEY (`applicantNum`) REFERENCES `user` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of apply
 -- ----------------------------
-INSERT INTO `apply` VALUES ('5', '2', '2016303148');
-INSERT INTO `apply` VALUES ('6', '2', '2016303144');
 
 -- ----------------------------
--- Table structure for comment
+-- Table structure for `comment`
 -- ----------------------------
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
@@ -68,21 +67,18 @@ CREATE TABLE `comment` (
   KEY `C_Task` (`taskID`),
   CONSTRAINT `C_Task` FOREIGN KEY (`taskID`) REFERENCES `task` (`taskID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `C_User` FOREIGN KEY (`commentatorNum`) REFERENCES `user` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
-INSERT INTO `comment` VALUES ('1', '2016303151', '23333', '1', '2019-07-09 19:37');
-INSERT INTO `comment` VALUES ('2', '2016303150', 'fuck you', '5', '2019-07-09 19:58');
-INSERT INTO `comment` VALUES ('3', '2016303150', '你是傻屌吗', '1', '2019-07-09 19:58');
-INSERT INTO `comment` VALUES ('4', '2016303150', '6666', '1', '2019-07-09 19:59');
-INSERT INTO `comment` VALUES ('5', '2016303150', '6666', '1', '2019-07-09 20:01');
-INSERT INTO `comment` VALUES ('6', '2016303150', '6666', '1', '2019-07-09 20:03');
-INSERT INTO `comment` VALUES ('7', '2016303115', 'bbb ', '1', '2019-07-09 22:56');
+INSERT INTO `comment` VALUES ('1', '2016303147', '很棒', '3', '2019-9-1');
+INSERT INTO `comment` VALUES ('2', '2016303147', '很好', '4', '2019-9-2');
+INSERT INTO `comment` VALUES ('3', '2016303142', 'good', '5', '2019-9-3');
+INSERT INTO `comment` VALUES ('4', '2016303142', 'great', '6', '2019-9-4');
 
 -- ----------------------------
--- Table structure for message
+-- Table structure for `message`
 -- ----------------------------
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE `message` (
@@ -98,20 +94,21 @@ CREATE TABLE `message` (
   KEY `M_User2` (`receiverNum`),
   CONSTRAINT `M_User1` FOREIGN KEY (`senderNum`) REFERENCES `user` (`num`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `M_User2` FOREIGN KEY (`receiverNum`) REFERENCES `user` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of message
 -- ----------------------------
-INSERT INTO `message` VALUES ('1', '2016303115', '2016303151', '我是15', '2019-07-06 16:13:01', '1', '1');
-INSERT INTO `message` VALUES ('2', '2016303115', '2016303151', '你好', '2019-07-06 16:12:02', '1', '1');
-INSERT INTO `message` VALUES ('3', '2016303151', '2016303115', '我是51', '2019-07-07 16:13:01', '1', '1');
-INSERT INTO `message` VALUES ('4', '2016303151', '2016303115', 'hello', '2019-07-07 16:28:04', '1', '1');
-INSERT INTO `message` VALUES ('18', '2016303151', '2016303115', '你有问题吗', '2019-07-09 22:30:42', '1', '1');
-INSERT INTO `message` VALUES ('19', '2016303115', '2016303151', '你明天能帮我吗', '2019-07-09 22:31:14', '1', '1');
+INSERT INTO `message` VALUES ('24', '2016303142', '2016303151', '你申请的消息成功！', '2019-07-10 20:05:44', '1', '1');
+INSERT INTO `message` VALUES ('25', '2016303142', '2016303151', '你的任务已经验收!', '2019-07-10 20:10:20', '1', '1');
+INSERT INTO `message` VALUES ('26', '2016303142', '2016303151', '我要吃大便 交给你了!', '2019-07-10 20:18:38', '1', '1');
+INSERT INTO `message` VALUES ('27', '2016303151', '2016303142', '代购XX 交给你了!', '2019-07-10 21:37:01', '0', '0');
+INSERT INTO `message` VALUES ('28', '2016303151', '2016303142', '代购XX 取消了!', '2019-07-10 22:01:44', '0', '0');
+INSERT INTO `message` VALUES ('29', '2016303151', '2016303133', '代购XX 取消了!', '2019-07-10 22:01:44', '0', '0');
+INSERT INTO `message` VALUES ('30', '2016303151', '2016303147', '代购XX 取消了!', '2019-07-10 22:01:44', '0', '0');
 
 -- ----------------------------
--- Table structure for notice
+-- Table structure for `notice`
 -- ----------------------------
 DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice` (
@@ -125,11 +122,11 @@ CREATE TABLE `notice` (
 -- ----------------------------
 -- Records of notice
 -- ----------------------------
-INSERT INTO `notice` VALUES ('1', 'help', 'sc', '2019-7-6');
-INSERT INTO `notice` VALUES ('2', 'done', 'jk', '2019-7-7');
+INSERT INTO `notice` VALUES ('1', 'H2H网站使用注意', '互联网并非无法之地，请大家遵纪守法', '2019-7-9');
+INSERT INTO `notice` VALUES ('2', '用户使用教程', '请大家按照用户手册进行用户行为', '2019-7-9');
 
 -- ----------------------------
--- Table structure for param
+-- Table structure for `param`
 -- ----------------------------
 DROP TABLE IF EXISTS `param`;
 CREATE TABLE `param` (
@@ -144,7 +141,7 @@ CREATE TABLE `param` (
 INSERT INTO `param` VALUES ('1', '15');
 
 -- ----------------------------
--- Table structure for task
+-- Table structure for `task`
 -- ----------------------------
 DROP TABLE IF EXISTS `task`;
 CREATE TABLE `task` (
@@ -164,29 +161,23 @@ CREATE TABLE `task` (
   KEY `T_Uer2` (`receiverNum`),
   CONSTRAINT `T_Uer1` FOREIGN KEY (`publisherNum`) REFERENCES `user` (`num`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `T_Uer2` FOREIGN KEY (`receiverNum`) REFERENCES `user` (`num`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of task
 -- ----------------------------
-INSERT INTO `task` VALUES ('1', '打死李大娘', '把它头都打飞', '打人', '20', '2019-07-09 12:00:26', '2019-07-10 16:02', '2016303115', '2016303150', '2', '10');
-INSERT INTO `task` VALUES ('2', '吃雪糕', '把它头都踢歪', '寻人启事', '30', '2019-07-09 12:00:26', '2019-07-10 16:02', '2016303115', null, '0', '20');
-INSERT INTO `task` VALUES ('3', '图书馆占座', '抄抄抄', '跑腿递送', '50', '2019-07-09 12:00:26', '2019-07-10 16:02', '2016303115', null, '0', '30');
-INSERT INTO `task` VALUES ('4', '拿个快递', 'ZZZzzz', '课程咨询', '20', '2019-07-09 12:00:26', '2019-07-10 16:02', '2016303116', null, '0', '40');
-INSERT INTO `task` VALUES ('5', '帮我买票', '把它头都打飞', '出行旅伴', '30', '2019-07-09 12:00:26', '2019-07-10 16:02', '2016303116', null, '0', '20');
-INSERT INTO `task` VALUES ('6', '听我唱歌', '把它头都踢歪', '跑腿递送', '10', '2019-07-09 12:00:26', '2019-07-10 16:02', '2016303116', null, '0', '30');
-INSERT INTO `task` VALUES ('7', '你知道我在等你吗', '抄抄抄', '课程咨询', '30', '2019-07-09 12:00:26', '2019-07-10 16:02', '2016303144', null, '0', '40');
-INSERT INTO `task` VALUES ('8', '软微学院', 'ZZZzzz', '出行旅伴', '40', '2019-07-09 12:00:26', '2019-07-10 16:02', '2016303144', null, '0', '20');
-INSERT INTO `task` VALUES ('44', '公诚勇毅', '西工大', '出行旅伴', '30', '2019-07-09 11:59:21', '2019-08-09 11:57', '2016303144', null, '0', '40');
-INSERT INTO `task` VALUES ('45', '三实一新', '王源', '寻人启事', '50', '2019-07-09 12:00:26', '2019-08-09 11:59', '2016303149', null, '0', '45');
-INSERT INTO `task` VALUES ('46', '我要去开飞机', '实验室', '课程咨询', '10', '2019-07-09 16:02:44', '2019-08-09 12:11', '2016303149', null, '0', '25');
-INSERT INTO `task` VALUES ('47', '带个盒饭', '三个一', '寻物启事', '0', '2019-07-09 16:03:53', '2019-07-10 16:02', '2016303150', null, '0', '35');
-INSERT INTO `task` VALUES ('48', '啦啦啦', '我想吃饭', '寻物启事', '20', '2019-07-09 16:06:29', '2019-07-09 16:06', '2016303151', null, '0', '45');
-INSERT INTO `task` VALUES ('49', '请个假', 'huhuhu', '课程咨询', '10', '2019-07-09 16:09:56', '2019-07-10 16:02', '2016303151', null, '0', '55');
-INSERT INTO `task` VALUES ('50', 'dfsdfs', 'hohoho', '其他', '25', '2019-07-09 16:10:13', '2019-07-09 16:09', '2016303151', null, '0', '15');
+INSERT INTO `task` VALUES ('1', '丢失饭卡', '本人饭卡丢失，如果找回请联系XXXXXX', '寻物启事', '10', '2019-7-10', '2019-7-15', '2016303142', null, '7', '0');
+INSERT INTO `task` VALUES ('2', '考试咨询', 'XX考试，希望找人咨询考试相关问题', '咨询', '10', '2019-7-8', '2019-7-13', '2016303142', null, '1', '0');
+INSERT INTO `task` VALUES ('3', '打车出行', '想找个一起打车去老校区的同学，分摊车费', '出行', '10', '2019-7-7', '2019-7-12', '2016303142', '2016303151', '5', '0');
+INSERT INTO `task` VALUES ('4', '志愿者召集', '召集暑期志愿者项目', '活动', '20', '2019-8-1', '2019-8-10', '2016303142', '2016303147', '3', '0');
+INSERT INTO `task` VALUES ('5', '社团招募', 'XX社团等待你的加入', '社团', '20', '2019-8-1', '2019-8-20', '2016303142', '2016303147', '4', '0');
+INSERT INTO `task` VALUES ('6', '代取快递', '帮忙代取XX快递', '代取快递', '15', '2019-7-1', '2019-7-11', '2016303142', '2016303147', '5', '0');
+INSERT INTO `task` VALUES ('7', '帮忙剪辑视频', '帮忙剪辑个人拍摄的社团活动视频', '帮忙做事', '30', '2019-7-7', '2019-7-9', '2016303142', null, '6', '0');
+INSERT INTO `task` VALUES ('8', '代购XX', '寻求一个老校区同学代购XX', '代购', '20', '2019-7-10', '2019-7-17', '2016303151', null, '7', '0');
+INSERT INTO `task` VALUES ('52', '我要吃大便', '一次坚强的测试', '跑腿递送', '20', '2019-07-10 20:15:45', '2019-07-08 20:14', '2016303142', null, '2', '0');
 
 -- ----------------------------
--- Table structure for tasktype
+-- Table structure for `tasktype`
 -- ----------------------------
 DROP TABLE IF EXISTS `tasktype`;
 CREATE TABLE `tasktype` (
@@ -204,12 +195,12 @@ INSERT INTO `tasktype` VALUES ('出行旅伴');
 INSERT INTO `tasktype` VALUES ('其他');
 
 -- ----------------------------
--- Table structure for user
+-- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `num` bigint(20) NOT NULL,
-  `password` varchar(18) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `phone` varchar(11) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `creditScore` int(11) DEFAULT NULL,
@@ -226,10 +217,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('2016303115', '789', '17698547895', '2889876004@qq.com', '94', 'qjx', '91', '0', null, null, null, '2019-07-09 22:59:42');
-INSERT INTO `user` VALUES ('2016303116', '2016', '13258964598', '546655601@qq.com', '90', 'ltt', '94', '0', null, null, null, '2019-07-09 21:50:57');
-INSERT INTO `user` VALUES ('2016303144', '456', '15987654896', '2889876003@qq.com', '90', 'lyy', '88', '0', null, null, null, '2019-07-09 21:50:57');
-INSERT INTO `user` VALUES ('2016303148', '456', '15825869874', '2889876004@qq.com', '95', 'lns', '93', '0', null, null, null, '2019-07-09 21:50:57');
-INSERT INTO `user` VALUES ('2016303149', '456', '15961022753', '841495246@qq.com', '90', 'mqy', '94', '0', null, null, null, '2019-07-09 21:50:57');
-INSERT INTO `user` VALUES ('2016303150', '123', '13016753873', '798175437@qq.com', '100', 'ht', '95', '0', null, null, null, '2019-07-09 21:50:57');
-INSERT INTO `user` VALUES ('2016303151', '66666', '18220193519', '985264344@qq.com', '100', 'sc', '100', '0', null, null, null, '2019-07-09 22:51:10');
+INSERT INTO `user` VALUES ('2016303133', '202CB962AC59075B964B07152D234B70', '18922861965', '3478466425@qq.com', '100', '熊敏光', '30', '1', '0', '0', '0', '2019-07-10 19:33:00');
+INSERT INTO `user` VALUES ('2016303142', '202CB962AC59075B964B07152D234B70', '18691874616', '2889876004@qq.com', '101', '李宁生', '0', '0', '9', '0', '0', '2019-07-10');
+INSERT INTO `user` VALUES ('2016303147', '202CB962AC59075B964B07152D234B70', '18821622394', '798175437@qq.com', '100', '涛涛', '90', '0', '0', '1', '0', '2019-07-10');
+INSERT INTO `user` VALUES ('2016303151', '202CB962AC59075B964B07152D234B70', '18220193519', '985264344@qq.com', '95', '宋昌', '50', '0', '0', '1', '1', '2019-07-10');

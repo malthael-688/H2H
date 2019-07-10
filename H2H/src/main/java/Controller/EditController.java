@@ -27,13 +27,16 @@ public class EditController extends Controller {
     //public static User thisOne;
     public void index() {
     	User thisOne= getSessionAttr("User");
-        setAttr("user",thisOne);
+    	User thisOne1 = User.user.findById(thisOne.get("num"));
+        setAttr("user",thisOne1);
+        messageNumGet();
         renderJsp("test.jsp");
     }
     
     public void test_page() {
     	User thisOne= getSessionAttr("User");
         setAttr("user",thisOne);
+        messageNumGet();
         renderJsp("edit_Personal_Information.jsp");
     }
     
@@ -43,6 +46,7 @@ public class EditController extends Controller {
         String newName=getPara("name");
         thisOne.set("name",newName);
         thisOne.update();
+        messageNumGet();
         renderJsp("edit_Personal_Information.jsp");
     }
 
@@ -51,6 +55,7 @@ public class EditController extends Controller {
         String newMail=getPara("mail");
         thisOne.set("email",newMail);
         thisOne.update();
+        messageNumGet();
         renderJsp("edit_Personal_Information.jsp");
     }
 
@@ -59,6 +64,7 @@ public class EditController extends Controller {
         String newPhone=getPara("phone");
         thisOne.set("phone",newPhone);
         thisOne.update();
+        messageNumGet();
         renderJsp("edit_Personal_Information.jsp");
     }
 
@@ -68,6 +74,7 @@ public class EditController extends Controller {
         String password=getPara("password");
         thisOne.set("password",md5.stringMD5(password));
         thisOne.update();
+        messageNumGet();
         renderJsp("edit_Personal_Information.jsp");
     }
 
@@ -76,6 +83,7 @@ public class EditController extends Controller {
         long thisNum=thisOne.get("num");
         List<Task> tasks=Task.task.find("SELECT * FROM task WHERE taskState='5' AND receiverNum='"+thisNum+"'");
         setAttr("tasks",tasks);
+        messageNumGet();
         renderJsp("personalTask_recieve_finished.jsp");
     }
 
@@ -84,6 +92,7 @@ public class EditController extends Controller {
         long thisNum=thisOne.get("num");
         List<Task> tasks=Task.task.find("SELECT task.* FROM task , apply WHERE task.taskState='2' and task.taskID=apply.taskID  and  apply.applicantNum='"+thisNum+"' ");
         setAttr("tasks",tasks);
+        messageNumGet();
         renderJsp("personalTask_recieve_applying.jsp");
     }
 
@@ -93,6 +102,7 @@ public class EditController extends Controller {
         long thisNum=thisOne.get("num");
         List<Task> tasks=Task.task.find("SELECT * FROM task WHERE taskState='3' AND receiverNum='"+thisNum+"'");
         setAttr("tasks",tasks);
+        messageNumGet();
         renderJsp("personalTask_recieve_nowDoing.jsp");
     }
 
@@ -101,6 +111,7 @@ public class EditController extends Controller {
         long thisNum=thisOne.get("num");
         List<Task> tasks= Task.task.find("SELECT * FROM task WHERE taskState='0' AND publisherNum='"+thisNum+"'");
         setAttr("tasks",tasks);
+        messageNumGet();
         renderJsp("personalTask_publish_examine.jsp");
     }
 
@@ -109,6 +120,7 @@ public class EditController extends Controller {
         long thisNum=thisOne.get("num");
         List<Task> tasks=Task.task.find("SELECT * FROM task WHERE taskState='5' AND publisherNum='"+thisNum+"'");
         setAttr("tasks",tasks);
+        messageNumGet();
         renderJsp("personalTask_publish_finished.jsp");
     }
 
@@ -117,6 +129,7 @@ public class EditController extends Controller {
         long thisNum=thisOne.get("num");
         List<Task> tasks=Task.task.find("SELECT * FROM task WHERE taskState='3' OR taskState='4' AND publisherNum='"+thisNum+"'");
         setAttr("tasks",tasks);
+        messageNumGet();
         renderJsp("personalTask_publish_nowDoing.jsp");
     }
 
@@ -134,9 +147,7 @@ public class EditController extends Controller {
         	temp.setTask(t);
          for(Apply a:applys){
         	 if(a.getStr("taskID").equals(t.getStr("taskID"))){
-        		 System.out.println("sccccccc---"+a.toString());
         		 User user = User.user.findById(a.getStr("applicantNum"));
-        		 System.out.println("sccccccc---"+user.toString());
         		 users.add(user);
         	 }
          }
@@ -144,6 +155,7 @@ public class EditController extends Controller {
          sc.add(temp);
         }
         setAttr("scs",sc);
+        messageNumGet();
         renderJsp("personalTask_publish_unaccept.jsp");
     }
 
@@ -153,6 +165,7 @@ public class EditController extends Controller {
         long thisNum=thisOne.get("num");
         List<Task> tasks=Task.task.find("SELECT * FROM task WHERE publisherNum='"+thisNum+"' OR receiverNum='"+thisNum+"'");
         setAttr("tasks",tasks);
+        messageNumGet();
         renderJsp("personalTasks1.jsp");
     }
 
@@ -165,6 +178,7 @@ public class EditController extends Controller {
         setAttr("task",tasks);
         User user = User.user.findById(tasks.getStr("publisherNum"));
         setAttr("publisherName",user.getStr("name"));
+       
         renderJsp("taskInfo_publish_examine.jsp");
     }
     
@@ -184,17 +198,11 @@ public class EditController extends Controller {
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+id+"'");
         setAttr("comments",comments);
         setAttr("task",tasks);
+       
         renderJsp("taskInfo_publish_examine.jsp");
     }
 
-    public void taskDelete() {
-        String oneId=getPara("taskId");
-        long id =Long.parseLong(oneId);
-        Task thisTask=Task.task.findById(id);
-        thisTask.set("taskState",7);
-        thisTask.update();
-        index();
-    }
+
 
     public void taskInfo_publish_finished() {
         String oneId=getPara("taskId");
@@ -214,6 +222,7 @@ public class EditController extends Controller {
         setAttr("task",tasks);
         setAttr("receiverName",receivename);
         setAttr("publisherName",publisherName);
+        
         renderJsp("taskInfo_publish_finished.jsp");
     }
 
@@ -233,6 +242,7 @@ public class EditController extends Controller {
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+id+"'");
         setAttr("comments",comments);
         setAttr("task",tasks);
+      
         renderJsp("taskInfo_publish_finished.jsp");
     }
 
@@ -254,6 +264,7 @@ public class EditController extends Controller {
         setAttr("task",tasks);
         setAttr("receiverName",receivename);
         setAttr("publisherName",publisherName);
+       
         renderJsp("taskInfo_publish_nowDoing.jsp");
     }
 
@@ -273,9 +284,11 @@ public class EditController extends Controller {
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+id+"'");
         setAttr("comments",comments);
         setAttr("task",tasks);
+      
         renderJsp("taskInfo_publish_nowDoing.jsp");
     }
 
+    
     public void yanshouTask() {
         String oneId=getPara("taskId");
         long id =Long.parseLong(oneId);
@@ -291,12 +304,23 @@ public class EditController extends Controller {
         publisher.set("points", Integer.valueOf(publisher.getStr("points"))-Integer.valueOf(thisTask.getStr("rewardPoints")));
         publisher.update();
         
-        
         receiver.set("finishedTaskNum", Integer.valueOf(receiver.getStr("finishedTaskNum"))+1);
         receiver.set("points", Integer.valueOf(receiver.getStr("points"))+Integer.valueOf(thisTask.getStr("rewardPoints")));
         receiver.update();
         
+    	Message message = new Message() ;
+    	User thisOne= getSessionAttr("User");
+    	message.set("senderNum", thisOne.getStr("num"));
+    	message.set("receiverNum", thisTask.getStr("receiverNum"));
+    	message.set("content", "你的任务已经验收!");
+    	message.set("messageState", "0");
+    	message.set("showState", "0");
+    	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+    	message.set("time", df.format(new java.util.Date()));
+    	message.save();
+        
         setAttr("taskId",thisTask.get("taskID"));
+        
         renderJsp("pingjia.jsp");
     }
 
@@ -321,6 +345,7 @@ public class EditController extends Controller {
         setAttr("comments",comments);
         setAttr("task",tasks);
         setAttr("publisherName",publisherName);
+      
         renderJsp("taskInfo_publish_unStart.jsp");
     }
 
@@ -340,6 +365,7 @@ public class EditController extends Controller {
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+id+"'");
         setAttr("comments",comments);
         setAttr("task",tasks);
+        
         renderJsp("taskInfo_publish_unStart.jsp");
     }
 
@@ -353,7 +379,6 @@ public class EditController extends Controller {
         String publisherName = user.getStr("name");
         
         setAttr("publisherName",publisherName);
-        
         setAttr("comments",comments);
         setAttr("task",tasks);
         renderJsp("taskInfo_recieve_applying.jsp");
@@ -492,6 +517,7 @@ public class EditController extends Controller {
     }
     
     public void selectReceiver(){
+    	User thisOne= getSessionAttr("User");
     	String num = getPara("num");
     	String taskID   = getPara("taskID");
     	List<Apply> applys = Apply.apply.find("SELECT * FROM apply WHERE taskID='"+taskID+"'");
@@ -502,6 +528,18 @@ public class EditController extends Controller {
     	task.set("receiverNum", num);
     	task.set("taskState", "3");
     	task.update();
+    	
+    	Message message = new Message() ;
+    	message.set("senderNum", thisOne.getStr("num"));
+    	message.set("receiverNum", num);
+    	message.set("content", task.getStr("title")+" 交给你了!");
+    	message.set("messageState", "0");
+    	message.set("showState", "0");
+    	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+    	message.set("time", df.format(new java.util.Date()));
+    	message.save();
+    	
+    	
     	index();
     }
     
@@ -509,6 +547,7 @@ public class EditController extends Controller {
     	String num = getPara("num");
     	User user = User.user.findById(num);
     	setAttr("user",user);
+    	messageNumGet();
     	render("otherPeople.jsp");
     }
     
@@ -525,7 +564,7 @@ public class EditController extends Controller {
         String p=getPara("score");
         String taskId=getPara("taskId");
         Task task=Task.task.findById(taskId);
-        User publisher=User.user.findById(task.get("publisherNum"));
+        User publisher=User.user.findById(task.get("receiverNum"));
         int pp=Integer.parseInt(p);
         int score=3;
         switch (pp) {
@@ -543,5 +582,49 @@ public class EditController extends Controller {
     }
     
     
+    public void publisherQuitTask(){
+    	User thisOne= getSessionAttr("User");
+        String oneId=getPara("taskId");
+        long id =Long.parseLong(oneId);
+        Task thisTask=Task.task.findById(id);
+        thisTask.set("taskState",7);
+        
+        StringBuilder sb = new StringBuilder("select * from apply where taskID=?");
+        List<Apply> applys = Apply.apply.find(sb.toString(),oneId);
+        System.out.println(applys.toString());
+        
+        for (Apply a: applys){
+        	Message message = new Message() ;
+        	message.set("senderNum", thisOne.getStr("num"));
+        	message.set("receiverNum", a.getStr("applicantNum"));
+        	message.set("content", thisTask.getStr("title")+" 取消了!");
+        	message.set("messageState", "0");
+        	message.set("showState", "0");
+        	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        	message.set("time", df.format(new java.util.Date()));
+        	message.save();
+        	
+        	a.delete();
+        }
+    	thisTask.update();
+    	 index();
+    }
+   
+    public void taskDelete() {
+        String oneId=getPara("taskId");
+        long id =Long.parseLong(oneId);
+        Task thisTask=Task.task.findById(id);
+        thisTask.set("taskState",7);
+        thisTask.update();
+        index();
+    }
+    
+    public void messageNumGet(){
+    	User curUser= getSessionAttr("User");
+    List<Message> ml = Message.message.find(
+			"select * from message where receiverNum=? and messageState=0", 
+			curUser.get("num"));
+	set("messageNum", ml.size());
+    }
     
 }

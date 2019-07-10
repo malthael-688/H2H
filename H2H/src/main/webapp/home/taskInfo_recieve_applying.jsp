@@ -142,7 +142,7 @@
         	<p class="myp1">任务信息</p>
 			<div>
         		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; left: 30px; top: 50px;"></span>
-				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">发布人</span></a>
+				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">${publisherName }</span></a>
 			</div>
 				<div>
 				<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative; left: 200px; top: 18px;"></span>

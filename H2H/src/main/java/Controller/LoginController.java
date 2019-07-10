@@ -36,6 +36,8 @@ public class LoginController extends Controller {
 		Md5 md5 = new Md5();
 		User getUser = getModel(User.class);
 		User one = User.user.findById(getUser.get("num"));
+		
+		
 		//获取积分数值
 		Param param=Param.param.findById("1");
 		if (one == null) {

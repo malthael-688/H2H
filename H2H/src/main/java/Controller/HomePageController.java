@@ -13,8 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.jfinal.core.Controller;
 
-import Controller.MessageController.Num_name;
-import Controller.MessageController.SortClass;
 import Model.Apply;
 import Model.Comment;
 import Model.Message;
@@ -25,6 +23,8 @@ import Model.User;
 import Service.MessageService;
 import Service.SessionListener;
 import Service.TaskService;
+import Service.Num_name;
+import Service.SortClass;
 
 public class HomePageController extends Controller{
 	private static final TaskType taskTypeDao = new TaskType().dao();
@@ -85,7 +85,7 @@ public class HomePageController extends Controller{
 				"select * from message where receiverNum=? and messageState=0", 
 				curUser.get("num"));
 		set("messageNum", ml.size());
-		
+		set("User",curUser);
 		render("home.jsp");
 	}
 	
@@ -106,6 +106,7 @@ public class HomePageController extends Controller{
 		
 		newTask.save();
 		
+
 		redirect("/home");
 	}
 	
@@ -121,6 +122,11 @@ public class HomePageController extends Controller{
 		User curUser = getSessionAttr("User");
 		sb = new StringBuilder("select * from apply where taskID=? and applicantNum=?");
 		List<Apply> aps = applyDao.find(sb.toString(), taskID, curUser.getStr("num"));
+		
+		List<User> ul = userDao.find("select * from user where num=?", tasks.get(0).get("publisherNum"));
+		String publisherName = ul.get(0).get("name");
+		set("publisherName", publisherName);
+		
 		if(aps.isEmpty()){
 			render("taskInfo_can_accept.jsp");
 		} else {
@@ -141,6 +147,9 @@ public class HomePageController extends Controller{
 		set("task", tasks.get(0));
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+taskID+"'");
         set("comments",comments);
+		List<User> ul = userDao.find("select * from user where num=?", tasks.get(0).get("publisherNum"));
+		String publisherName = ul.get(0).get("name");
+		set("publisherName", publisherName);
 		render("taskInfo_recieve_applying.jsp");
 	}
 	
@@ -158,6 +167,9 @@ public class HomePageController extends Controller{
 		set("task", tasks.get(0));
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+taskID+"'");
         set("comments",comments);
+		List<User> ul = userDao.find("select * from user where num=?", tasks.get(0).get("publisherNum"));
+		String publisherName = ul.get(0).get("name");
+		set("publisherName", publisherName);
 		render("taskInfo_can_accept.jsp");
 	}
 	
@@ -177,6 +189,9 @@ public class HomePageController extends Controller{
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+id+"'");
         setAttr("comments",comments);
         setAttr("task",tasks);
+		List<User> ul = userDao.find("select * from user where num=?", tasks.get("publisherNum"));
+		String publisherName = ul.get(0).get("name");
+		set("publisherName", publisherName);
         render("taskInfo_recieve_applying.jsp");
     }
 	
@@ -312,116 +327,6 @@ public class HomePageController extends Controller{
 			renderText("failed");
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//为了实验新建的两个类一个用来排序日期
-	//一个用来 进行 userNum 和  Username 和 日期time 的对应
-	public class Num_name{
-		String name ;
-		String num;
-		String time;
-		
-		
-		public Num_name(String name, String num) {
-			super();
-			this.name = name;
-			this.num = num;
-		}
-		
-		
-		/**
-		 * @param name
-		 * @param num
-		 * @param time
-		 */
-		public Num_name(String name, String num, String time) {
-			super();
-			this.name = name;
-			this.num = num;
-			this.time = time;
-		}
-
-
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		}
-		public String getNum() {
-			return num;
-		}
-		public void setNum(String num) {
-			this.num = num;
-		}
-		
-		/**
-		 * @return the time
-		 */
-		public String getTime() {
-			return time;
-		}
-		/**
-		 * @param time the time to set
-		 */
-		public void setTime(String time) {
-			this.time = time;
-		}
-
-
-		/* (non-Javadoc)
-		 * @see java.lang.Object#toString()
-		 */
-		@Override
-		public String toString() {
-			return "Num_name [name=" + name + ", num=" + num + ", time=" + time + "]";
-		}
-	
-		
-	}
-	
-	public class SortClass implements Comparator {
-		 
-		public int compare(Object o1, Object o2) {
-			// TODO 自动生成的方法存根
-			Message message1 = (Message) o1;
-			Message message2 = (Message) o2;
-//			public int compareTo(String anotherString)
-//			按字典顺序比较两个字符串。该比较基于字符串中各个字符的 Unicode 值。
-//			按字典顺序将此 String 对象表示的字符序列与参数字符串所表示的字符序列进行比较。
-//			如果按字典顺序此 String 对象位于参数字符串之前，则比较结果为一个负整数。
-//			如果按字典顺序此 String 对象位于参数字符串之后，则比较结果为一个正整数。
-//			如果这两个字符串相等，则结果为 0；compareTo 只在方法 equals(Object) 返回 true 时才返回 0。 
-			
-			int flag = message1.getStr("time").compareTo(message2.getStr("time"));
-	 
-			return flag;
-		}
-	 
-	}
 	
     public void LogOut(){
     	HttpSession se=getSession();

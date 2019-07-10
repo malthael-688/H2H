@@ -128,7 +128,7 @@
             <div class="modal-body">是否确认取消该任务？</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
-                <button type="button" class="btn btn-primary" onclick = "location.href='/editPage/taskDelete?taskId=${task.taskID}'">取消任务</button>
+                <button type="button" class="btn btn-primary" onclick = "location.href='/editPage/publisherQuitTask?taskId=${task.taskID}'">取消任务</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
