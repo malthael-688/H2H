@@ -89,11 +89,11 @@
 -->
 	
 	</ul>
-	<form class="navbar-form navbar-right" role="search">
+	<form method="post" action="/home/index" class="navbar-form navbar-right" role="search">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" id="searchKey">
         </div>
-        <button type="submit" class="btn btn-default">提交</button>
+        <button type="submit" class="btn btn-default">关键词搜索任务</button>
     </form>
 
 </div>

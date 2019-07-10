@@ -46,12 +46,15 @@ public class HomePageController extends Controller{
 	
 	public void index(){
 		List<Task> tl;
+		String searchKey = getPara("searchKey");
+		System.out.println(searchKey);
 		String tt = getPara("filterType");
-		System.out.println(tt);
-		if(tt==null){
+		if(tt==null && searchKey == null){
 			tl = taskDao.find("select * from task where taskState=?", "2");
-		} else {
+		} else if(tt != null){
 			tl = taskDao.find("select * from task where taskState=? and type=?", "2", tt);
+		} else {
+			tl = taskDao.find("select * from task where title like %?$", searchKey);
 		}
 		set("tasks", tl);
 		set("taskTypes", taskTypeDao.findAll());
@@ -86,6 +89,9 @@ public class HomePageController extends Controller{
 				curUser.get("num"));
 		set("messageNum", ml.size());
 		set("User",curUser);
+		
+		set("point", getPara("point"));
+		
 		render("home.jsp");
 	}
 	
@@ -118,6 +124,14 @@ public class HomePageController extends Controller{
 		
         List<Comment> comments=Comment.comment.find("SELECT * FROM comment WHERE taskID='"+taskID+"'");
         set("comments",comments);
+        
+        List<String> comNames = new ArrayList<String>();
+        for(int i = 0; i < comments.size(); i++){
+    		List<User> ul = userDao.find("select * from user where num=?", comments.get(i).get("commentatorNum"));
+    		String cName = ul.get(0).get("name");
+    		comNames.add(cName);
+        }
+        set("comNames", comNames);
 		
 		User curUser = getSessionAttr("User");
 		sb = new StringBuilder("select * from apply where taskID=? and applicantNum=?");
@@ -150,6 +164,13 @@ public class HomePageController extends Controller{
 		List<User> ul = userDao.find("select * from user where num=?", tasks.get(0).get("publisherNum"));
 		String publisherName = ul.get(0).get("name");
 		set("publisherName", publisherName);
+        List<String> comNames = new ArrayList<String>();
+        for(int i = 0; i < comments.size(); i++){
+    		ul = userDao.find("select * from user where num=?", comments.get(i).get("commentatorNum"));
+    		String cName = ul.get(0).get("name");
+    		comNames.add(cName);
+        }
+        set("comNames", comNames);
 		render("taskInfo_recieve_applying.jsp");
 	}
 	
@@ -170,6 +191,13 @@ public class HomePageController extends Controller{
 		List<User> ul = userDao.find("select * from user where num=?", tasks.get(0).get("publisherNum"));
 		String publisherName = ul.get(0).get("name");
 		set("publisherName", publisherName);
+        List<String> comNames = new ArrayList<String>();
+        for(int i = 0; i < comments.size(); i++){
+    		ul = userDao.find("select * from user where num=?", comments.get(i).get("commentatorNum"));
+    		String cName = ul.get(0).get("name");
+    		comNames.add(cName);
+        }
+        set("comNames", comNames);
 		render("taskInfo_can_accept.jsp");
 	}
 	
@@ -192,7 +220,20 @@ public class HomePageController extends Controller{
 		List<User> ul = userDao.find("select * from user where num=?", tasks.get("publisherNum"));
 		String publisherName = ul.get(0).get("name");
 		set("publisherName", publisherName);
-        render("taskInfo_recieve_applying.jsp");
+		StringBuilder sb = new StringBuilder("select * from apply where taskID=? and applicantNum=?");
+		List<Apply> aps = applyDao.find(sb.toString(), oneId, curUser.getStr("num"));
+        List<String> comNames = new ArrayList<String>();
+        for(int i = 0; i < comments.size(); i++){
+    		ul = userDao.find("select * from user where num=?", comments.get(i).get("commentatorNum"));
+    		String cName = ul.get(0).get("name");
+    		comNames.add(cName);
+        }
+        set("comNames", comNames);
+		if(aps.isEmpty()){
+			render("taskInfo_can_accept.jsp");
+		} else {
+			render("taskInfo_recieve_applying.jsp");
+		}
     }
 	
 	//message部分

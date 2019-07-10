@@ -177,7 +177,7 @@
                 	<div class="indexCon_msg_detail">
 						<a href="../otherPeople.jsp">
 						 <div class="indexCon_msg_detail_tittle">
-                            <p style="font-size: 17px;"><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>评论人： ${comment.commentatorNum}</p>
+                            <p style="font-size: 17px;"><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>评论人： ${comNames[Co.count-1]}</p>
                         </div>
 						</a>
                     	<a data-toggle="collapse" data-parent="#accordion" 
