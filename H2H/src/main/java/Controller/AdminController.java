@@ -4,6 +4,7 @@ import java.security.GeneralSecurityException;
 import java.sql.SQLType;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import Service.TaskService;
 import Service.UserService;
 
 public class AdminController extends Controller {
-	private static String randomCode;
+	public static HashMap<String, String> code=new HashMap<String, String>();
 	
 	//跳转进入管理员登录界面
 	//作用
@@ -421,14 +422,14 @@ public class AdminController extends Controller {
 	 * 发送找回密码验证码
 	 */
 	public void getMailCode() {
-		String account = getPara("account");
-		System.out.println(account);
-		if (account != null) {
+		String email = getPara("account");
+		String adminNum=getPara("admin.num");
+		if (email != null) {
 			SendEmail util = new SendEmail();
 			try {
-				randomCode = String.valueOf((int) ((Math.random() * 9 + 1) * 1000));
-				System.out.println(randomCode);
-				util.sendcode(randomCode, account);
+				String randomCode = String.valueOf((int) ((Math.random() * 9 + 1) * 1000));
+				code.put(adminNum, randomCode);
+				util.sendcode(randomCode, email);
 			} catch (GeneralSecurityException e) {
 				e.printStackTrace();
 			}
@@ -444,13 +445,20 @@ public class AdminController extends Controller {
 		String account = getPara("useraccount");
 		String email = getPara("email");
 		String mailbox = getPara("mailbox");
+		System.out.println("-----"+code.get(account));
 		Admin one = Admin.admin.findById(account);
-		if (one == null) {
-			set("error", 7).render("RefindPassword.jsp");
-		} else if (one != null && !mailbox.equals(randomCode)) {
-			set("error", 8).render("RefindPassword.jsp");
-		} else if (one != null && one.get("email").equals(email) && mailbox.equals(randomCode)) {
-			redirect("RefindPassWord2.jsp?account=" + account);
+		if (one==null) {
+			set("error", 7).render("/admin/RefindPassWord.jsp");
+		}else {
+			if (one.get("email").equals(email)) {
+				if (mailbox.equals(code.get(account))) {
+					redirect("/admin/RefindPassWord2.jsp?account=" + account);
+				}else{
+					set("error", 8).render("/admin/RefindPassWord.jsp");
+				}
+			}else {
+				set("error", 7).render("/admin/RefindPassWord.jsp");
+			}		
 		}
 	}
 	/**
