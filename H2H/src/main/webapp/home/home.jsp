@@ -380,7 +380,7 @@ function checkPoint()
         document.getElementById("btn").disabled = true;
 		}else{
 			document.getElementById("account_wrong").innerHTML="<font color='green' font size=2px >积分充足</font>";
-	        document.getElementById("btn").disabled = true;
+	        document.getElementById("btn").disabled = false;
 		}
 }
 </script>
