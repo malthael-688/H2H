@@ -124,23 +124,23 @@
            
 		<div class="indexMain_left_con">
             <!--无主题图循环结束-->
-            <c:forEach items="${tasks}" var="task" varStatus="st">
+            <c:forEach items="${scs}" var="sc" varStatus="loop">
                 <div class="indexCon_msg">
 
                     <div class="indexCon_msg_detail">
-                        <a href="/editPage/taskInfo_publish_unStart?taskId=${task.taskID}">
+                        <a href="/editPage/taskInfo_publish_unStart?taskId=${sc.task.taskID}">
                             <div class="indexCon_msg_detail_tittle">
-                                <span>${task.title}</span>
-                                <p>${task.description}</p>
+                                <span>${sc.task.title}</span>
+                                <p>${sc.task.description}</p>
                             </div>
                         </a>
                         <div>
                             <ul class="list-inline">
-                                <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>${task.publisherNum}</li>
+                                <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>${sc.task.publisherNum}</li>
                                 <li></li>
-                                <li><span class="glyphicon glyphicon-play" style="color: rgb(0, 152, 193);"></span>${task.startTime}</li>
+                                <li><span class="glyphicon glyphicon-play" style="color: rgb(0, 152, 193);"></span>${sc.task.startTime}</li>
                                 <li></li>
-                                <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>${task.deadLine}</li>
+                                <li><span class="glyphicon glyphicon-pause" style="color: rgb(255, 0, 17);"></span>${sc.task.deadLine}</li>
                                 <li></li>
                                 <li></li><li></li>
                                 <li></li><li></li>
@@ -149,13 +149,13 @@
                                 <li></li><li></li>
                                 <li><span class="glyphicon glyphicon-comment" style="color: rgb(0, 152, 193);"></span>评价</li>
                                 <li></li><li></li>
-                                <li>[${task.taskState}]</li>
+                               
                             </ul>
                         </div>
                         
                         					<div>
 					申请人列表：
-						<c:forEach items="${applyList1}" var="applicant" varStatus="st"> 
+						<c:forEach items="${sc.users}" var="applicant" varStatus="st"> 
 							<ul class="list-inline">
                             <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span><a>${applicant.name}:</a></li>
 							<li></li>

@@ -159,7 +159,7 @@
         	<p class="myp1">任务信息</p>
 			<div>
         		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; left: 30px; top: 50px;"></span>
-				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">发布人</span></a>
+				<a href="#" style="position: relative; left: 40px; top: 46px;"><span class="myspan">发布人:${publisherName}</span></a>
 			</div>
 <div>
 				<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative; left: 200px; top: 18px;"></span>
@@ -181,7 +181,7 @@
 						<c:forEach items="${applyList1}" var="applicant" varStatus="st"> 
 							<hr>
 							<ul class="list-inline">
-                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span><a href = "../otherApplyer.jsp" style = "font-size: 17px; ">${applicant.name}:</a></li>
+                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span><a href = "/editPage/ToOthers?num=${ applicant.num}" style = "font-size: 17px; ">${applicant.name}:</a></li>
 							<li></li>
 							<li></li>
 							<li></li><li></li>
