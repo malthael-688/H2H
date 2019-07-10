@@ -412,7 +412,7 @@ public class EditController extends Controller {
       for (Apply t:applys) {
          t.delete();
       }
-      index();
+      recieve_applying_page();
     	
     }
     
@@ -501,10 +501,12 @@ public class EditController extends Controller {
     }
     
     public void quitTask(){
+    	
     	  String oneId=getPara("taskId");
           long id =Long.parseLong(oneId);
           Task thisTask=Task.task.findById(id);
-          
+          String publishernum = thisTask.getStr("publisherNum");
+        		  
           String receiverNum = thisTask.getStr("receiverNum");
           User user = User.user.findById(receiverNum);
           thisTask.set("taskState", 2);
@@ -513,7 +515,17 @@ public class EditController extends Controller {
           user.set("creditScore", Integer.valueOf(user.getStr("creditScore"))-5);
           user.set("giveUpTaskNum", Integer.valueOf(user.getStr("giveUpTaskNum"))+1);
           user.update();
-          index();
+          
+        Message message = new Message() ;
+      	message.set("senderNum", receiverNum);
+      	message.set("receiverNum", publishernum);
+      	message.set("content", thisTask.getStr("title")+" 我做不了了,对不起!!");
+      	message.set("messageState", "0");
+      	message.set("showState", "0");
+      	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+      	message.set("time", df.format(new java.util.Date()));
+      	message.save();
+          recieve_nowDoing_page();
     }
     
     public void selectReceiver(){
@@ -539,8 +551,7 @@ public class EditController extends Controller {
     	message.set("time", df.format(new java.util.Date()));
     	message.save();
     	
-    	
-    	index();
+    	publish_unaccept_page();
     }
     
     public void ToOthers(){
@@ -607,7 +618,7 @@ public class EditController extends Controller {
         	a.delete();
         }
     	thisTask.update();
-    	 index();
+    	publish_unaccept_page();
     }
    
     public void taskDelete() {

@@ -162,7 +162,7 @@
 			<div>
 				<div style="float: left;">
         		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
-				<a href="#" style="position: relative;"><span class="myspan" style = "font-size: 18px;">${task.publisherNum}</span></a>
+				<a href="" style="position: relative;"><span class="myspan" style = "font-size: 18px;">${publisherName}</span></a>
 				</div>
 				<div style="float: right;">
 					<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative;f"></span>
@@ -196,7 +196,7 @@
 						<c:forEach items="${applyList1}" var="applicant" varStatus="st"> 
 							<hr>
 							<ul class="list-inline">
-                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span><a href = "/editPage/ToOthers?num=${ applicant.num}" style = "font-size: 17px; ">${applicant.name}:</a></li>
+                            <li><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span><a href = "/editPage/ToOthers?num=${applicant.num}" style = "font-size: 17px; ">${applicant.name}:</a></li>
 							<li></li>
 							<li></li>
 							<li></li><li></li>
@@ -232,7 +232,7 @@
             	<div class="indexCon_msg">
                 
                 	<div class="indexCon_msg_detail">
-						<a href="../otherPeople.jsp">
+						<a href="/editPage/ToOthers?num=${comment.commentatorNum}">
 						 <div class="indexCon_msg_detail_tittle">
                             <p style="font-size: 17px;"><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>评论人： ${comment.commentatorNum}</p>
                         </div>

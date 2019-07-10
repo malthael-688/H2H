@@ -173,52 +173,8 @@
 				</div>
 			</div>
     	</div>
-				<div class="indexMain_left_con" style="height: 350px;">
-        	<p class="myp1" style = "20px;">评论</p>
-					<br>
-			<div style="position: relative; top: 30px; ">
-        		<form action="/editPage/publish_examine_submit?taskId=${task.taskID}" method="post">
-                	<textarea name="comment.content" id="" class="mytextarea" placeholder="留下你的见解" style="width:90%;position: relative; top: 15%; left: 5%"></textarea>
-					<input type="submit" class="btn btn-primary" style="width:20%; font-size: 15px; position: relative; left: 75%; top: 20px;" value="提 交"/>
-									<br>
-          		</form>
-			</div>
-		</div>
-		<c:forEach items="${comments}" var="comment" varStatus="Co">
-			<div class="indexMain_left_con">
-            <!--有主题图循环结束-->
-            <!--无主题图循环开始-->
-            	<div class="indexCon_msg">
-                
-                	<div class="indexCon_msg_detail">
-						<a href="../otherPeople.jsp">
-						 <div class="indexCon_msg_detail_tittle">
-                            <p style="font-size: 17px;"><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>评论人： ${comment.commentatorNum}</p>
-                        </div>
-						</a>
-                    	<a data-toggle="collapse" data-parent="#accordion" 
-						href="#${comment.commentID}" href="">
-                       		<p style="font-size: 17px;">显示详情</p>
-                    	</a>
-						<div id="${comment.commentID}" class="panel-collapse collapse">
-							<div class="panel-body">
-								<p style="font-size: 17px;">${comment.content}</p>
-							</div>
-						</div>
-                    <div>
-                        <ul class="list-inline">
-
-							<li></li><li></li>
-                            <li><h5><span class="glyphicon glyphicon-time" style="color: rgb(0, 152, 193);"></span> 发布时间 ： ${comment.time}</h5></li>
-							<li></li>
-							<li></li><li></li>
-                        </ul>
-                    </div>
-                	</div>
-                <div class="clear"></div>
-            	</div>
-        	</div>
-		</c:forEach>
+				
+		
 		<br>
 		<br>
 		<br>

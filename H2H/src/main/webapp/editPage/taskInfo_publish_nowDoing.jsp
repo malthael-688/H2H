@@ -104,9 +104,9 @@
 5 });
 		var a = ["未审核","审核未通过","审核通过","执行中","已提交","已验收","已失效","已删除"];
 				var i = 0;
-		var i = ${task.state};
+		var i = ${task.taskState};
 		var taskstate = a[i];
-		${task.state} = taskstate;
+		task.taskStat = taskstate;
 		</script>
 	<div class="indexMain" style = "width:55%;">
 		<div class="indexMain_left_btn" style="height: 80px;">
@@ -152,7 +152,9 @@
 			<div>
 				<div style="float: left;">
         		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
-				<a href="#" style="position: relative;"><span class="myspan" style = "font-size: 18px;">${task.publisherNum}</span></a>
+				<a  style="position: relative;"><span class="myspan" style = "font-size: 18px;">发布者：${publisherName}</span></a>
+				<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
+				<a href="/editPage/ToOthers?num=${task.receiverNum}" style="position: relative;"><span class="myspan" style = "font-size: 18px;">接受者：${receiverName}</span></a>
 				</div>
 				<div style="float: right;">
 					<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative;f"></span>
@@ -175,7 +177,7 @@
 				<br>
 				<br>
 																<div style="float: right;">
-				<label class="mylabel" style="position: relative; font-size: 18px;">任务状态: ${task.state}</label>
+				<label class="mylabel" style="position: relative; font-size: 18px;">任务状态: ${task.taskState}</label>
 				</div>
 			</div>
     	</div>
@@ -197,7 +199,7 @@
             	<div class="indexCon_msg">
                 
                 	<div class="indexCon_msg_detail">
-						<a href="../otherPeople.jsp">
+						<a href="/editPage/ToOthers?num=${comment.commentatorNum}">
 						 <div class="indexCon_msg_detail_tittle">
                             <p style="font-size: 17px;"><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>评论人： ${comment.commentatorNum}</p>
                         </div>

@@ -121,7 +121,9 @@
 			<div>
 				<div style="float: left;">
         		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
-				<a href="#" style="position: relative;"><span class="myspan" style = "font-size: 18px;">${task.publisherNum}</span></a>
+				<a href="#" style="position: relative;"><span class="myspan" style = "font-size: 18px;">发布者：${publisherName}</span></a>
+				<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
+				<a href="/editPage/ToOthers?num=${task.receiverNum}" style="position: relative;"><span class="myspan" style = "font-size: 18px;">接受者：${receiverName}</span></a>
 				</div>
 				<div style="float: right;">
 					<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative;f"></span>
@@ -155,7 +157,7 @@
             	<div class="indexCon_msg">
                 
                 	<div class="indexCon_msg_detail">
-						<a href="../otherPeople.jsp">
+						<a href="/editPage/ToOthers?num=${comment.commentatorNum}">
 						 <div class="indexCon_msg_detail_tittle">
                             <p style="font-size: 17px;"><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>评论人： ${comment.commentatorNum}</p>
                         </div>

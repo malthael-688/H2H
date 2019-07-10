@@ -112,7 +112,7 @@
 			<div class = "col-md-4">
 			<div style="width: 50%; position: relative; left: 40%; bottom: 50%;">
 				<a class="btn btn-danger " data-toggle="modal" data-target="#myModal" style="width: 100%;"><em>取消申请</em></a>
-				<a href="/editPage/receive_applying_page" class="btn btn-primary"  style="width: 100%;"><em>返回</em></a>
+				<a href="/editPage/recieve_applying_page" class="btn btn-primary"  style="width: 100%;"><em>返回</em></a>
 			</div>
 			</div>
 			</div>
@@ -145,7 +145,7 @@
 			<div>
 				<div style="float: left;">
         		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
-				<a href="#" style="position: relative;"><span class="myspan" style = "font-size: 18px;">${task.publisherNum}</span></a>
+				<a href="/editPage/ToOthers?num=${task.publisherNum}" style="position: relative;"><span class="myspan" style = "font-size: 18px;">${publisherName}</span></a>
 				</div>
 				<div style="float: right;">
 					<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative;f"></span>
@@ -190,7 +190,7 @@
             	<div class="indexCon_msg">
                 
                 	<div class="indexCon_msg_detail">
-						<a href="../otherPeople.jsp">
+						<a href="/editPage/ToOthers?num=${comment.commentatorNum}">
 						 <div class="indexCon_msg_detail_tittle">
                             <p style="font-size: 17px;"><span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193);"></span>评论人： ${comment.commentatorNum}</p>
                         </div>

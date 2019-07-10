@@ -50,8 +50,8 @@
 
 
 	<li>
-	<a   href="javascript:history.back(-1)">
-	<span class="glyphicon glyphicon-share-alt" style="color: rgb(0, 152, 193);"></span>返回
+	<a   href="/home/index">
+	<span class="glyphicon glyphicon-share-alt" style="color: rgb(0, 152, 193);"></span>返回主页
     </a>
 	</li>
 	</ul>
