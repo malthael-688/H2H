@@ -26,7 +26,11 @@
             <input type="text" class="form-control" placeholder="Search" name = "search" >
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
-    
+    	<select name="type" id="select" placeholder="任务类型" >
+		<option value="已审核" selected="selected">已审核</option>
+		<option value="未审核" selected="selected">未审核</option>
+		<option value="全部" selected="selected"> 全部</option>
+		</select>
 	</div>
 		</form>
 	

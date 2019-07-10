@@ -3,6 +3,7 @@ package Controller;
 import java.security.GeneralSecurityException;
 import java.sql.SQLType;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -79,10 +80,71 @@ public class AdminController extends Controller {
     }
     
     public void taskSearch(){ //通过任务编号 或者 发布人账号 找到task
+    	String state = getPara("type");
+    	String search = getPara("search");
+    	
+    	if(!search.equals("")){
+    		List<Task> tasks = TaskService.me.searchByElement(search);
+    		if(state.equals("已审核")){
+    			Iterator<Task> it = tasks.iterator();
+    			while(it.hasNext()){
+    				Task x = it.next();
+    				if(x.getStr("taskState").equals("0")){
+    					it.remove();
+    				}
+    			}
+        	}
+        	else if(state.equals("未审核")){
+        		Iterator<Task> it = tasks.iterator();
+    			while(it.hasNext()){
+    				Task x = it.next();
+    				if(!x.getStr("taskState").equals("0")){
+    					it.remove();
+    				}
+    			}
+        	}
+        	else{
+        		
+        	}
+    		set("tasks",tasks);
+        	render("TaskManage.jsp");
+        	return;
+    	}
+    	else{
+    		List<Task> tasks = TaskService.me.searchByState();
+    		if(state.equals("已审核")){
+    			Iterator<Task> it = tasks.iterator();
+    			while(it.hasNext()){
+    				Task x = it.next();
+    				if(x.getStr("taskState").equals("0")){
+    					it.remove();
+    				}
+    			}
+        	}
+        	else if(state.equals("未审核")){
+        		Iterator<Task> it = tasks.iterator();
+    			while(it.hasNext()){
+    				Task x = it.next();
+    				if(!x.getStr("taskState").equals("0")){
+    					it.remove();
+    				}
+    			}
+        	}
+        	else{
+        		
+        	}
+    		set("tasks",tasks);
+        	render("TaskManage.jsp");
+        	return;
+    	}
+    	
+    	
+    	
+    	/*
     	String  search = getPara("search");
     	List <Task> tasks = TaskService.me.searchByElement(search);
     	set("tasks",tasks);
-    	render("TaskManage.jsp");
+    	render("TaskManage.jsp");*/
     }
     
     public void taskDelete(){
@@ -204,10 +266,89 @@ public class AdminController extends Controller {
     
     public void userSearch(){
     	String  search = getPara("search");
+    	String  state = getPara("type");
+    	
+    	if(search.equals("")){
+    		List<User> users = UserService.me.find("select * from user ");
+    		if(state.equals("正常用户")){
+    			Iterator<User> it = users.iterator();
+    			while(it.hasNext()){
+    				User x = it.next();
+    				if(!x.getStr("userState").equals("0")){
+    					it.remove();
+    				}
+    			}
+    		}
+    		else if(state.equals("已封禁")){
+    			Iterator<User> it = users.iterator();
+    			while(it.hasNext()){
+    				User x = it.next();
+    				if(!x.getStr("userState").equals("1")){
+    					it.remove();
+    				}
+    			}
+    		}
+    		else if(state.equals("已删除")){
+    			Iterator<User> it = users.iterator();
+    			while(it.hasNext()){
+    				User x = it.next();
+    				if(!x.getStr("userState").equals("2")){
+    					it.remove();
+    				}
+    			}
+    		}
+    		else{
+    			
+    		}
+    		set("users",users);
+        	set("state",5);
+        	render("UserManage.jsp");
+        	return;
+    	}
+    	else{
+    		List<User> users = UserService.me.searchByElement(search);
+    		if(state.equals("正常用户")){
+    			Iterator<User> it = users.iterator();
+    			while(it.hasNext()){
+    				User x = it.next();
+    				if(!x.getStr("userState").equals("0")){
+    					it.remove();
+    				}
+    			}
+    		}
+    		else if(state.equals("已封禁")){
+    			Iterator<User> it = users.iterator();
+    			while(it.hasNext()){
+    				User x = it.next();
+    				if(!x.getStr("userState").equals("1")){
+    					it.remove();
+    				}
+    			}
+    		}
+    		else if(state.equals("已删除")){
+    			Iterator<User> it = users.iterator();
+    			while(it.hasNext()){
+    				User x = it.next();
+    				if(!x.getStr("userState").equals("2")){
+    					it.remove();
+    				}
+    			}
+    		}
+    		else{
+    			
+    		}
+    		set("users",users);
+        	set("state",5);
+        	render("UserManage.jsp");
+        	return;
+    	}
+    	
+    	/*
     	List <User> users = UserService.me.searchByElement(search);
     	set("users",users);
     	set("state",5);
     	render("UserManage.jsp");
+    	*/
     }
     
     public void showUser(){

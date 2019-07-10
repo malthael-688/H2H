@@ -37,6 +37,10 @@ public class TaskService {
 		return taskDao.find(sb.toString(), key,key);
 	}
 	
+	public List<Task> searchByState(){
+		
+		StringBuilder sb = new StringBuilder("select * from task where taskstate!=7");
+		return taskDao.find(sb.toString());
+	}
 	
-
 }

@@ -39,6 +39,13 @@
             <input type="text" class="form-control" placeholder="Search" name = "search">
         </div>
 		<button type="submit" class="btn btn-default">搜索</button>
+		<select name="type" id="select" >
+
+		<option value="正常用户" selected="selected">正常用户</option>
+		<option value="已封禁" selected="selected">已封禁</option>
+		<option value="已删除" selected="selected">已删除</option>
+		<option value="全部" selected="selected"> 全部</option>
+		</select>
 	</div>
 		</form>
 		
