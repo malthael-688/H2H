@@ -56,7 +56,10 @@ public class HomePageController extends Controller{
 		} else if(tt != null){
 			tl = taskDao.find("select * from task where taskState=? and type=? and publisherNum != ?", "2", tt, curUser.get("num"));
 		} else {
-			tl = taskDao.find("select * from task where title like %?$ and publisherNum != ?", searchKey, curUser.get("num"));
+			String sql = "select * from task where taskState=? and title like '%"
+							+searchKey
+							+"%' and publisherNum != " + curUser.get("num");
+			tl = taskDao.find(sql, "2");
 		}
 		set("tasks", tl);
 		set("taskTypes", taskTypeDao.findAll());

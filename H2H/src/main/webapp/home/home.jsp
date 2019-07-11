@@ -91,9 +91,9 @@
 	</ul>
 	<form method="post" action="/home/index" class="navbar-form navbar-right" role="search">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" id="searchKey">
+            <input type="text" class="form-control" placeholder="Search" id="searchKey" name="searchKey">
         </div>
-        <button type="submit" class="btn btn-default">关键词搜索任务</button>
+        <input type="submit" class="btn btn-default" value="关键词搜索任务">
     </form>
 
 </div>
