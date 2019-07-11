@@ -70,6 +70,7 @@ public class LoginController extends Controller {
 							long now=new Date().getTime();
 							long sqldate=dFormat.parse((String) one.get("lastLoginDate")).getTime();
 							long between=(now-sqldate)/(60*60*24*1000);
+							
 							//判断是否超过一天
 							if (between>=1) {
 								one.set("lastLoginDate",dFormat.format(new Date()) );
@@ -81,7 +82,8 @@ public class LoginController extends Controller {
 					              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
 					              cookie.setMaxAge(60 * 60);
 					              session.setAttribute("User", one);
-								setCookie(cookie).set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home");
+								setCookie(cookie).setSessionAttr("point", param.get("point")).setSessionAttr("User", one).render("/home");
+								System.out.println(param.get("point"));
 								SessionListener.addUserSession(session);
 							}else {
 								one.set("lastLoginDate",dFormat.format(new Date()) );
@@ -105,7 +107,8 @@ public class LoginController extends Controller {
 				              Cookie cookie = new Cookie("JSESSIONID", sessionId);  
 				              cookie.setMaxAge(60 * 60);
 				              session.setAttribute("User", one);
-							set("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home");
+				              setSessionAttr("point", param.get("point")).setSessionAttr("User", one).forwardAction("/home");
+							System.out.println(param.get("point"));
 							SessionListener.addUserSession(session);
 						}	
 						

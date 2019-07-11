@@ -94,8 +94,11 @@ public class HomePageController extends Controller{
 		set("messageNum", ml.size());
 		set("User",curUser);
 		
-		set("point", getPara("point"));
 		
+		System.out.println("//////////");
+		System.out.println(getSessionAttr("point"));
+		System.out.println("//////////");
+		set("point", getSessionAttr("point"));
 		render("home.jsp");
 	}
 	

@@ -250,6 +250,12 @@ public class EditController extends Controller {
         String oneId=getPara("taskId");
         long id =Long.parseLong(oneId);
         Task tasks=Task.task.findById(id);
+        System.out.println(tasks.get("taskState"));
+        if(tasks.get("taskState").toString().equals("4")){
+        	tasks.set("taskState", "已提交");
+        } else {
+        	tasks.set("taskState", "执行中");
+        }
         
         String receivenum = tasks.getStr("receiverNum");
         User user = User.user.findById(receivenum);

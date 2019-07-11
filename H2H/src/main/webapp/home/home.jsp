@@ -384,6 +384,16 @@ function checkPoint()
 		}
 }
 </script>
+<script type="text/javascript">
+$(function()
+		{
+	var point=${point};
+	if(point!=null)
+		{
+		alert("每日签到赠送积分："+point);
+		}
+		})
+</script>
 
 <div style="text-align:center;clear:both;margin-top:160px">
 <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>

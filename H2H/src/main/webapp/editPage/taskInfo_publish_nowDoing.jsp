@@ -177,7 +177,7 @@
 				<br>
 				<br>
 																<div style="float: right;">
-				<label class="mylabel" style="position: relative; font-size: 18px;">任务状态: ${task.taskState}</label>
+				<label class="mylabel" style="position: relative; font-size: 18px;">任务状态: ${task.taskState }</label>
 				</div>
 			</div>
     	</div>

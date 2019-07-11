@@ -138,7 +138,7 @@ function Check(){
 
 	<!-- 登录窗口      -->
 	<div class="mydiv">
-		<img src="../backSettings/images"
+		<img src="../backSettings/images/"
 			style="width: 30%; height: 10%; position: relative; left: 200px; top: 5px;" />
 		<div id="topbar"></div>
 		<div id="middlecontainer">
@@ -244,15 +244,15 @@ function Check(){
 		}
 	if(error=='5')
 		{
-		alert("cxknmsl,你个傻逼打篮球像cxk被封号啦！")
+		alert("您的账号已被封号！")
 		}
 	if(error=='6')
 		{
-		alert("cxknmsl,你个傻逼跳cxk打篮球太难看被删号啦！")
+		alert("您的账号因违规被删除账号！")
 		}
 	if(error=='7')
 	{
-	alert("cxknmsl,你个傻逼你被cxk打到异次元啦！")
+	alert("你的账号状态异常！")
 	}
 	if(error=='8')
 	{
