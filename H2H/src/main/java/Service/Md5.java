@@ -93,11 +93,11 @@ public class Md5 {
 		         }
 		         return sb.toString();
 		     }
-/*    	public static void main(String args[]){
+    	public static void main(String args[]){
 	Md5 md5 = new Md5();
-	System.out.println(md5.stringMD5(""));
+	System.out.println(md5.stringMD5("123"));
     		
-}*/
+}
     
 
 }

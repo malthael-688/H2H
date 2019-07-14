@@ -174,23 +174,41 @@
 </div>
 		
 
+		
 		<div class="indexMain_left_con" style="height: 140px;">
-        	<p class="myp1">任务描述</p>
+        	<p class="myp1" style = "font-size: 20px;">任务描述</p>
         	<p class="myp2">${task.getStr("description") }</p>
     	</div>
-		<div class="indexMain_left_con" style="height: 150px;">
-        	<p class="myp1">任务信息</p>
+		<div class="indexMain_left_con" style="height: 200px;">
+        	<p class="myp1" style = "font-size: 20px;">任务信息</p>
+			<br>
+			<hr>
 			<div>
-        		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; left: 30px; top: 50px;"></span>
-				<a  style="position: relative; left: 40px; top: 46px;"><span class="myspan">发布人: ${task.getStr("publisherNum") }</span></a>
-			</div>
-			<div>
-				<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative; left: 200px; top: 18px;"></span>
-				<label class="mylabel" style="position: relative; left: 210px; top: 14px;">悬赏: ${task.getStr("rewardPoints") }</label>
-				<span class="glyphicon glyphicon-cog" style="color:gray; font-size: 25px; position: relative; left: 290px; top: 18px;"></span>
-				<label class="mylabel" style="position: relative; left: 300px; top: 14px;">类型: ${task.getStr("type") }</label>
-				<span class="glyphicon glyphicon-time" style="color:black; font-size: 25px; position: relative; left: -210px; top: 60px;"></span>
-				<label class="mylabel" style="position: relative; left: -200px; top: 55px;">截止时间: ${task.getStr("deadLine") }</label>
+				<div style="float: left;">
+        		<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
+				<a  style="position: relative;"><span class="myspan" style = "font-size: 18px;">发布人: ${task.getStr("publisherNum") }</span></a>
+				<span class="glyphicon glyphicon-user" style="color: rgb(0, 152, 193); font-size: 25px; position: relative; "></span>
+				<a href="/editPage/ToOthers?num=${task.receiverNum}" style="position: relative;"><span class="myspan" style = "font-size: 18px;">接受者：${receiverName}</span></a>
+				</div>
+				<div style="float: right;">
+					<span class="glyphicon glyphicon-usd" style="color: rgb(255, 235, 118); font-size: 25px; position: relative;f"></span>
+				<label class="mylabel" style=" font-size: 18px;">悬赏: ${task.getStr("rewardPoints") }</label></div>
+								<div style="float: right;">
+				<span class="glyphicon glyphicon-cog" style="color:gray; font-size: 25px; position: relative; "></span>
+				<label class="mylabel" style="position: relative; font-size: 18px;">类型: ${task.getStr("type") }</label>
+				</div>
+				<br>
+				<br>
+							
+												<div style="float: right;">
+				<span  class="glyphicon glyphicon-time"style="color:black; font-size: 25px; position: relative; "></span>
+				<label class="mylabel" style="position: relative; font-size: 18px;">截止时间: ${task.getStr("deadLine") }</label>
+				</div>
+				<br>
+				<br>
+																<div style="float: right;">
+				<label class="mylabel" style="position: relative; font-size: 18px;"></label>
+				</div>
 			</div>
     	</div>
 				
